@@ -1,0 +1,7 @@
+Ballista projectile - 1301
+Stance - 7220
+Walk - 7223
+Run - 7221
+Block - 7219
+Attack - 7218
+Special Attack - 7222

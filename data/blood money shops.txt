@@ -1,0 +1,38 @@
+Blood money prices
+
+npcid - 4256
+Shop name - Blood Money Untradables
+Mithril gloves - 0 7458
+Adaamnt gloves - 0 7459
+Black defender - 300 8847
+Mithril defender - 400 8848
+Adamanat defender - 500 8849
+Rune defender - 700 8850
+Dragon defender - 800 12954
+Fire cape - 3000 6570
+Max cape - 4000 13280
+Fire max cape - 5000 13329
+Saradomin max cape - 5000 13331
+Zamorak max cape - 5000 13333
+Guthix max cape - 5000 13335
+Ava's max cape - 5000 13337
+Ardougne cloak 4 - 3000 13124
+Void mage helm - 1500 11663
+Void ranged helm - 1500 11664
+Void melee helm - 1500 11665
+Elite void top - 3500
+Void knight top - 2500 8839
+Elite void robe - 3500
+Void knight robe - 2500 8840
+Void knight gloves - 2000 8842
+Healer hat - 1000 10547
+Fighter hat - 1000 10548
+Runner hat - 1000 10549
+Ranger hat - 1000 10550
+Fighter torso - 2000 10551
+Runner boots - 1000 10552
+Penance skirt - 1000 10555
+
+
+
+

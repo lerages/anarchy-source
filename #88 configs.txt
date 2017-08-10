@@ -1,0 +1,34 @@
+101 - Quest Points
+102 - Health Poisoned (1 for poison, 1000000 for venom)
+439 - Spellbook (0 - Standard, 1 - Ancients, 2 - Lunar, 3 - Arceous)
+456 - Diseased
+1021 - Flashing Sidebar Icon
+843 - Attack Style
+1151 - Grand Exchange Item
+563 - Grand Exchange Quantity
+1043 - Grand Exchange Price
+638 - Run Energy Type (1000000000 for Stamina, 0 for Regular)
+1055 - Quest Tab Icon (10000 for red, 0 for blue) 41536 = kourand (purple), 8768 = normal (blue), 8784 = red, 8768 = green
+
+843 - 5 - ballista 
+843 - 18 - wands (elder wand)
+843 - 19 - blowpipe
+843 - 26 - bludgeon
+843 - 17 - abby dagger
+843 - 4 - dragon claws
+
+
+
+
+tournament altar - 7812
+tournament supplies - 3834
+
+
+
+
+[00:39:15] 375 - 0 (0x0) -> 16 (0x10)
+
+
+
+162 
+comp 31 - 39

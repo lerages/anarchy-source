@@ -1,0 +1,26 @@
+14 = corp damage
+29 = smelt
+53 = boat
+65-67 = bonds
+73 = what to make
+81 = enchant bolts
+92 = clan wars
+95 = destroy item
+101 = wtf?
+107-109 = duel
+135 = increase stat
+139 = teleport
+155 = crafting
+179 = bh store
+191 = rune pouch
+194 = deposit box
+207 = appearance
+214 = bank pin
+234-240 = possibles
+270 = appearance
+300 = travel
+304 = what would you like to make
+426 = Slayer
+504 = possible
+513 = possible
+

@@ -1,0 +1,10 @@
+Ranged = 7227
+Magic = 7238
+Explosive rock = 7228
+Melee = 7226
+Block = 7224
+Death= 7229
+
+1305 - mage gfx
+1304 - mage hit gfx
+1303 - range hit gfx

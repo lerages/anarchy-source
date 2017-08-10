@@ -1,0 +1,16 @@
+bin/
+out/
+build/
+data/savedGames/*.dat.gz
+data/savedGames/privateChats/*.dat.gz
+data/database.*
+data/starters.ini
+.idea/
+.idea/*.*
+.classpath
+.project
+*.iml
+*.ipr
+*.iws
+*~
+.gradle/

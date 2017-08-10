@@ -1,0 +1,30 @@
+Packet: 55, size: 12
+Offset: -1 Length: -1 Set: 2 Interface Id: 548Child Id: 48
+Packet: 55, size: 12
+Offset: 47 Length: 0 Set: 2 Interface Id: 201Child Id: 0
+Packet: 223, size: 10
+CS2!!!
+Read2: 4675
+CS2: [ID: 235, Types: o]
+
+
+Last: false, 75, 0
+Packet: 60, size: 3
+Config: 43, 4
+Packet: 60, size: 3
+Config: 439, 0
+Packet: 60, size: 3
+Config: 108, 63
+Interface: walkable=1, id=593, target={548, 129}
+Packet: 55, size: 12
+Offset: -1 Length: -1 Set: 2 Interface Id: 548Child Id: 48
+Packet: 60, size: 3
+Config: 843, 18
+Packet: 2, size: 5
+Interface: 593 Child: 29 Hidden? RSInterface@32514
+Packet: 76, size: 6
+Config: 1000, 300
+Packet: 60, size: 3
+Config: 301, 0
+Packet: 60, size: 3
+Config: 43, 0

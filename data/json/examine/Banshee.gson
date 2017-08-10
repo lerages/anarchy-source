@@ -1,0 +1,116 @@
+  {
+    "npcIds": [
+      414
+    ],
+    "rarities": [
+      {
+        "itemId": 1420,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 1203,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 4105,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 556,
+        "minAmount": 3,
+        "maxAmount": 3,
+        "rarity": 0.25
+      },
+      {
+        "itemId": 564,
+        "minAmount": 2,
+        "maxAmount": 2,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 554,
+        "minAmount": 7,
+        "maxAmount": 7,
+        "rarity": 0.25
+      },
+      {
+        "itemId": 561,
+        "minAmount": 3,
+        "maxAmount": 3,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 199,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.25
+      },
+      {
+        "itemId": 201,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.25
+      },
+      {
+        "itemId": 203,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.25
+      },
+      {
+        "itemId": 205,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.25
+      },
+      {
+        "itemId": 207,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.25
+      },
+      {
+        "itemId": 209,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 211,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 213,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 215,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 217,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      },
+      {
+        "itemId": 2485,
+        "minAmount": 1,
+        "maxAmount": 1,
+        "rarity": 0.75
+      }
+    ]
+  }
+

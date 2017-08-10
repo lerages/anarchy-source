@@ -1,0 +1,30 @@
+Opcode: 24
+Opcode: 24
+Opcode: 193
+Opcode: 105
+Opcode: 14
+Opcode: 20
+Opcode: 20
+Opcode: 154
+Opcode: 159
+Opcode: 20
+Opcode: 124
+
+
+[Op 159] Var3: [Interface: 2, Child: 231], Var29: 1, Var37: -1
+
+
+Read: Can I have a newspaper, please?|How much does a paper cost?|Varrock Herald? Never heard of it.|Anything interesting in there?
+Read: Select an Option
+CS2: [ID: 58, Types: ss]
+
+[Op 14] Var27 [Interface: 0, 217], Var3: 554, Var4: Widget@671a4c51
+[Op 20] Interface: 217, Child: 1, String: Magic Hoar
+[Op 20] Interface: 217, Child: 3, String: Can you teach me the basics of smithing please?
+Read2: 14221315
+Read2: 16
+Read2: 1
+Read2: 1
+CS2: [ID: 600, Types: iiiI]
+[Op 159] [Interface: 217, Child: 2], Set: 1, Length: -1Offset: -1
+[Op 20] Interface: 217, Child: 2, String: Click here to continue

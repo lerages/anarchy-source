@@ -1,0 +1,23 @@
+Bank interface
+Trade interface
+Duel interface
+Clan wars interface
+Missing mapdata
+Price checker interface
+Bank tabs
+Canoe interface
+Voting interface
+Grand Exchange Interface (Neutral, Buy and Sell)
+
+
+Easy:
+
+Private chat config
+Publicity Settings config
+
+Maybe:
+
+Nightmare Zone
+
+
+Interface 215 = iron man interface

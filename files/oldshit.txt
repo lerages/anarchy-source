@@ -1,0 +1,162 @@
+
+		
+//		World.getWorld().getPrivateChat().get("tim").addClanMember(player);
+//		
+//		sendWalkableInterface(90);
+//		sendInterfaceConfig(90, 24, false);
+//		sendInterfaceConfig(90, 23, true);
+//		sendInterfaceConfig(90, 25, true);
+		/*
+		 * format(-1, -1, 2, 548, 45); format(2, 2, 6, 465, 6); format(3, 4, 2,
+		 * 465, 6); format(2, 2, 6, 465, 7); format(3, 4, 2, 465, 7); format(2,
+		 * 2, 6, 465, 8); format(3, 4, 2, 465, 8); format(2, 2, 6, 465, 9);
+		 * format(3, 4, 2, 465, 9); format(2, 2, 6, 465, 10); format(3, 4, 2,
+		 * 465, 10); format(2, 2, 6, 465, 11); format(3, 4, 2, 465, 11);
+		 * format(2, 2, 6, 465, 12); format(3, 4, 2, 465, 12); format(2, 2, 6,
+		 * 465, 13); format(3, 4, 2, 465, 13); format(0, 0, 2, 465, 21);
+		 * format(2, 3, 1038, 465, 22); format(0, 0, 6, 465, 5); format(0, 13,
+		 * 2, 465, 23); format(0, 27, 1026, 467, 0);
+		 */
+//		if (resize) {
+//			sendConfig(1055, 3080);
+//			// sendConfig2(1055, 3336);
+//
+//			sendConfig(18, 1);
+//			sendConfig(21, 67108864);
+//			sendConfig(22, 33554432);
+//			sendConfig(23, 64);
+//			sendConfig(43, 1);
+//			sendConfig(101, 0);
+//			sendConfig(166, 2);
+//			sendConfig(167, 0);
+//			sendConfig(168, 4);
+//			sendConfig(169, 4);
+//			sendConfig(170, 0);
+//			sendConfig(171, 0);
+//			sendConfig(173, 1);
+//			sendConfig(281, 1000);
+//			sendConfig(287, 0);
+//			sendConfig(300, 1000);
+//			sendConfig(406, 20);
+//			sendConfig(427, 2);
+//			sendConfig(447, -1);
+//			sendConfig(486, 1073741824);
+//			sendConfig(520, 1);
+//			sendConfig(553, -2147483648);
+//			sendConfig(788, 128);
+//			sendConfig(810, 33554432);
+//			sendConfig(830, 4194304);
+//			sendConfig(849, -1);
+//			sendConfig(850, -1);
+//			sendConfig(851, -1);
+//			sendConfig(852, -1);
+//			sendConfig(853, -1);
+//			sendConfig(854, -1);
+//			sendConfig(855, -1);
+//			sendConfig(856, -1);
+//			sendConfig(867, 1);
+//			sendConfig(872, 4);
+//			sendConfig(904, 246);
+//			sendConfig(913, 4194304);
+//			sendConfig(951, -1);
+//			sendConfig(952, -1);
+//			sendConfig(953, -1);
+//			sendConfig(954, -1);
+//			sendConfig(955, -1);
+//			sendConfig(956, -1);
+//			sendConfig(959, -1);
+//			sendConfig(960, -1);
+//			sendConfig(961, -1);
+//			sendConfig(962, -1);
+//			sendConfig(963, -1);
+//			sendConfig(1010, 2048);
+//			sendConfig(1017, 8192);
+//			sendConfig(1050, 4096);
+//			sendConfig(1055, 3336);
+//			sendConfig(1065, -1);
+//			sendConfig(1067, -1733296128);
+//			sendConfig(1074, 0);
+//			sendConfig(1075, -1);
+//			sendConfig(1107, 0);
+//			sendConfig(1151, -1); // sendConfig(1055,3336);// lol we could send
+//									// a loop of config 1055 and see what
+//									// happens xd kk
+//		}
+		/*
+		 * sendConfig2(21,67108864); sendConfig2(22,33554432);
+		 * sendConfig2(281,1000); sendConfig2(300,1000);
+		 * sendConfig2(486,1073741824); sendConfig2(553,-2147483648);
+		 * sendConfig2(788,128); sendConfig2(810,33554432);
+		 * sendConfig2(830,4194304); sendConfig2(904,246);
+		 * sendConfig2(913,4194304); sendConfig2(1010,2048);
+		 * sendConfig2(1017,8192); sendConfig2(1050,4096);
+		 * sendConfig2(1055,768); sendConfig2(1067,-1733296128);
+		 * sendConfig2(1055,768); sendInterfaceSetting(0, 37, 2, 14155777);
+		 * sendInterfaceSetting(0, 502, 2, 15663105);
+		 */
+
+		// sendInterfaceSetting(0, 37, 2, 14155777); sendInterfaceSetting(0,
+		// 502, 2, 15663105);
+
+		// sendConfig(18,1); sendConfig(21,67108864); sendConfig(22,33554432);
+		// sendConfig(23,64); sendConfig(43,1); sendConfig(101,0);
+		// sendConfig(166,2); sendConfig(167,0); sendConfig(168,4);
+		// sendConfig(169,4); sendConfig(170,0); sendConfig(171,0);
+		// sendConfig(173,1); sendConfig(281,1000); sendConfig(287,0);
+		// sendConfig(300,1000); sendConfig(406,20); sendConfig(447,-1);
+		// sendConfig(486,1073741824); sendConfig(520,1);
+		// sendConfig(553,-2147483648); sendConfig(788,128);
+		// sendConfig(810,33554432); sendConfig(830,4194304);
+		// sendConfig(849,-1); sendConfig(850,-1); sendConfig(851,-1);
+		// sendConfig(852,-1); sendConfig(853,-1); sendConfig(854,-1);
+		// sendConfig(855,-1); sendConfig(856,-1); sendConfig(872,4);
+		// sendConfig(904,246); sendConfig(913,4194304); sendConfig(951,-1);
+		// sendConfig(952,-1); sendConfig(953,-1); sendConfig(954,-1);
+		// sendConfig(955,-1); sendConfig(956,-1); sendConfig(959,-1);
+		// sendConfig(960,-1); sendConfig(961,-1); sendConfig(962,-1);
+		// sendConfig(963,-1); sendConfig(1010,2048); sendConfig(1017,8192);
+		// sendConfig(1050,4096); sendConfig(1055,768); sendConfig(1065,-1);
+		// sendConfig(1067,-1733296128); sendConfig(1074,0);
+		// sendConfig(1075,-1); sendConfig(1107,0); sendConfig(1151,-1);
+		//
+
+		/*
+		 * sendDefaultChatbox(); //sendInterfaceConfig(589, 18, true);
+		 * sendFriends(); sendIgnores(); sendSkillLevels(); sendEnergy();
+		 * sendConfig(313, -1); sendConfig(465, -1); sendConfig(802, -1);
+		 * sendConfig(1085, 249852); sendMessage("Welcome to " +
+		 * Constants.SERVER_NAME);
+		 * sendMessage("Use ::master and ::item id amount to get started.");
+		 * sendMessage
+		 * ("If you're unable to see anything wait a few seconds and re-log.");
+		 * updateBrightnessConfig(); updateSplitPrivateChatConfig();
+		 * updateAcceptAidConfig(); updateMouseButtonsConfig();
+		 * updateChatEffectsConfig(); updateBankConfig();
+		 * updateAutoRetaliateConfig();
+		 * 
+		 * 
+		 * player.getCombatState().calculateBonuses(); sendBonuses();
+		 * 
+		 * sendConfig(313, 255); //SkillCape Off + First Part Of Emotes
+		 * sendConfig(465, 511); // 2nd part Of Emotes sendConfig(802, 511); //
+		 * 3rd Part Of Emotes sendConfig(1085, 700); // 4th Part Of Emotes
+		 * 
+		 * sendInterfaceConfig(274, 11, true);
+		 * 
+		 * player.checkForSkillcapes();
+		 * 
+		 * InterfaceContainerListener inventoryListener = new
+		 * InterfaceContainerListener(player, Inventory.INTERFACE, 0, 93);
+		 * player.getInventory().addListener(inventoryListener);
+		 * 
+		 * InterfaceContainerListener equipmentListener = new
+		 * InterfaceContainerListener(player, Equipment.INTERFACE, 28, 94);
+		 * player.getEquipment().addListener(equipmentListener);
+		 * player.getEquipment().addListener(new
+		 * EquipmentContainerListener(player));
+		 * player.getEquipment().addListener(new
+		 * WeaponContainerListener(player));
+		 * 
+		 * 
+		 * sendAreaInterface(null, player.getLocation());
+		 */
