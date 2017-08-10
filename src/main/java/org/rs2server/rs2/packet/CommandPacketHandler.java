@@ -428,7 +428,7 @@ public class CommandPacketHandler implements PacketHandler {
 				else
 					player.getActionSender().sendMessage("There is currently " + players + " player online.");
 				
-				if(permissionService.is(player, PermissionService.PlayerPermissions.ADMINISTRATOR))
+				if(permissionService.is(player, PermissionService.PlayerPermissions.ADMINISTRATOR)	|| permissionService.is(player, PermissionService.PlayerPermissions.MODERATOR))
 				{
 					String img = "";
 					final List<String> list_of_players = new ArrayList<>();
