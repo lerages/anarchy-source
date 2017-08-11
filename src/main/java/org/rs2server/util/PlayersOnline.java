@@ -3,7 +3,7 @@ import java.sql.*;
 import org.rs2server.rs2.model.World;
 
 public class PlayersOnline {
-	private static final boolean localTesting = true;
+	private static final boolean localTesting = false;
 	//!!!! Ensure database allows VPS IP 
 	public static void updateWebPCount(String state) {
         try {
