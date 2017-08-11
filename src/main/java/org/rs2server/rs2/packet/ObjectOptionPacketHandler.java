@@ -1053,7 +1053,8 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                         }
                         break;
                     case 10229:
-                        player.setTeleportTarget(Location.create(1910, 4367));
+                    	final Location dag_location = Location.create(1910, 4367);
+                        player.getActionQueue().addAction(new ClimbLadderAction(player, dag_location));
                         break;
                     case 2641:
                         player.setTeleportTarget(

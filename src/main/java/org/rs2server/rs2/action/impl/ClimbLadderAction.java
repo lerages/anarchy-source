@@ -45,12 +45,14 @@ public class ClimbLadderAction extends AbstractStatefulAction<ClimbLadderAction.
 	public ClimbState onState(ClimbState state) {
 		if (state == ClimbState.ANIMATE) {
 			getMob().playAnimation(Animation.create(CLIMB_LADDER_ANIMATION_ID));
+			getMob().setCanBeDamaged(false);
 			return ClimbState.PAUSE;
 		} else if (state == ClimbState.PAUSE) {
 			return ClimbState.CLIMB;
 		} else {
 			getMob().setTeleportTarget(destination);
 			getMob().getActionSender().sendMessage("You climb the ladder.");
+			getMob().setCanBeDamaged(true);
 			return null;
 		}
 	}

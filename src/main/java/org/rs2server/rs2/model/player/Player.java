@@ -1810,6 +1810,7 @@ public class Player extends Mob implements Persistable
 		playAnimation(Animation.create(emote));
 		playGraphics(Graphic.create(gfx, 48, getCombatState().getSpellBook() == MagicCombatAction.SpellBook.ANCIENT_MAGICKS.getSpellBookId() ? 0 : 100));//48  0 : 100
 		Random r = new Random();
+		setCanBeDamaged(false);
 		World.getWorld().submit(new Tickable(ticks) {
 			public void execute() {
 				resetInteractingEntity();
@@ -1817,6 +1818,7 @@ public class Player extends Mob implements Persistable
 				playAnimation(Animation.create(-1, 0));
 				setCanBeDamaged(true);
 				removeAttribute("teleporting");
+				setCanBeDamaged(true);
 				this.stop();
 			}
 		});

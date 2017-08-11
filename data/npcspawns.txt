@@ -537,6 +537,16 @@
 2266 2913 4455 0 WEST true // Dagannoth Prime
 2265 2909 4448 0 WEST true // Dagannoth Supreme
 
+//Dag King Spinolyps
+5963 2928 4452 0 SOUTH false // Spinolyp
+5963 2923 4460 0 SOUTH false // Spinolyp
+5963 2912 4464 0 WEST false // Spinolyp
+5963 2902 4460 0 SOUTH false // Spinolyp
+5963 2898 4452 0 SOUTH false // Spinolyp
+5963 2899 4442 0 SOUTH false // Spinolyp
+5963 2912 4434 0 NORTH_EAST false // Spinolyp
+5963 2929 4444 0 SOUTH false // Spinolyp
+
 970 2504 10145 0 WEST true // Dagannoth
 970 2506 10150 0 WEST true // Dagannoth
 970 2513 10151 0 WEST true // Dagannoth

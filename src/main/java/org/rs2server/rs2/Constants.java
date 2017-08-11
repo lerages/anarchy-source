@@ -435,7 +435,7 @@ public class Constants
 	public static final Location YAKS = Location.create(2325, 3803, 0);
 	public static final Location DAGANNOTHS = Location.create(2493, 10147, 0);
 	
-	public static final Location DAGANNOTH_KINGS = Location.create(2446, 10147, 0);
+	public static final Location DAGANNOTH_KINGS = Location.create(1908, 4367, 0);
     public static final Location ZULRAH = Location.create(2200, 3058, 0);
 	public static final Location ARMADYL = Location.create(2841, 5286, 2);
 	public static final Location BANDOS = Location.create(2854, 5356, 2);
