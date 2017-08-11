@@ -156,8 +156,10 @@ public class Prayer {
                 xp = 30;
                 break;
             case 536:
+			    xp = 72;
+                break;
 			case 6812:
-                xp = 72;
+				xp = 103;
                 break;
             case 11943:
                 xp = 85;
