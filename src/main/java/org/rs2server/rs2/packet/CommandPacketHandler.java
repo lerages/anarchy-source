@@ -135,7 +135,7 @@ public class CommandPacketHandler implements PacketHandler {
 		String commandString = packet.getRS2String();
 
 		// clojureService.invoke("commands.clj", commandString, player,
-		// permissionService.getHighestPermission(player));
+		// permissionService.getHighestPermission(player)); ha lol
 
 		if (player.getAttribute("cutScene") != null) {
 			return;

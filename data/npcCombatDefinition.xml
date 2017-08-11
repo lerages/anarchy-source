@@ -83678,6 +83678,60 @@
             </bonuses>
         </CombatDefinition>
     </entry>
+	<entry>
+        <int>492</int>
+        <CombatDefinition>
+            <maxHit>13</maxHit>
+            <combatCooldownDelay>5</combatCooldownDelay>
+			<slayerLevelReq>87</slayerLevelReq>
+            <respawnTicks>27</respawnTicks>
+            <aggressive>false</aggressive>
+            <attack>
+                <id>3992</id>
+                <delay>0</delay>
+            </attack>
+            <defend>
+                <id>3990</id>
+                <delay>0</delay>
+            </defend>
+            <death>
+                <id>3993</id>
+                <delay>0</delay>
+            </death>
+            <attackType>MAGIC</attackType>
+            <combatStyle>ACCURATE</combatStyle>
+            <combatActionType>CUSTOM</combatActionType>
+            <skills>
+                <entry>
+                    <skill>DEFENCE</skill>
+                    <int>150</int>
+                </entry>
+                <entry>
+                    <skill>HITPOINTS</skill>
+                    <int>125</int>
+                </entry>
+                <entry>
+                    <skill>MAGIC</skill>
+                    <int>120</int>
+                </entry>
+            </skills>
+            <bonuses>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>100</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+            </bonuses>
+        </CombatDefinition>
+    </entry>
     <entry>
         <int>423</int>
         <CombatDefinition>
