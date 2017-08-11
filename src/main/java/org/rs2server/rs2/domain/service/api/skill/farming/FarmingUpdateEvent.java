@@ -43,7 +43,7 @@ public class FarmingUpdateEvent extends Event {
 					processed.add(p.getName());
 					update(p.getDatabaseEntity().getFarmingSkill());
 					farmingService.sendPatches(p);
-					logger.info("Updating all Farming Patches...");
+					System.out.println("Updated all farming patches");
 				});
 
 		// Now update farming patches for all offline players
@@ -52,7 +52,6 @@ public class FarmingUpdateEvent extends Event {
 				.forEach(p -> {
 					update(p.getFarmingSkill());
 					playerEntityDao.save(p);
-					logger.info("Updating all Farming Patches...");
 				});
 	}
 
@@ -60,7 +59,6 @@ public class FarmingUpdateEvent extends Event {
 		farmingEntity.getPatches().entrySet().stream()
 				.filter(entry -> entry.getValue() != null)
 				.forEach(entry -> farmingService.updatePatch(entry.getValue()));
-			logger.info("Updating all Farming Patches...");
 	}
 
 }

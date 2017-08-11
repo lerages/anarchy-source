@@ -24,7 +24,7 @@ public class PlayerSaveEvent extends Event {
     public void execute() {
         engineService.offerToSingle(() -> World.getWorld().getPlayers().stream().filter(Objects::nonNull).forEach(p -> {
             World.getWorld().getWorldLoader().savePlayer(p);
-            logger.info("Saving all players...");
+			System.out.println("Saved all players.");
         }));
     }
 }
