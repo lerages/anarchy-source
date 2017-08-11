@@ -86,7 +86,7 @@ public abstract class AbstractCombatAction implements CombatAction {
 			
 			if (BoundaryManager.isWithinBoundaryNoZ(attacker.getLocation(), "StrongholdCave"))
 			{
-				if(!attacker.getSlayer().getSlayerTask().getName().contains(n.getDefinition().getName()))
+				if(!attacker.getSlayer().getSlayerTask().getName().contains(n.getDefinition().getName()) && n.getId() != 492)
 				{
 					attacker.getActionSender().sendDialogue("Nieve", DialogueType.NPC, 6797, FacialAnimation.DEFAULT,
 							"You can only attack creatures that you've been assigned as a slayer task in here.");

@@ -157,7 +157,7 @@ public class SlayerTask {
 						{"Smoke devil", 93, 120, 185, 75.0, TaskGroup.SMOKE_DEVIL},
                         {"Dark beast", 90, 100, 130, 225.4, TaskGroup.DARK_BEASTS},
 						{"Skeletal Wyvern", 72, 3, 70, 225.4, TaskGroup.SKELETAL_WYVERN},
-						{"Kraken", 87, 100, 125, 225.4, TaskGroup.CAVE_KRAKEN},
+						{"Cave Kraken", 87, 100, 125, 225.4, TaskGroup.CAVE_KRAKEN},
 						{"Aberrant spectre", 60, 120, 185, 90, TaskGroup.ABERRANT_SPECTRES}
 						//{"Spiritual Creatures", 83, 120, 185, 75.0, TaskGroup.SPIRITUAL_CREATURES},
 				}),

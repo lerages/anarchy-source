@@ -394,10 +394,10 @@ public class NPC extends Mob {
 		//final PermissionService permissionService = Server.getInjector().getInstance(PermissionService.class);
 		//final LootGenerationService lootService = Server.getInjector().getInstance(LootGenerationService.class);
 		final GroundItemService groundItemService = Server.getInjector().getInstance(GroundItemService.class);
-		final double chance = player.getEquipment().get(Equipment.SLOT_RING) != null && player.getEquipment().get(Equipment.SLOT_RING).getId() == 2572 ? 1.1 : 1.0;
+		//final double chance = player.getEquipment().get(Equipment.SLOT_RING) != null && player.getEquipment().get(Equipment.SLOT_RING).getId() == 2572 ? 1.1 : 1.0;
 
 		if (this.getInstancedPlayer() == null || this.instancedPlayer == null) {
-            for (final NPCLoot loot : NPCLootTable.forID(this).getGeneratedLoot(chance)) {
+            for (final NPCLoot loot : NPCLootTable.forID(this).getGeneratedLoot(1.0)) {
                 if (loot != null) {
                     final Item item = new Item(loot.getItemID(), Misc.random(loot.getMinAmount(), loot.getMaxAmount()));
 					HookService hookService = Server.getInjector().getInstance(HookService.class);
@@ -427,34 +427,8 @@ public class NPC extends Mob {
 //                    if (permissionService.isAny(player, PermissionServiceImpl.SPECIAL_PERMISSIONS) && item.getId() == 536) {
 //                        item.setId(537);
 //                    }
-                    for(int i = 0; i < rare_drops.length; i++)
-                    {
-                    if (item.getDefinition() != null && loot.getItemID() == rare_drops[i] || isBossNPC(this.getId()) || (item.getDefinition2().getName() != null && item.getDefinition2().getName().toLowerCase().contains("clue"))) {
-                        CacheItemDefinition def = CacheItemDefinition.get(item.getId());
-						if (def == null) {
-							continue;
-						}
-						String name = def.getName();
-						if (item.getDefinition().isNoted()) {
-							name = CacheItemDefinition.get(def.noted).getName();
-						}
-						if (name == null) {
-							continue;
-						}
-						final String lastName = name;
-						if (loot.getItemID() == rare_drops[i]) {
-							World.getWorld().sendWorldMessage("<col=880000><img=33>" + player.getName() + " has just received " + item.getCount() + " x " + lastName + ".");
-							UpdateDrops.publish(player.getName(), lastName, item.getCount(), item.getId());
-						//} else {
-						//	player.getRegion().getPlayers().stream().filter(p -> p != player).forEach(p -> {
-						//		p.getActionSender().sendMessage("<img=33> <col=880000>" + player.getName() + " has just received " + item.getCount() + " x " + lastName + ".");
-						//	});
-						//	player.getActionSender().sendMessage("<img=33> <col=880000>" + player.getName() + " has just received " + item.getCount() + " x " + lastName + ".");
-							
-							//SEND DROP TO DATABASE
-						}
-                    }
-                    }
+                    
+                    //BONECRUSHER
                     if(player.getInventory().contains(13116))
                     {
                     	if(item.getId() == 536)
@@ -472,6 +446,42 @@ public class NPC extends Mob {
                     		player.getSkills().addExperience(Skills.PRAYER, 15);
                     		item.increaseCount(-1);
                     	}
+                    }
+                    
+                    for(int i = 0; i < rare_drops.length; i++)
+                    {
+                    if (item.getDefinition() != null && loot.getItemID() == rare_drops[i] || isBossNPC(this.getId()) || (item.getDefinition2().getName() != null && item.getDefinition2().getName().toLowerCase().contains("clue"))) {
+                        CacheItemDefinition def = CacheItemDefinition.get(item.getId());
+						if (def == null) {
+							continue;
+						}
+						String name = def.getName();
+						if (item.getDefinition().isNoted()) {
+							name = CacheItemDefinition.get(def.noted).getName();
+						}
+						if (name == null) {
+							continue;
+						}
+						final String lastName = name;
+						if (loot.getItemID() == rare_drops[i]) {
+							World.getWorld().sendWorldMessage("<col=884422><img=33>" + player.getName() + " has just received " + item.getCount() + " x " + lastName + ".");
+							UpdateDrops.publish(player.getName(), lastName, item.getCount(), item.getId());
+						//} else {
+						//	player.getRegion().getPlayers().stream().filter(p -> p != player).forEach(p -> {
+						//		p.getActionSender().sendMessage("<img=33> <col=880000>" + player.getName() + " has just received " + item.getCount() + " x " + lastName + ".");
+						//	});
+						//	player.getActionSender().sendMessage("<img=33> <col=880000>" + player.getName() + " has just received " + item.getCount() + " x " + lastName + ".");
+							
+							//SEND DROP TO DATABASE
+						}
+                    }
+                    }
+                    int ra = player.getEquipment().get(Equipment.SLOT_RING) != null && 
+                    		player.getEquipment().get(Equipment.SLOT_RING).getId() == 2572 ? Misc.random(20) : Misc.random(30);
+                    if(ra == 0)
+                    {
+                    	player.getActionSender().sendMessage("<col=884422>You would have received a rare drop table drop, but it doesn't exist yet.");
+                    	//groundItemService.createGroundItem(player, new GroundItemService.GroundItem(new Item(1631), getCentreLocation(), player, false));
                     }
 					groundItemService.createGroundItem(player, new GroundItemService.GroundItem(item, getCentreLocation(), player, false));
                 }
