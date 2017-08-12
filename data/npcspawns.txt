@@ -157,11 +157,12 @@
 791 2117 3928 0 SOUTH true //suqah
 792 2161 3937 0 SOUTH true //suqah
 793 2150 3946 0 SOUTH true //suqah
-492 2468 9810 0 NORTH true //cavekraken
-492 2475 9811 0 NORTH true //cavekraken
-492 2470 9819 0 NORTH true //cavekraken
-492 2484 9820 0 NORTH true //cavekraken
-492 2492 9812 0 NORTH true //cavekraken
+
+492 2468 9812 0 NORTH false //cavekraken
+492 2475 9813 0 NORTH false //cavekraken
+492 2470 9817 0 NORTH false //cavekraken
+492 2484 9817 0 NORTH false //cavekraken
+492 2492 9812 0 NORTH false //cavekraken
 
 3108 2656 3299 0 SOUTH true //knight
 3108 2671 3300 0 SOUTH true //knight

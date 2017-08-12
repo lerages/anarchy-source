@@ -144,7 +144,11 @@ public class SlayerServiceImpl implements SlayerService {
 	@Override
     public void onTaskKill(@Nonnull Player player, @Nonnull NPC npc) {
         final SlayerTask task = player.getSlayer().getSlayerTask();
-        player.getSkills().addExperience(Skills.SLAYER, task.getXPAmount()); //HOTFIX SLAYER ----
+        double slayerXp = npc.getSkills().getLevel(Skills.HITPOINTS);
+        if(slayerXp == 0)
+        	slayerXp = task.getXPAmount();
+        player.getSkills().addExperience(Skills.SLAYER, slayerXp); //HOTFIX SLAYER ----
+        player.getActionSender().sendMessage("Slayer XP should be: " + slayerXp);
         task.decreaseAmount();
         if (task.getTaskAmount() < 1) {
             statisticsService.increaseSlayerTasksCompleted(player, 1);

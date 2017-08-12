@@ -60,21 +60,22 @@ public class SpiritualMage extends AbstractCombatAction {
 		attacker.getCombatState().setAttackDelay(5);
 		int randomHit = Misc.random(damage(19, attacker, victim, AttackType.MAGIC, Skills.MAGIC , Prayers.PROTECT_FROM_MAGIC, false, false));
 		//victim.playGraphics(randomHit <= 0 ? Graphic.create(85, gfxDelay, 100) : Graphic.create(157, gfxDelay, 100));
+		if (randomHit > 0) {
 			World.getWorld().submit(new Tickable(delay) {
 
 				@Override
 				public void execute() {
-					
-					int height = 0;
-					if(randomHit < 1)
-						height = 100;
-					victim.playGraphics(Graphic.create(randomHit > 0 ? 78 : 85, 0, height));
+					this.stop();
+					victim.playGraphics(Graphic.create(randomHit > 0 ? 78 : 85, 0, randomHit > 0 ? 100 : 0));
+					victim.inflictDamage(new Hit(randomHit), attacker);
 					smite(attacker, victim, randomHit);
 					recoil(attacker, victim, randomHit);
-					vengeance(attacker, victim, randomHit, 0);
+					vengeance(attacker, victim, randomHit, 1);
 				}
+
 			});
-			victim.getActiveCombatAction().defend(attacker, victim, false);
+		}
+		victim.getActiveCombatAction().defend(attacker, victim, true);
 	}
 
 	@Override

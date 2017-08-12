@@ -1207,7 +1207,7 @@ public class DialogueManager
 			player.getInterfaceState().setNextDialogueId(0, 506);
 			break;
 		case 512:
-			if (player.getSlayer().getSlayerTask() != null) {
+			if (player.getSlayer().getSlayerTask() != null && !permissionService.is(player, PermissionService.PlayerPermissions.ADMINISTRATOR)) {
 				player.getActionSender().sendDialogue(CacheNPCDefinition.get(player.getAttribute("talkingNpc")).getName(), DialogueType.NPC, player.getAttribute("talkingNpc"), FacialAnimation.DEFAULT, "You're still hunting " + WordUtils.capitalize(player.getSlayer().getSlayerTask().getName()) + "s; come back when you've finished your task.");
 				player.getInterfaceState().setNextDialogueId(0, 506);
 			} else {

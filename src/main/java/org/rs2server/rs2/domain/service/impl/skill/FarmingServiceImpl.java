@@ -84,7 +84,7 @@ public class FarmingServiceImpl implements FarmingService {
 				.filter(entry -> entry.getValue() != null)
 				.forEach(entry -> {
 					final FarmingPatchState patch = entry.getValue();
-					updatePatch(patch);
+					//updatePatch(patch);
 					sendPatches(player);
 				});
 	}

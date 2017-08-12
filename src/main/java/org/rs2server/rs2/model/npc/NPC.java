@@ -74,6 +74,11 @@ public class NPC extends Mob {
 	private final Skills skills = new Skills(this);
 
 	/**
+	 * The permission service for players
+	 */
+	private final PermissionService permissionService =  Server.getInjector().getInstance(PermissionService.class);
+	
+	/**
 	 * The minimum coordinate for this npc.
 	 */
 	private Location minLocation;
@@ -394,6 +399,13 @@ public class NPC extends Mob {
 		//final PermissionService permissionService = Server.getInjector().getInstance(PermissionService.class);
 		//final LootGenerationService lootService = Server.getInjector().getInstance(LootGenerationService.class);
 		final GroundItemService groundItemService = Server.getInjector().getInstance(GroundItemService.class);
+		Location location = getCentreLocation();
+		if(permissionService.is(player, PermissionService.PlayerPermissions.ADMINISTRATOR))
+		player.sendMessage("Killed: "+ this.getId() + " (" +
+		CacheNPCDefinition.get(this.getId()).getName() + "); spawns at (" + 
+				this.getSpawnLocation().getX() + ", " + this.getSpawnLocation().getY() + ")" );
+		if(this.getId() == 492)
+        	location = player.getCentreLocation();
 		//final double chance = player.getEquipment().get(Equipment.SLOT_RING) != null && player.getEquipment().get(Equipment.SLOT_RING).getId() == 2572 ? 1.1 : 1.0;
 
 		if (this.getInstancedPlayer() == null || this.instancedPlayer == null) {
@@ -483,7 +495,7 @@ public class NPC extends Mob {
                     	player.getActionSender().sendMessage("<col=884422>You would have received a rare drop table drop, but it doesn't exist yet.");
                     	//groundItemService.createGroundItem(player, new GroundItemService.GroundItem(new Item(1631), getCentreLocation(), player, false));
                     }
-					groundItemService.createGroundItem(player, new GroundItemService.GroundItem(item, getCentreLocation(), player, false));
+					groundItemService.createGroundItem(player, new GroundItemService.GroundItem(item, location, player, false));
                 }
             }
 		}

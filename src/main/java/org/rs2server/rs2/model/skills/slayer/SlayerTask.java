@@ -139,6 +139,7 @@ public class SlayerTask {
 						{"Iron dragon", 65, 25, 60, 173.2, TaskGroup.IRON_DRAGONS},
 						{"Steel dragon", 79, 30, 70, 220.4, TaskGroup.STEEL_DRAGONS},
 						{"Black demon", 70, 120, 185, 119.4, TaskGroup.BLACK_DEMONS},
+						{"Black dragon", 77, 30, 70, 190.0, TaskGroup.BLACK_DRAGONS},
 						{"Abyssal demon", 85, 120, 185, 150.0, TaskGroup.ABYSSAL_DEMONS},
 						{"Hellhound", 50, 120, 185, 116.0, TaskGroup.HELLHOUNDS},
 						{"Lesser demon", 30, 120, 185, 81.0, TaskGroup.LESSER_DEMONS},
@@ -156,10 +157,10 @@ public class SlayerTask {
 						{"Dust devil", 65, 120, 185, 105.0, TaskGroup.DUST_DEVILS},
 						{"Smoke devil", 93, 120, 185, 75.0, TaskGroup.SMOKE_DEVIL},
                         {"Dark beast", 90, 100, 130, 225.4, TaskGroup.DARK_BEASTS},
-						{"Skeletal Wyvern", 72, 3, 70, 225.4, TaskGroup.SKELETAL_WYVERN},
-						{"Cave Kraken", 87, 100, 125, 225.4, TaskGroup.CAVE_KRAKEN},
-						{"Aberrant spectre", 60, 120, 185, 90, TaskGroup.ABERRANT_SPECTRES}
-						//{"Spiritual Creatures", 83, 120, 185, 75.0, TaskGroup.SPIRITUAL_CREATURES},
+						{"Skeletal wyvern", 72, 3, 70, 225.4, TaskGroup.SKELETAL_WYVERN},
+						{"Aberrant spectre", 60, 120, 185, 90, TaskGroup.ABERRANT_SPECTRES},
+						{"Cave kraken", 87, 125, 185, 125.0, TaskGroup.CAVE_KRAKEN},
+						{"Spiritual mage", 83, 120, 185, 75.0, TaskGroup.SPIRITUAL_CREATURES}
 				}),
 		MAZCHNA(402, 2,
 				new Object[][] {
@@ -183,8 +184,9 @@ public class SlayerTask {
 				{ "Hellhound", 1, 50, 100, 116, TaskGroup.HELLHOUNDS}, 
 				{ "Turoth", 55, 30, 80, 79, TaskGroup.TUROTHS},
 				{ "Kurask", 70, 40, 100, 97, TaskGroup.KURASKS}, 
+				{"Cave Kraken", 87, 100, 125, 125.0, TaskGroup.CAVE_KRAKEN},
 				{ "Dust devil", 65, 120, 185, 105.0, TaskGroup.DUST_DEVILS},
-				//{ "Spiritual Mage", 83, 120, 185, 75.0, TaskGroup.SPIRITUAL_CREATURES},
+				{ "Spiritual mage", 83, 120, 185, 75.0, TaskGroup.SPIRITUAL_CREATURES},
 				{ "Jelly", 52, 30, 80, 75, TaskGroup.JELLIES},
 				{ "Abyssal demons", 85, 60, 130, 150, TaskGroup.ABYSSAL_DEMONS}
 				});
