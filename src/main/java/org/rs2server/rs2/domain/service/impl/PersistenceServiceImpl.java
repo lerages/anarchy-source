@@ -99,7 +99,7 @@ public class PersistenceServiceImpl implements PersistenceService {
 		entity.setLocationZ(player.getLocation().getZ());
 
 		playerEntityDao.save(entity);
-		System.out.println("Saved player {} with display name {}" + entity.getAccountName() + entity.getDisplayName());
+		System.out.println("Saved player {"+ entity.getAccountName() +"} with display name {"+ entity.getDisplayName() + "}");
 		return entity;
 	}
 

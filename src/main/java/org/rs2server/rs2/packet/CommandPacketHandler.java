@@ -2380,7 +2380,19 @@ public class CommandPacketHandler implements PacketHandler {
 			player.getActionSender().sendConfig(config.getId(), config.getValue());
 		}
 		
-		if (command.equals("setslayerrewardpoints")) {
+		if (command.equals("settaskstreak")) {
+			final String playerName = NameUtils.formatName(args[1]);
+			final int amount = Integer.parseInt(args[2]);
+			final Player targetPlayer = playerService.getPlayer(playerName);
+			if(targetPlayer != null)
+			{
+				targetPlayer.getDatabaseEntity().getStatistics().setSlayerConsecutiveTasksCompleted(amount);
+				player.getActionSender().sendMessage("You have set " + targetPlayer.getName() + "'s task streak to " + amount + ".");
+				targetPlayer.getActionSender().sendMessage(player.getName() + "Hase set your task streak to " + amount + ".");
+			}
+		}
+		
+		if (command.equals("setslayerpoints")) {
 			final String playerName = NameUtils.formatName(args[1]);
 			final int amount = Integer.parseInt(args[2]);
 
@@ -2389,10 +2401,12 @@ public class CommandPacketHandler implements PacketHandler {
 				BitConfig config = BitConfigBuilder.of(661).set(amount, 6).build();
 				targetPlayer.getActionSender().sendConfig(config.getId(), config.getValue());
 				targetPlayer.getDatabaseEntity().getStatistics().setSlayerRewardPoints(amount);
-				player.getActionSender().sendMessage("Set slayer reward points for " + playerName + " to " + amount);
+				player.getActionSender().sendMessage("You have set " + targetPlayer.getName() + "'s task streak to " + amount + ".");
+				targetPlayer.getActionSender().sendMessage(player.getName() + "Hase set your task streak to " + amount + ".");
 			}
 		}
-		if (command.equals("viewslayerrewardpoints")) {
+		
+		if (command.equals("getslayerpoints")) {
 			final String playerName = NameUtils.formatName(args[1]);
 
 			final Player targetPlayer = playerService.getPlayer(playerName);

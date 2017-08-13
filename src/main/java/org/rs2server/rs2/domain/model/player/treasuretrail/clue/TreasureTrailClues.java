@@ -29,7 +29,7 @@ public class TreasureTrailClues {
 	public static final TreasureTrailClue CLUE_ANAGRAM_LOWE = new TreasureTrailAnagramClue(536, "El Ow");
 	public static final TreasureTrailClue CLUE_ANAGRAM_PROSPECTOR_PERCY = new TreasureTrailAnagramClue(6562, "Copper Ore Crypts");
 
-	public static final TreasureTrailClue CLUE_ANAGRAM_BARTENDER = new TreasureTrailAnagramClue(687, "Bad Renter");
+	public static final TreasureTrailClue CLUE_ANAGRAM_BARAEK = new TreasureTrailAnagramClue(533, "A Baker");
 	public static final TreasureTrailClue CLUE_ANAGRAM_KENT = new TreasureTrailAnagramClue(5074, "Nekt");
 	//public static final TreasureTrailClue CLUE_ANAGRAM_PAUL = new TreasureTrailAnagramClue(317, "La Up");
 	public static final TreasureTrailClue CLUE_ANAGRAM_MATTHIAS = new TreasureTrailAnagramClue(1340, "Aha Mitts");

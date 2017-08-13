@@ -3919,31 +3919,37 @@ public class DialogueManager
 			/** Bob Barter Decanting **/
 		case 5449:
 			player.getActionSender().sendDialogue("Bob Barter", DialogueType.NPC, 5449, FacialAnimation.DEFAULT,
-					"Hello how can I help you?");
+					"Hello, what can I do for you?");
 			player.getInterfaceState().setNextDialogueId(0, 5450);
 			break;
 		case 5450:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"Can you decant my potions?|Nothing");
+					"Could you decant my options for me?|Nothing");
 			player.getInterfaceState().setNextDialogueId(0, 5451);
 			player.getInterfaceState().setNextDialogueId(1, -1);
 			break;
 		case 5451:
 			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT,
-					"Can you decant my potions?");
+					"Could you decant my options for me?");
 			player.getInterfaceState().setNextDialogueId(0, 5452);
 			break;
 		case 5452:
-			boolean donator = permissionService.isAny(player, PermissionServiceImpl.SPECIAL_PERMISSIONS);
+			boolean donator = permissionService.isAny(player, PermissionService.PlayerPermissions.ADMINISTRATOR);
 			player.getActionSender().sendDialogue("Bob Barter", DialogueType.NPC, 5449, FacialAnimation.DEFAULT,
-					donator ? "You seem to have special permissions and will<br>get my services for free." : "Sure at a price of 50,000 coins.");
+					donator ? "I can decant an inventory of potions for you, for free!" : "I'll decant an inventory of potions for you for 30,000 coins.");
 			player.getInterfaceState().setNextDialogueId(0, 5453);
 			break;
 		case 5453:
+			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"Decant my potions|Nevermind");
+			player.getInterfaceState().setNextDialogueId(0, 5454);
+			player.getInterfaceState().setNextDialogueId(1, -1);
+			break;
+		case 5454:
 			donator = permissionService.isAny(player, PermissionServiceImpl.SPECIAL_PERMISSIONS);
 			if (!donator) {
 				if (player.getInventory().getCount(995) < 50000) {
-					player.getActionSender().sendMessage("You don't have enough coins to complete this action.");
+					player.getActionSender().sendMessage("You don't have enough coins to decant your inventory.");
 					player.getActionSender().removeChatboxInterface();
 				}
 				player.getInventory().remove(new Item(995, 50000));
@@ -3952,8 +3958,6 @@ public class DialogueManager
 			PotionDecanterService potionDecanterService = Server.getInjector().getInstance(PotionDecanterService.class);
 			potionDecanterService.decantPotions(player);
 			break;
-
-
 		case 6599:
 			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT,
 					"Who are you and what is this place?");

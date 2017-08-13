@@ -14,7 +14,7 @@ import java.util.List;
 public enum ClueScrollType {
 	EASY(2, 5, 12179, 12180, ImmutableList.of(
 					TreasureTrailClues.CLUE_ANAGRAM_LOWE,
-					TreasureTrailClues.CLUE_ANAGRAM_BARTENDER,
+					TreasureTrailClues.CLUE_ANAGRAM_BARAEK,
 					TreasureTrailClues.CLUE_ANAGRAM_BOB,
 					//TreasureTrailClues.CLUE_ANAGRAM_KENT,
 					//TreasureTrailClues.CLUE_ANAGRAM_MATTHIAS,
@@ -52,7 +52,7 @@ public enum ClueScrollType {
 	
 			MEDIUM(3, 5, 12029, 12030, ImmutableList.of(
 					TreasureTrailClues.CLUE_ANAGRAM_LOWE,
-					TreasureTrailClues.CLUE_ANAGRAM_BARTENDER,
+					TreasureTrailClues.CLUE_ANAGRAM_BARAEK,
 					TreasureTrailClues.CLUE_ANAGRAM_BOB,
 					//TreasureTrailClues.CLUE_ANAGRAM_KENT,
 					//TreasureTrailClues.CLUE_ANAGRAM_MATTHIAS,
@@ -93,7 +93,7 @@ public enum ClueScrollType {
 			HARD(4, 6, 12542, 12543,
 						ImmutableList.of(
 								TreasureTrailClues.CLUE_ANAGRAM_LOWE,
-								TreasureTrailClues.CLUE_ANAGRAM_BARTENDER,
+								TreasureTrailClues.CLUE_ANAGRAM_BARAEK,
 								TreasureTrailClues.CLUE_ANAGRAM_BOB,
 								//TreasureTrailClues.CLUE_ANAGRAM_KENT,
 								//TreasureTrailClues.CLUE_ANAGRAM_MATTHIAS,
@@ -142,7 +142,7 @@ public enum ClueScrollType {
 			ELITE(5, 7, 12073, 12084,
 							ImmutableList.of(
 									TreasureTrailClues.CLUE_ANAGRAM_LOWE,
-									TreasureTrailClues.CLUE_ANAGRAM_BARTENDER,
+									TreasureTrailClues.CLUE_ANAGRAM_BARAEK,
 									TreasureTrailClues.CLUE_ANAGRAM_BOB,
 									//TreasureTrailClues.CLUE_ANAGRAM_KENT,
 									//TreasureTrailClues.CLUE_ANAGRAM_MATTHIAS,
@@ -200,7 +200,7 @@ public enum ClueScrollType {
 			MASTER(5, 8, 19835, 19836,
 							ImmutableList.of(
 									TreasureTrailClues.CLUE_ANAGRAM_LOWE,
-									TreasureTrailClues.CLUE_ANAGRAM_BARTENDER,
+									TreasureTrailClues.CLUE_ANAGRAM_BARAEK,
 									TreasureTrailClues.CLUE_ANAGRAM_BOB,
 									//TreasureTrailClues.CLUE_ANAGRAM_KENT,
 									//TreasureTrailClues.CLUE_ANAGRAM_MATTHIAS,

@@ -65,6 +65,7 @@
 505 3084 3488 0 SOUTH false //bob
 1400 3084 3486 0 SOUTH false //Nulodian
 1306 3090 3498 0 SOUTH_EAST false // Make-Over mage
+5449 3094 3499 0 WEST false // Bob Barter(G.E)
 6092 3086 3502 0 WEST false //Captain Klemfoodle (Glider - teleports)
 514 3080 3509 0 NORTH true //Gen store
 822 3069 3517 0 WEST true //Oziach
@@ -579,7 +580,7 @@
 3010 3270 3425 0 SOUTH true // Guard
 637 3254 3402 0 WEST false // Aubury
 514 3216 3414 0 WEST true // General Store
-5449 3155 3480 0 WEST true // Bob Barter(G.E)
+533 3217 3435 0 WEST true // Baraek
 
 //Draynor Village
 3257 3080 3249 0 WEST true // Master Farmer

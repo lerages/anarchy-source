@@ -112,11 +112,11 @@ public class NPC extends Mob {
 	public Player owner;
 	private boolean attackable;
 	
-	private int rare_drops[] = {561, 4153, 11286, 11840, 8901, 4585, 4087, 1149, 
+	private int rare_drops[] = {2366, 1249, 4153, 11286, 11840, 8901, 4585, 4087, 1149, 
 			11840, 11812, 11832, 11834, 11834, 11785, 11810, 11826, 11828, 11830,
 			11814, 11814, 11816, 11824, 11818, 11820, 11822, 3140, 12002, 11998,
 			12927, 12922, 13200, 11791, 11905, 11908, 12004, 13233, 13227, 13229,
-			13231, 13265, 11235};
+			13231, 13265, 11235, 6737, 6735, 6733, 6731, 6739, 11920};
 
 	/**
 	 * Creates the NPC with the specified definition.
@@ -451,7 +451,8 @@ public class NPC extends Mob {
                         }
                     }
                     // Do not drop clue scrolls for player who already have one.
-					if (ClueScrollType.forClueScrollItemId(item.getId()) != null && Server.getInjector().getInstance(PlayerService.class).hasItemInInventoryOrBank(player, item)) {
+					if (ClueScrollType.forClueScrollItemId(item.getId()) != null && 
+							Server.getInjector().getInstance(PlayerService.class).hasItemInInventoryOrBank(player, item)) {
 						continue;
 					}
 //                    if (permissionService.isAny(player, PermissionServiceImpl.SPECIAL_PERMISSIONS) && item.getId() == 536) {
@@ -494,7 +495,7 @@ public class NPC extends Mob {
 						}
 						final String lastName = name;
 						if (loot.getItemID() == rare_drops[i]) {
-							World.getWorld().sendWorldMessage("<col=884422><img=33>" + player.getName() + " has just received " + item.getCount() + " x " + lastName + ".");
+							World.getWorld().sendWorldMessage("<col=884422><img=33> News: " + player.getName() + " has just received " + item.getCount() + " x " + lastName + ".");
 							UpdateDrops.publish(player.getName(), lastName, item.getCount(), item.getId());
 						//} else {
 						//	player.getRegion().getPlayers().stream().filter(p -> p != player).forEach(p -> {
