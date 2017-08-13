@@ -45,7 +45,7 @@ public class GuthanTheInfested extends AbstractCombatAction {
 		
 		if (!victim.getCombatState().getPrayer(Prayers.PROTECT_FROM_MELEE) && Misc.random(7) == 3) {
 			victim.playGraphics(Graphic.create(398, 0, 0));
-			victim.getActionSender().sendMessage("Guthans heals himself...");
+			//victim.getActionSender().sendMessage("Guthans heals himself...");
 			attacker.getSkills().increaseLevel(Skills.HITPOINTS, damage);
 		}
 		

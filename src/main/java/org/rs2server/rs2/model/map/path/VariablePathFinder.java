@@ -113,29 +113,30 @@ public class VariablePathFinder implements PathFinder {
 					break;
 				}
 			}
-			if (curY > 0 && via[curX][curY - 1] == 0 && (RegionClipping.getClippingMask(absX, absY - 1, z) & 0x1280102) == 0) {
-				check(mob, curX, curY - 1, SOUTH_FLAG, thisCost);
+			if (curX < 103 && via[curX + 1][curY] == 0 && (RegionClipping.getClippingMask(absX + 1, absY, z) & 0x1280180) == 0) {
+				check(mob, curX + 1, curY, EAST_FLAG, thisCost);
 			}
 			if (curX > 0 && via[curX - 1][curY] == 0 && (RegionClipping.getClippingMask(absX - 1, absY, z) & 0x1280108) == 0) {
 				check(mob, curX - 1, curY, WEST_FLAG, thisCost);
 			}
+			if (curY > 0 && via[curX][curY - 1] == 0 && (RegionClipping.getClippingMask(absX, absY - 1, z) & 0x1280102) == 0) {
+				check(mob, curX, curY - 1, SOUTH_FLAG, thisCost);
+			}
 			if (curY < 103 && via[curX][curY + 1] == 0 && (RegionClipping.getClippingMask(absX, absY + 1, z) & 0x1280120) == 0) {
 				check(mob, curX, curY + 1, NORTH_FLAG, thisCost);
 			}
-			if (curX < 103 && via[curX + 1][curY] == 0 && (RegionClipping.getClippingMask(absX + 1, absY, z) & 0x1280180) == 0) {
-				check(mob, curX + 1, curY, EAST_FLAG, thisCost);
-			}
+			
 			if (curX > 0 && curY > 0 && via[curX - 1][curY - 1] == 0 && (RegionClipping.getClippingMask(absX - 1, absY - 1, z) & 0x128010e) == 0 && (RegionClipping.getClippingMask(absX - 1, absY, z) & 0x1280108) == 0 && (RegionClipping.getClippingMask(absX, absY - 1, z) & 0x1280102) == 0) {
 				check(mob, curX - 1, curY - 1, SOUTH_WEST_FLAG, thisCost);
-			}
-			if (curX > 0 && curY < 103 && via[curX - 1][curY + 1] == 0 && (RegionClipping.getClippingMask(absX - 1, absY + 1, z) & 0x1280138) == 0 && (RegionClipping.getClippingMask(absX - 1, absY, z) & 0x1280108) == 0 && (RegionClipping.getClippingMask(absX, absY + 1, z) & 0x1280120) == 0) {
-				check(mob, curX - 1, curY + 1, NORTH_WEST_FLAG, thisCost);
 			}
 			if (curX < 103 && curY > 0 && via[curX + 1][curY - 1] == 0 && (RegionClipping.getClippingMask(absX + 1, absY - 1, z) & 0x1280183) == 0 && (RegionClipping.getClippingMask(absX + 1, absY, z) & 0x1280180) == 0 && (RegionClipping.getClippingMask(absX, absY - 1, z) & 0x1280102) == 0) {
 				check(mob, curX + 1, curY - 1, SOUTH_EAST_FLAG, thisCost);
 			}
 			if (curX < 103 && curY < 103 && via[curX + 1][curY + 1] == 0 && (RegionClipping.getClippingMask(absX + 1, absY + 1, z) & 0x12801e0) == 0 && (RegionClipping.getClippingMask(absX + 1, absY, z) & 0x1280180) == 0 && (RegionClipping.getClippingMask(absX, absY + 1, z) & 0x1280120) == 0) {
 				check(mob, curX + 1, curY + 1, NORTH_EAST_FLAG, thisCost);
+			}
+			if (curX > 0 && curY < 103 && via[curX - 1][curY + 1] == 0 && (RegionClipping.getClippingMask(absX - 1, absY + 1, z) & 0x1280138) == 0 && (RegionClipping.getClippingMask(absX - 1, absY, z) & 0x1280108) == 0 && (RegionClipping.getClippingMask(absX, absY + 1, z) & 0x1280120) == 0) {
+				check(mob, curX - 1, curY + 1, NORTH_WEST_FLAG, thisCost);
 			}
 		}
 		curX = requestX;

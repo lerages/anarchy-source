@@ -784,26 +784,42 @@ public class CommandPacketHandler implements PacketHandler {
 				World.getWorld()
 					.sendWorldMessage("<img=0>[<col=880088>Moderator</col>]" + player.getName() + ": "+ msg);
 			}
-			if (command.equals("checkinv")) {
+			
+			if (command.equals("checkinv")) 
+			{
 				String playerName = NameUtils.formatName(commandString.substring(9).trim());
 				Player ban = null;
-				for (Player p : World.getWorld().getPlayers()) {
-					if (p.getName().equalsIgnoreCase(playerName)) {
+				for (Player p : World.getWorld().getPlayers()) 
+				{
+					if (p.getName().equalsIgnoreCase(playerName)) 
+					{
 						ban = p;
 						break;
 					}
 				}
-				if (ban != null) {
-					player.getActionSender().sendMessage("--Start of " + ban.getName() + "'s Inventory--");
-					for (Item item : ban.getInventory().toArray()) {
-						if (item != null) {
-							player.getActionSender()
-									.sendMessage(item.getCount() + "x " + item.getDefinition2().getName());
+				
+				if (ban != null) 
+				{
+						final List<String> inventory_items = new ArrayList<>();
+						for (final Item item : ban.getInventory().toArray()) 
+						{
+							if (item != null) 
+							{							
+								inventory_items.add(item.getDefinition2().getName() + " x " + item.getCount());
+							}
 						}
-					}
-					player.getActionSender().sendMessage("--End of " + ban.getName() + "'s Inventory--");
+						player.getActionSender().sendTextListInterface("<u>" + ban.getName() + "'s inventory</u>",
+								inventory_items.toArray(new String[inventory_items.size()]));
 				}
+					//player.getActionSender().sendMessage("--Start of " + ban.getName() + "'s Inventory--");
+					//for (Item item : ban.getInventory().toArray()) {
+					//	if (item != null) {
+					//		player.getActionSender().sendMessage(item.getCount() + "x " + item.getDefinition2().getName());
+					//	}
+					//}
+					//player.getActionSender().sendMessage("--End of " + ban.getName() + "'s Inventory--");
 			}
+			
 			if (command.equals("timedmute")) {
 				String playerName = args[1].replace("_", " ");
 				Player punish = null;
@@ -2214,25 +2230,42 @@ public class CommandPacketHandler implements PacketHandler {
 				player.getBanking().openPlayerBank(ban);
 			}
 		}
-		if (command.equals("checkinv")) {
+		
+		if (command.equals("checkinv")) 
+		{
 			String playerName = NameUtils.formatName(commandString.substring(9).trim());
 			Player ban = null;
-			for (Player p : World.getWorld().getPlayers()) {
-				if (p.getName().equalsIgnoreCase(playerName)) {
+			for (Player p : World.getWorld().getPlayers()) 
+			{
+				if (p.getName().equalsIgnoreCase(playerName)) 
+				{
 					ban = p;
 					break;
 				}
 			}
-			if (ban != null) {
-				player.getActionSender().sendMessage("--Start of " + ban.getName() + "'s Inventory--");
-				for (Item item : ban.getInventory().toArray()) {
-					if (item != null) {
-						player.getActionSender().sendMessage(item.getCount() + "x " + item.getDefinition2().getName());
+			
+			if (ban != null) 
+			{
+					final List<String> inventory_items = new ArrayList<>();
+					for (final Item item : ban.getInventory().toArray()) 
+					{
+						if (item != null) 
+						{							
+							inventory_items.add(item.getDefinition2().getName() + " x " + item.getCount());
+						}
 					}
-				}
-				player.getActionSender().sendMessage("--End of " + ban.getName() + "'s Inventory--");
+					player.getActionSender().sendTextListInterface("<u>" + ban.getName() + "'s inventory</u>",
+							inventory_items.toArray(new String[inventory_items.size()]));
 			}
+				//player.getActionSender().sendMessage("--Start of " + ban.getName() + "'s Inventory--");
+				//for (Item item : ban.getInventory().toArray()) {
+				//	if (item != null) {
+				//		player.getActionSender().sendMessage(item.getCount() + "x " + item.getDefinition2().getName());
+				//	}
+				//}
+				//player.getActionSender().sendMessage("--End of " + ban.getName() + "'s Inventory--");
 		}
+	
 		if (command.equals("color")) {
 			String playerName = args[1];
 			playerName.replaceAll("_", " ");
@@ -2563,6 +2596,45 @@ public class CommandPacketHandler implements PacketHandler {
 				target.getCombatState().setBonus(Integer.parseInt(args[2]), Integer.parseInt(args[3]));
 			}
 		}
+		
+		if (command.startsWith("getplayerlvl")) {
+			final String playerName = NameUtils.formatName(args[1]);
+			final int skill = Integer.parseInt(args[2]);
+			final Player target = playerService.getPlayer(playerName);
+			if (target == null) {
+				player.getActionSender().sendMessage("No player found for name '" + playerName + "'");
+				return;
+			}
+			player.sendMessage(target.getName() + "'s " + Skills.SKILL_NAME[skill] + " level is " 
+			+ target.getSkills().getLevel(skill) + " (" + NumberFormat.getInstance().format(target.getSkills().getExperience(skill)) + " XP)");
+		}
+		
+		if (command.startsWith("setplayerxp")) {
+			final String playerName = NameUtils.formatName(args[1]);
+			final int skill = Integer.parseInt(args[2]);
+			final int xp = Integer.parseInt(args[3]);
+			final Player target = playerService.getPlayer(playerName);
+			if (target == null) {
+				player.getActionSender().sendMessage("No player found for name '" + playerName + "'");
+				return;
+			}
+			target.getSkills().setLevel(skill, xp);
+			if (skill == Skills.PRAYER) {
+				target.getSkills().setPrayerPoints(target.getSkills().getLevelForExperience(xp), true);
+			}
+			target.getSkills().setExperience(skill, xp);
+			
+			player.getActionSender().sendMessage("You have set the " + Skills.SKILL_NAME[skill] + " level of " 
+					+ target.getName() + " to " + target.getSkills().getLevel(skill) + " (" + 
+					NumberFormat.getInstance().format(target.getSkills().getExperience(skill)) + " XP)");
+			
+			target.getActionSender().sendMessage(player.getName() + " hasu set your " + Skills.SKILL_NAME[skill] + " level to "
+			+ target.getSkills().getLevel(skill) + " (" + 
+					NumberFormat.getInstance().format(target.getSkills().getExperience(skill)) + " XP)");
+			
+			target.getActionSender().sendString(593, 2, "Combat lvl: " + target.getSkills().getCombatLevel());
+		}
+		
 		if (command.startsWith("setplayerlvl")) {
 			final String playerName = NameUtils.formatName(args[1]);
 			final int skill = Integer.parseInt(args[2]);
@@ -2577,10 +2649,15 @@ public class CommandPacketHandler implements PacketHandler {
 				target.getSkills().setPrayerPoints(level, true);
 			}
 			target.getSkills().setExperience(skill, target.getSkills().getExperienceForLevel(level));
+			
 			player.getActionSender().sendMessage("You have set the " + Skills.SKILL_NAME[skill] + " level of " 
-					+ target.getName() + " to " + level + ".");
-			target.getActionSender().sendMessage(player.getName() + "has set your " + Skills.SKILL_NAME[skill] + 
-					" level to " + level + ".");
+					+ target.getName() + " to " + target.getSkills().getLevel(skill) + " (" + 
+					NumberFormat.getInstance().format(target.getSkills().getExperience(skill)) + " XP)");
+			
+			target.getActionSender().sendMessage(player.getName() + " hasu set your " + Skills.SKILL_NAME[skill] + " level to "
+			+ target.getSkills().getLevel(skill) + " (" + 
+					NumberFormat.getInstance().format(target.getSkills().getExperience(skill)) + " XP)");
+			
 			target.getActionSender().sendString(593, 2, "Combat lvl: " + target.getSkills().getCombatLevel());
 		}
 

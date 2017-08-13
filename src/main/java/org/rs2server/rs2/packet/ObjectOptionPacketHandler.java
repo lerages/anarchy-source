@@ -1133,8 +1133,7 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                             return;
                         }
                         player.setAttribute("busy", true);
-                        player.getActionSender().sendMessage("You open the chest with your crystal key...");
-                        player.playAnimation(Animation.create(881));
+                        player.playAnimation(Animation.create(833));
                         World.getWorld().submit(new Tickable(1) {
 
                             @Override

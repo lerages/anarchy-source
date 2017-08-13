@@ -7,3 +7,4 @@ RegionClipping.addClipping(1619, 3673, 0, 0x200000);
 RegionClipping.addClipping(3086, 3230, 0, 0x200000);
 RegionClipping.addClipping(3091, 3230, 0, 0x200000);
 RegionClipping.addClipping(2935, 9812, 0, 0x200000);
+RegionClipping.addClipping(3575, 9707, 3, 0x200000);

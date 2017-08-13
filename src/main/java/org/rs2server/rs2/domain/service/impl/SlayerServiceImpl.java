@@ -148,7 +148,7 @@ public class SlayerServiceImpl implements SlayerService {
         if(slayerXp == 0)
         	slayerXp = task.getXPAmount();
         player.getSkills().addExperience(Skills.SLAYER, slayerXp); //HOTFIX SLAYER ----
-        player.getActionSender().sendMessage("Slayer XP should be: " + slayerXp);
+        //player.getActionSender().sendMessage("Slayer XP should be: " + slayerXp);
         task.decreaseAmount();
         if (task.getTaskAmount() < 1) {
             statisticsService.increaseSlayerTasksCompleted(player, 1);

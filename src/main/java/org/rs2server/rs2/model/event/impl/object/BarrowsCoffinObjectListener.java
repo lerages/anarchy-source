@@ -37,6 +37,7 @@ public class BarrowsCoffinObjectListener extends EventListener {
 			}
 		}
 		if (player.getAttribute("currentlyFightingBrother") != null || coffinBrother == null) {
+			player.getActionSender().sendMessage("The sarcophagus is empty.");
 			return true;
 		}
 		if (player.getAttribute("barrows_tunnel") == coffinBrother) {
