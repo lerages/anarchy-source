@@ -112,7 +112,7 @@ public class NPC extends Mob {
 	public Player owner;
 	private boolean attackable;
 	
-	private int rare_drops[] = {4151, 4153, 11286, 11840, 8901, 4585, 4087, 1149, 
+	private int rare_drops[] = {561, 4153, 11286, 11840, 8901, 4585, 4087, 1149, 
 			11840, 11812, 11832, 11834, 11834, 11785, 11810, 11826, 11828, 11830,
 			11814, 11814, 11816, 11824, 11818, 11820, 11822, 3140, 12002, 11998,
 			12927, 12922, 13200, 11791, 11905, 11908, 12004, 13233, 13227, 13229,
@@ -406,7 +406,7 @@ public class NPC extends Mob {
 				this.getSpawnLocation().getX() + ", " + this.getSpawnLocation().getY() + ")" );
 		if(this.getId() == 492)
         	location = player.getCentreLocation();
-		//final double chance = player.getEquipment().get(Equipment.SLOT_RING) != null && player.getEquipment().get(Equipment.SLOT_RING).getId() == 2572 ? 1.1 : 1.0;
+		final double rdt_chance = player.getEquipment().get(Equipment.SLOT_RING) != null && player.getEquipment().get(Equipment.SLOT_RING).getId() == 2572 ? 1.1 : 1.0;
 
 		if (this.getInstancedPlayer() == null || this.instancedPlayer == null) {
             for (final NPCLoot loot : NPCLootTable.forID(this).getGeneratedLoot(1.0)) {
@@ -414,6 +414,25 @@ public class NPC extends Mob {
                     final Item item = new Item(loot.getItemID(), Misc.random(loot.getMinAmount(), loot.getMaxAmount()));
 					HookService hookService = Server.getInjector().getInstance(HookService.class);
 					hookService.post(new GamePlayerNPCKillEvent(player, getDefinedName(), item));
+					
+					//RARE DROP TABLE ROLL
+					if(item.getId() == 0)
+                    {
+                        for (final NPCLoot rdt_loot : NPCLootTable.forID(491).getGeneratedLoot(rdt_chance)) 
+                        {
+                            if (rdt_loot != null) 
+                            {
+                                final Item rdt_item = new Item(rdt_loot.getItemID(), Misc.random(rdt_loot.getMinAmount(), rdt_loot.getMaxAmount()));
+            					item.setId(rdt_item.getId());
+            					if(rdt_chance > 1.0)
+            					player.sendMessage("<col=884422>Your Ring of Wealth shines more brightly.");
+            					//hookService.post(new GamePlayerNPCKillEvent(player, getDefinedName(), rdt_item));
+            					//groundItemService.createGroundItem(player, new GroundItemService.GroundItem(rdt_item, location, player, false));
+            					
+            					continue;                            
+                            }
+                        }
+                    }
                     Pet.Pets pets = Pet.Pets.from(item.getId());
                     if (pets != null) {
                         if (player.getPet() != null) {
@@ -432,10 +451,9 @@ public class NPC extends Mob {
                         }
                     }
                     // Do not drop clue scrolls for player who already have one.
-					/*if (ClueScrollType.forClueScrollItemId(item.getId()) != null && Server.getInjector().getInstance(PlayerService.class).hasItemInInventoryOrBank(player, item)) {
+					if (ClueScrollType.forClueScrollItemId(item.getId()) != null && Server.getInjector().getInstance(PlayerService.class).hasItemInInventoryOrBank(player, item)) {
 						continue;
-					}*/
-
+					}
 //                    if (permissionService.isAny(player, PermissionServiceImpl.SPECIAL_PERMISSIONS) && item.getId() == 536) {
 //                        item.setId(537);
 //                    }
@@ -446,17 +464,17 @@ public class NPC extends Mob {
                     	if(item.getId() == 536)
                     	{
                     		player.getSkills().addExperience(Skills.PRAYER, 72);
-                    		item.increaseCount(-1);
+                    		continue;
                     	}
                     	if(item.getId() == 526)
                     	{
                     		player.getSkills().addExperience(Skills.PRAYER, 4);
-                    		item.increaseCount(-1);
+                    		continue;
                     	}
                     	if(item.getId() == 532)
                     	{
                     		player.getSkills().addExperience(Skills.PRAYER, 15);
-                    		item.increaseCount(-1);
+                    		continue;
                     	}
                     }
                     
@@ -487,13 +505,6 @@ public class NPC extends Mob {
 							//SEND DROP TO DATABASE
 						}
                     }
-                    }
-                    int ra = player.getEquipment().get(Equipment.SLOT_RING) != null && 
-                    		player.getEquipment().get(Equipment.SLOT_RING).getId() == 2572 ? Misc.random(20) : Misc.random(30);
-                    if(ra == 0)
-                    {
-                    	player.getActionSender().sendMessage("<col=884422>You would have received a rare drop table drop, but it doesn't exist yet.");
-                    	//groundItemService.createGroundItem(player, new GroundItemService.GroundItem(new Item(1631), getCentreLocation(), player, false));
                     }
 					groundItemService.createGroundItem(player, new GroundItemService.GroundItem(item, location, player, false));
                 }

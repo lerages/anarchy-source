@@ -25,6 +25,12 @@
       "minAmount": 1
     },
 	{
+      "itemID": 0,
+      "hitRollCeil": 10.0,
+      "maxAmount": 1,
+      "minAmount": 1
+    },
+	{
       "itemID": 5281,
       "hitRollCeil": 25.0,
       "maxAmount": 1,
