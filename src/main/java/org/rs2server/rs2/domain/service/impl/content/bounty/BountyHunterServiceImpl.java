@@ -79,12 +79,12 @@ public class BountyHunterServiceImpl implements BountyHunterService {
 				.sendInterfaceConfig(90, 26, !inWilderness).sendInterfaceConfig(90, 28, false).sendInterfaceConfig(90, 29, false)//29
 				.sendInterfaceConfig(BOUNTY_WIDGET_ID, 30, true);
 		player.getActionSender().sendWalkableInterface(90);
-		variableService.set(player, BountyHunterVariables.KDR_TOGGLE, 1);
-		variableService.send(player, BountyHunterVariables.KDR_TOGGLE);
+		//variableService.set(player, BountyHunterVariables.KDR_TOGGLE, 1);
+		//variableService.send(player, BountyHunterVariables.KDR_TOGGLE);
 
 		int kills = player.getDatabaseEntity().getBountyHunter().getKills();
 		int deaths = player.getDatabaseEntity().getBountyHunter().getDeaths();
-		player.getActionSender().sendConfig(1103, kills).sendConfig(1102, deaths);
+		//player.getActionSender().sendConfig(1103, kills).sendConfig(1102, deaths);
 	}
 
 	@Override

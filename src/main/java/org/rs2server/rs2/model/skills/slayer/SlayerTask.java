@@ -155,7 +155,7 @@ public class SlayerTask {
 						{"Bloodveld", 50, 120, 185, 120.0, TaskGroup.BLOODVELDS},
 						{"Cave horror", 58, 100, 180, 55.0, TaskGroup.CAVE_HORRORS},
 						{"Dust devil", 65, 120, 185, 105.0, TaskGroup.DUST_DEVILS},
-						{"Smoke devil", 93, 120, 185, 75.0, TaskGroup.SMOKE_DEVIL},
+						{"Smoke devil", 93, 120, 185, 185.0, TaskGroup.SMOKE_DEVIL},
                         {"Dark beast", 90, 100, 130, 225.4, TaskGroup.DARK_BEASTS},
 						{"Skeletal Wyvern", 72, 30, 70, 200.0, TaskGroup.SKELETAL_WYVERN},
 						{"Aberrant spectre", 60, 120, 185, 90, TaskGroup.ABERRANT_SPECTRES},

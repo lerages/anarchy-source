@@ -2445,6 +2445,9 @@ public class ActionButtonPacketHandler implements PacketHandler {
 							teleport = Spell.HOME_TELEPORT_MODERN;
 						
 						if (teleport != null && !BoundaryManager.isWithinBoundaryNoZ(player.getLocation(), "TutorialIsland")) {
+							if(permissionService.is(player, PermissionService.PlayerPermissions.DONATOR))
+								player.teleport(Constants.HOME_TELEPORT, 1, 1, true);
+							else
 							MagicCombatAction.executeSpell(teleport, player, player);
 						} else {
 							player.sendMessage("You cannot teleport off of Tutorial Island; "

@@ -213,9 +213,26 @@ public class DeathTick extends Tickable
 				final NPC npc = (NPC) mob;
 				if (killer.isPlayer()) {
 					final Player player = (Player) killer;
-					if (player.getSlayer().getSlayerTask() != null
-							&& player.getSlayer().getSlayerTask().getName().contains(npc.getDefinition().getName())) {
-						slayerService.onTaskKill((Player) killer, npc);
+					if (player.getSlayer().getSlayerTask() != null)
+					{
+						/* CHEAP TEMP FIX TO SLAYER BOSSES UNTIL I REDO THE SLAYER SYSTEM*/
+						if(player.getSlayer().getSlayerTask().getName().contains(npc.getDefinition().getName()))
+							slayerService.onTaskKill((Player) killer, npc);
+						else if(player.getSlayer().getSlayerTask().getName().contains("Black dragon") && npc.getId() == 239)
+							slayerService.onTaskKill((Player) killer, npc);
+						else if(player.getSlayer().getSlayerTask().getName().contains("kraken") && npc.getId() == 494)
+							slayerService.onTaskKill((Player) killer, npc);
+						else if(player.getSlayer().getSlayerTask().getName().contains("Greater demon") && npc.getId() == 3129)
+							slayerService.onTaskKill((Player) killer, npc);
+						else if(player.getSlayer().getSlayerTask().getName().contains("Hellhound") && npc.getId() == 5862)
+							slayerService.onTaskKill((Player) killer, npc);		
+						else if(player.getSlayer().getSlayerTask().getName().contains("Smoke devil") && npc.getId() == 425)
+							slayerService.onTaskKill((Player) killer, npc);		
+						else if(player.getSlayer().getSlayerTask().getName().contains("Dagannoth"))
+						{
+							if(npc.getId() == 2265 || npc.getId() == 2266 || npc.getId() == 2267)
+									slayerService.onTaskKill((Player) killer, npc);		
+						}
 					}
 				}
 				/*if (npc.getId() == 1101) {

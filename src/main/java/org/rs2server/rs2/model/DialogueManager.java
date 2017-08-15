@@ -3901,9 +3901,10 @@ public class DialogueManager
 			player.getInterfaceState().setNextDialogueId(0, 5452);
 			break;
 		case 5452:
-			boolean donator = permissionService.isAny(player, PermissionService.PlayerPermissions.ADMINISTRATOR);
+			boolean donator = permissionService.isAny(player, PermissionService.PlayerPermissions.DONATOR);
 			player.getActionSender().sendDialogue("Bob Barter", DialogueType.NPC, 5449, FacialAnimation.DEFAULT,
-					"I'll decant an inventory of potions for you for 10,000 coins.");
+					donator ? "I'll decant an inventory of potions for you for free!" : 
+						"I'll decant an inventory of potions for you for 10,000 coins.");
 			player.getInterfaceState().setNextDialogueId(0, 5453);
 			break;
 		case 5453:
@@ -3913,7 +3914,16 @@ public class DialogueManager
 			player.getInterfaceState().setNextDialogueId(1, -1);
 			break;
 		case 5454:
-			if (player.getInventory().getCount(995) > 10000) {
+			if (permissionService.isAny(player, PermissionService.PlayerPermissions.DONATOR)) 
+			{
+				PotionDecanterService potionDecanterService = Server.getInjector().getInstance(PotionDecanterService.class);
+				potionDecanterService.decantPotions(player);
+				player.getActionSender().sendDialogue("Bob Barter", DialogueType.NPC, 5449, FacialAnimation.DEFAULT,
+						"Thank you, come again!");
+					player.getInterfaceState().setNextDialogueId(0, -1);
+			}
+			else if (!permissionService.isAny(player, PermissionService.PlayerPermissions.DONATOR) && player.getInventory().getCount(995) > 10000) 
+			{
 				player.getInventory().remove(new Item(995, 10000));
 				PotionDecanterService potionDecanterService = Server.getInjector().getInstance(PotionDecanterService.class);
 				potionDecanterService.decantPotions(player);

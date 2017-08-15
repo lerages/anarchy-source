@@ -1,5 +1,6 @@
 package org.rs2server.rs2.packet;
 
+import org.apache.commons.compress.archivers.dump.DumpArchiveEntry.PERMISSION;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.rs2server.GitCommitFetcher;
@@ -1368,6 +1369,16 @@ public class CommandPacketHandler implements PacketHandler {
 			}
 		}
 		
+		if(command.equals("donor"))
+		{
+			if(permissionService.is(player, PermissionService.PlayerPermissions.DONATOR))
+			{
+				player.sendMessage("You are a donator");
+			} else
+			{
+				player.sendMessage("You are not a donator");
+			}
+		}
 		if (command.equals("removepermission")) {
 			final String playerName = NameUtils.formatName(args[1]);
 			final String permissionName = args[2];
@@ -2416,8 +2427,8 @@ public class CommandPacketHandler implements PacketHandler {
 				BitConfig config = BitConfigBuilder.of(661).set(amount, 6).build();
 				targetPlayer.getActionSender().sendConfig(config.getId(), config.getValue());
 				targetPlayer.getDatabaseEntity().getStatistics().setSlayerRewardPoints(amount);
-				player.getActionSender().sendMessage("You have set " + targetPlayer.getName() + "'s task streak to " + amount + ".");
-				targetPlayer.getActionSender().sendMessage(player.getName() + "Hase set your task streak to " + amount + ".");
+				player.getActionSender().sendMessage("You have set " + targetPlayer.getName() + "'s slayer points to " + amount + ".");
+				targetPlayer.getActionSender().sendMessage(player.getName() + " has set your slayer points to " + amount + ".");
 			}
 		}
 		
@@ -2657,7 +2668,7 @@ public class CommandPacketHandler implements PacketHandler {
 					+ target.getName() + " to " + target.getSkills().getLevel(skill) + " (" + 
 					NumberFormat.getInstance().format(target.getSkills().getExperience(skill)) + " XP)");
 			
-			target.getActionSender().sendMessage(player.getName() + " hasu set your " + Skills.SKILL_NAME[skill] + " level to "
+			target.getActionSender().sendMessage(player.getName() + " has set your " + Skills.SKILL_NAME[skill] + " level to "
 			+ target.getSkills().getLevel(skill) + " (" + 
 					NumberFormat.getInstance().format(target.getSkills().getExperience(skill)) + " XP)");
 			
@@ -2945,7 +2956,7 @@ public class CommandPacketHandler implements PacketHandler {
 
 			final Player targetPlayer = playerService.getPlayer(playerName);
 			if (targetPlayer != null) {
-				player.getActionSender().sendHintAtLocation(targetPlayer.getLocation().transform(1, 0, 0), 2);
+				player.getActionSender().sendHintAtLocation(targetPlayer.getLocation().transform(0, 0, 0), 2);
 			}
 		}
 

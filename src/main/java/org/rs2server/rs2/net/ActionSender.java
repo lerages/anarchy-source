@@ -2971,7 +2971,7 @@ Offset: -1, Length: -1, Set: 0, Interface: 193, Child: 4
 				int wildernessLevel = 1 + (player.getLocation().getY() - 3520) / 8;
 				sendInteractionOption("Attack", 1, true);
 				sendInteractionOption("null", 2, false);
-				sendString(90, 26, "Level: " + wildernessLevel);
+				sendString(90, 25, "Level: " + wildernessLevel);
 				//child 28
 			}
 			BountyHunterService bountyHunterService = Server.getInjector().getInstance(BountyHunterService.class);

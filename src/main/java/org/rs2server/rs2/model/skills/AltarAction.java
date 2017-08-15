@@ -21,6 +21,8 @@ public class AltarAction extends ProductionAction
     private Mob mob;
     private BoneType type;
     private int amount;
+    static PermissionService permissionService = Server.getInjector().getInstance(PermissionService.class);
+   	static int cost = 2500;
 
     public AltarAction(Mob mob, BoneType type, int amount) {
         super(mob);
@@ -30,11 +32,15 @@ public class AltarAction extends ProductionAction
 
     public static boolean handleItemOnObject(Player player, GameObject obj, Item item) {
         BoneType type = BoneType.forId(item.getId());
+        
+        if(permissionService.is(player, PermissionService.PlayerPermissions.DONATOR))
+        	cost = 0;
+
         if (type == null || obj.getId() != 409) {
             return false;
         }
-        else if (type != null && obj.getId() == 409 && player.getInventory().getCount(995) < 2500) {
-        	player.sendMessage("In addition to bones, you must supply 2,500 coins to appease the gods with your offering.");
+        if (type != null && obj.getId() == 409 && player.getInventory().getCount(995) < cost) {
+           	player.sendMessage("In addition to bones, you must supply 2,500 coins to appease the gods with your offering.");
             return false;
         }
 
@@ -115,7 +121,7 @@ public class AltarAction extends ProductionAction
 
     @Override
     public Item[] getConsumedItems() {
-        return new Item[] {new Item(type.getId(), 1), new Item(995, 2500)};
+        return new Item[] {new Item(type.getId(), 1), cost > 0 ? new Item(995, cost) : null};
     }
 
     @Override

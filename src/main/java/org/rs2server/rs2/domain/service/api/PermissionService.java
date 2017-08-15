@@ -23,7 +23,8 @@ public interface PermissionService {
 //		SHIT_3,
 //		SHIT_4,
 //		PVP,//SHIT_5
-        HELPER
+        HELPER,
+		DONATOR
         ;
 
         public static PlayerPermissions of(int forumRights) {
