@@ -1214,6 +1214,19 @@ public class CommandPacketHandler implements PacketHandler {
 				try {
 					for (final NPCLoot loot : NPCLootTable.forID(npcId).getGeneratedLoot(1.0)) {
 						int quantity = Misc.random(loot.getMinAmount(), loot.getMaxAmount());
+						if(loot.getItemID() == 0)
+	                    {
+	                        for (final NPCLoot rdt_loot : NPCLootTable.forID(491).getGeneratedLoot(1.0)) 
+	                        {
+	                            if (rdt_loot != null) 
+	                            {
+	                                int rdt_quantity = Misc.random(rdt_loot.getMinAmount(), rdt_loot.getMaxAmount());
+	            					player.getBank().add(new Item(rdt_loot.getItemID(), rdt_quantity));
+	            					continue;                            
+	                            }
+	                        }
+	                    }
+						if(loot.getItemID() != 0)
 						player.getBank().add(new Item(loot.getItemID(), quantity));
 					}
 				} catch (NullPointerException e) {
