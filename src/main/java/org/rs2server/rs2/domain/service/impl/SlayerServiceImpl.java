@@ -200,7 +200,7 @@ public class SlayerServiceImpl implements SlayerService {
     public void sendCheckTaskMessage(@Nonnull Player player) {
         if (player.getSlayer().getSlayerTask() != null) {
             player.getActionSender().sendMessage("Your current assignment is "
-                    + player.getSlayer().getSlayerTask().getName().toLowerCase() + "; only "
+                    + player.getSlayer().getSlayerTask().getName().toLowerCase() + "s; only "
                     + player.getSlayer().getSlayerTask().getTaskAmount() + " more to go.");
         } else {
             player.getActionSender().sendMessage("You currently have no task; please see a slayer master.");

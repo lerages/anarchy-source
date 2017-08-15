@@ -7,6 +7,7 @@ import org.rs2server.cache.format.CacheNPCDefinition;
 import org.rs2server.rs2.Constants;
 import org.rs2server.rs2.content.StarterMap;
 import org.rs2server.rs2.content.dialogue.Dialogue;
+import org.rs2server.rs2.content.misc.GracefulRecolour;
 import org.rs2server.rs2.domain.model.claim.ClaimType;
 import org.rs2server.rs2.domain.service.api.*;
 import org.rs2server.rs2.domain.service.api.content.GemBagService;
@@ -1220,7 +1221,9 @@ public class DialogueManager
 			}
 			break;
 		case 513:
-			player.getActionSender().sendDialogue("Vannaka", DialogueType.NPC, 403, FacialAnimation.HAPPY, "Hello there, " + player.getName() + ", what can I help you with?");
+			player.getActionSender().sendDialogue(
+					CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
+					player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.HAPPY, "Hello there, " + player.getName() + ", what can I help you with?");
 			player.getInterfaceState().setNextDialogueId(0, 514);
 			break;
 		case 514:
@@ -1254,23 +1257,33 @@ public class DialogueManager
 			break;
 		case 520:
 			if (player.getSlayer().getSlayerTask() != null) {
-				player.getActionSender().sendDialogue("Vannaka", DialogueType.NPC, 403, FacialAnimation.HAPPY, "You're current assigned to kill " + player.getSlayer().getSlayerTask().getName().toLowerCase() + "; only " + player.getSlayer().getSlayerTask().getTaskAmount() + " more", "to go.");
+				player.getActionSender().sendDialogue(
+						CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
+						player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.HAPPY, "You're current assigned to kill " + player.getSlayer().getSlayerTask().getName().toLowerCase() + "; only " + player.getSlayer().getSlayerTask().getTaskAmount() + " more", "to go.");
 				player.getInterfaceState().setNextDialogueId(0, 514);
 			} else {
-				player.getActionSender().sendDialogue("Vannaka", DialogueType.NPC, 403, FacialAnimation.HAPPY, "You currently have no task, come to me so I can assign you one.");
+				player.getActionSender().sendDialogue(
+						CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
+						player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.HAPPY, "You currently have no task, come to me so I can assign you one.");
 				player.getInterfaceState().setNextDialogueId(0, 514);
 			}
 			break;
 		case 521:
-			player.getActionSender().sendDialogue("Vannaka", DialogueType.NPC, 403, FacialAnimation.HAPPY, "My name's Vannaka; I'm a Slayer Master.");
+			player.getActionSender().sendDialogue(
+					CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
+					player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.HAPPY, "My name's Vannaka; I'm a Slayer Master.");
 			player.getInterfaceState().setNextDialogueId(0, 514);
 			break;
 		case 522:
-			player.getActionSender().sendDialogue("Vannaka", DialogueType.NPC, 403, FacialAnimation.HAPPY, "You'll find me in the city of Edgeville.<br>I'll be here when you need a new task.");
+			player.getActionSender().sendDialogue(
+					CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
+					player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.HAPPY, "You'll find me in the city of Edgeville.<br>I'll be here when you need a new task.");
 			player.getInterfaceState().setNextDialogueId(0, 514);
 			break;
 		case 523:
-			player.getActionSender().sendDialogue("Vannaka", DialogueType.NPC, 403, FacialAnimation.HAPPY, "At the moment, no.");
+			player.getActionSender().sendDialogue(
+					CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
+					player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.HAPPY, "At the moment, no.");
 			player.getInterfaceState().setNextDialogueId(0, 514);
 			break;
 		case 3666:
@@ -3099,7 +3112,7 @@ public class DialogueManager
 			break;
 		case 5922:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"Purple|Blue|Yellow|Red|Green|");
+					"Arceeus (Purple)|Piscarilius (Teal)|Lovakengj (Yellow) |Shayzien (Red) |Hosidius (Green)|");
 			player.getInterfaceState().setNextDialogueId(0, 5923);
 			player.getInterfaceState().setNextDialogueId(1, 5924);
 			player.getInterfaceState().setNextDialogueId(2, 5925);
@@ -3108,70 +3121,24 @@ public class DialogueManager
 			break;
 		case 5923:
 			//Purple
-			if (player.getInventory().containsItems(Constants.GRACEFUL) && player.getInventory().getCount(11849) >= 90) {
-				player.getActionSender().removeChatboxInterface();
-				player.getInventory().removeItems(Constants.GRACEFUL);
-				player.getInventory().remove(new Item(11849, 90));
-				player.getInventory().addItems(Constants.PURPLE_GRACEFUL);
-			} else {
-				player.getActionSender().sendDialogue("Grace", DialogueType.NPC, 5919, FacialAnimation.DEFAULT,
-						"You need a full graceful set and 90 marks of grace to upgrade.");
-				player.getInterfaceState().setNextDialogueId(0, -1);
-			}
+			GracefulRecolour.recolourGraceful(player, Constants.PURPLE_GRACEFUL);
 			break;
 		case 5924:
 			//Blue
-			if (player.getInventory().containsItems(Constants.GRACEFUL) && player.getInventory().getCount(11849) >= 90) {
-				player.getActionSender().removeChatboxInterface();
-				player.getInventory().removeItems(Constants.GRACEFUL);
-				player.getInventory().remove(new Item(11849, 90));
-				player.getInventory().addItems(Constants.BLUE_GRACEFUL);
-			} else {
-				player.getActionSender().sendDialogue("Grace", DialogueType.NPC, 5919, FacialAnimation.DEFAULT,
-						"You need a full graceful set and 90 marks of grace to upgrade.");
-				player.getInterfaceState().setNextDialogueId(0, -1);
-			}
+			GracefulRecolour.recolourGraceful(player, Constants.TEAL_GRACEFUL);
 			break;
 		case 5925:
 			//Yellow
-			if (player.getInventory().containsItems(Constants.GRACEFUL) && player.getInventory().getCount(11849) >= 90) {
-				player.getActionSender().removeChatboxInterface();
-				player.getInventory().removeItems(Constants.GRACEFUL);
-				player.getInventory().remove(new Item(11849, 90));
-				player.getInventory().addItems(Constants.YELLOW_GRACEFUL);
-			} else {
-				player.getActionSender().sendDialogue("Grace", DialogueType.NPC, 5919, FacialAnimation.DEFAULT,
-						"You need a full graceful set and 90 marks of grace to upgrade.");
-				player.getInterfaceState().setNextDialogueId(0, -1);
-			}
+			GracefulRecolour.recolourGraceful(player, Constants.YELLOW_GRACEFUL);
 			break;
 		case 5926:
 			//Red
-			if (player.getInventory().containsItems(Constants.GRACEFUL) && player.getInventory().getCount(11849) >= 90) {
-				player.getActionSender().removeChatboxInterface();
-				player.getInventory().removeItems(Constants.GRACEFUL);
-				player.getInventory().remove(new Item(11849, 90));
-				player.getInventory().addItems(Constants.RED_GRACEFUL);
-			} else {
-				player.getActionSender().sendDialogue("Grace", DialogueType.NPC, 5919, FacialAnimation.DEFAULT,
-						"You need a full graceful set and 90 marks of grace to upgrade.");
-				player.getInterfaceState().setNextDialogueId(0, -1);
-			}
+			GracefulRecolour.recolourGraceful(player, Constants.RED_GRACEFUL);
 			break;
 		case 5927:
 			//Green
-			if (player.getInventory().containsItems(Constants.GRACEFUL) && player.getInventory().getCount(11849) >= 90) {
-				player.getActionSender().removeChatboxInterface();
-				player.getInventory().removeItems(Constants.GRACEFUL);
-				player.getInventory().remove(new Item(11849, 90));
-				player.getInventory().addItems(Constants.GREEN_GRACEFUL);
-			} else {
-				player.getActionSender().sendDialogue("Grace", DialogueType.NPC, 5919, FacialAnimation.DEFAULT,
-						"You need a full graceful set and 90 marks of grace to upgrade.");
-				player.getInterfaceState().setNextDialogueId(0, -1);
-			}
+			GracefulRecolour.recolourGraceful(player, Constants.GREEN_GRACEFUL);
 			break;
-
 		case 12954:
 			int interfaceId1 = 193;
 
@@ -3936,7 +3903,7 @@ public class DialogueManager
 		case 5452:
 			boolean donator = permissionService.isAny(player, PermissionService.PlayerPermissions.ADMINISTRATOR);
 			player.getActionSender().sendDialogue("Bob Barter", DialogueType.NPC, 5449, FacialAnimation.DEFAULT,
-					donator ? "I can decant an inventory of potions for you, for free!" : "I'll decant an inventory of potions for you for 30,000 coins.");
+					"I'll decant an inventory of potions for you for 10,000 coins.");
 			player.getInterfaceState().setNextDialogueId(0, 5453);
 			break;
 		case 5453:
@@ -3946,17 +3913,18 @@ public class DialogueManager
 			player.getInterfaceState().setNextDialogueId(1, -1);
 			break;
 		case 5454:
-			donator = permissionService.isAny(player, PermissionServiceImpl.SPECIAL_PERMISSIONS);
-			if (!donator) {
-				if (player.getInventory().getCount(995) < 50000) {
-					player.getActionSender().sendMessage("You don't have enough coins to decant your inventory.");
-					player.getActionSender().removeChatboxInterface();
-				}
-				player.getInventory().remove(new Item(995, 50000));
+			if (player.getInventory().getCount(995) > 10000) {
+				player.getInventory().remove(new Item(995, 10000));
+				PotionDecanterService potionDecanterService = Server.getInjector().getInstance(PotionDecanterService.class);
+				potionDecanterService.decantPotions(player);
+				player.getActionSender().sendDialogue("Bob Barter", DialogueType.NPC, 5449, FacialAnimation.DEFAULT,
+						"Thank you, come again!");
+					player.getInterfaceState().setNextDialogueId(0, -1);
+			} else {
+				player.getActionSender().sendDialogue("Bob Barter", DialogueType.NPC, 5449, FacialAnimation.DEFAULT,
+						"You don't have enough money, come back when you do.");
+					player.getInterfaceState().setNextDialogueId(0, -1);
 			}
-			player.getActionSender().removeChatboxInterface();
-			PotionDecanterService potionDecanterService = Server.getInjector().getInstance(PotionDecanterService.class);
-			potionDecanterService.decantPotions(player);
 			break;
 		case 6599:
 			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT,
@@ -4082,7 +4050,9 @@ public class DialogueManager
 			break;
 
 		case 11864:
-			player.getActionSender().sendDialogue("Vannaka", DialogueType.NPC, 403, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue(
+					CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
+					player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.DEFAULT,
 					"Would you like to upgrade your Slayer helm for 250 Slayer Points?");
 			player.getInterfaceState().setNextDialogueId(0, 11865);
 			break;
@@ -4095,7 +4065,9 @@ public class DialogueManager
 		case 11866:
 			int points = player.getDatabaseEntity().getStatistics().getSlayerRewardPoints();
 			if (points < 250) {
-				player.getActionSender().sendDialogue("Vannaka", DialogueType.NPC, 403, FacialAnimation.DEFAULT,
+				player.getActionSender().sendDialogue(
+						CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
+						player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.DEFAULT,
 						"You don't have enough points to complete this.");
 				player.getInterfaceState().setNextDialogueId(0, -1);
 			} else {

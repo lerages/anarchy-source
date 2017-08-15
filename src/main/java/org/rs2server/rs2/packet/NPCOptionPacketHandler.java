@@ -189,9 +189,6 @@ public class NPCOptionPacketHandler implements PacketHandler {
 					}
 					hookService.post(new GameNpcActionEvent(player, GameNpcActionEvent.ActionType.ITEM_ON_NPC, npc, item));
 					switch (npc.getId()) {
-					default:
-						player.sendMessage("Nothing interesting happens.");
-						break;
 						case 13:
 							ResourceArenaService resourceArenaService = Server.getInjector().getInstance(ResourceArenaService.class);
 							resourceArenaService.handleItemOnNPC(player, npc, item);
@@ -271,9 +268,6 @@ public class NPCOptionPacketHandler implements PacketHandler {
 					player.submitTick("skill_action_tick", fishing, true);
 				}
 				switch (npc.getId()) {
-				default:
-					player.sendMessage("Nothing interesting happens.");
-					break;
 				case 7050:
 					DialogueManager.openDialogue(player, 21000);
 					break;
@@ -802,9 +796,6 @@ public class NPCOptionPacketHandler implements PacketHandler {
 					//							npc.setInteractingEntity(InteractionMode.TALK, player);
 					//						}
 					switch (npc.getId()) {
-					default:
-						player.sendMessage("Nothing interesting happens.");
-						break;
 					/*case 6904:
 					case 535://Horvik
 						Shop.open(player, 45, 0);
@@ -949,9 +940,6 @@ public class NPCOptionPacketHandler implements PacketHandler {
 					this.stop();
 					hookService.post(new GameNpcActionEvent(player, GameNpcActionEvent.ActionType.OPTION_3, npc));
 					switch (npc.getId()) {
-					default:
-						player.sendMessage("Nothing interesting happens.");
-						break;
 					case 317: //Paul
 						DialogueManager.openDialogue(player, 101362);
 						break;
@@ -1075,9 +1063,6 @@ public class NPCOptionPacketHandler implements PacketHandler {
 						player.submitTick("skill_action_tick", fishing, true);
 					}
 					switch (npc.getId()) {
-					default:
-						player.sendMessage("Nothing interesting happens.");
-						break;
 						case 1833:
 //							if (permissionService.isAny(player, PermissionService.PlayerPermissions.ULTIMATE_IRON_MAN, PermissionService.PlayerPermissions.IRON_MAN)) {
 //								player.getActionSender().sendMessage("Sorry iron men may not use this store.");

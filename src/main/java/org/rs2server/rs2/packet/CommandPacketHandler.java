@@ -436,14 +436,16 @@ public class CommandPacketHandler implements PacketHandler {
 						if (list_player != null) {
 							if(permissionService.is(list_player, PermissionService.PlayerPermissions.MODERATOR))
 								img = "<img=0>";
-							if(permissionService.is(list_player, PermissionService.PlayerPermissions.ADMINISTRATOR))
+							else if(permissionService.is(list_player, PermissionService.PlayerPermissions.ADMINISTRATOR))
 								img = "<img=1>";
-							if(permissionService.is(list_player, PermissionService.PlayerPermissions.IRON_MAN))
+							else if(permissionService.is(list_player, PermissionService.PlayerPermissions.IRON_MAN))
 								img = "<img=2>";
-							if(permissionService.is(list_player, PermissionService.PlayerPermissions.ULTIMATE_IRON_MAN))
+							else if(permissionService.is(list_player, PermissionService.PlayerPermissions.ULTIMATE_IRON_MAN))
 								img = "<img=3>";
-							if(permissionService.is(list_player, PermissionService.PlayerPermissions.HARDCORE_IRON_MAN))
+							else if(permissionService.is(list_player, PermissionService.PlayerPermissions.HARDCORE_IRON_MAN))
 								img = "<img=10>";
+							else
+								img = "";
 							
 							list_of_players.add(img + list_player.getName() + " (Level-" + list_player.getSkills().getCombatLevel() + ")");
 						}

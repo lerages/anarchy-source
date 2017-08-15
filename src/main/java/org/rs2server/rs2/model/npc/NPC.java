@@ -424,11 +424,11 @@ public class NPC extends Mob {
                             {
                                 final Item rdt_item = new Item(rdt_loot.getItemID(), Misc.random(rdt_loot.getMinAmount(), rdt_loot.getMaxAmount()));
             					item.setId(rdt_item.getId());
+            					item.setItemCount(Misc.random(rdt_loot.getMinAmount(), rdt_loot.getMaxAmount()));
             					if(rdt_chance > 1.0)
             					player.sendMessage("<col=884422>Your Ring of Wealth shines more brightly.");
             					//hookService.post(new GamePlayerNPCKillEvent(player, getDefinedName(), rdt_item));
             					//groundItemService.createGroundItem(player, new GroundItemService.GroundItem(rdt_item, location, player, false));
-            					
             					continue;                            
                             }
                         }

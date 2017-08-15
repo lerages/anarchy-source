@@ -1195,6 +1195,11 @@ public class ItemOptionPacketHandler implements PacketHandler {
 						case 11941:
 							lootingBagService.check(player);
 							break;
+						case 12641:
+							if (player.getInventory().add(new Item(12640, 100))) {
+								player.getInventory().remove(new Item(12641, 1), slot);
+							}
+							break;
 						case 12728:
 							if (player.getInventory().add(new Item(556, 100))) {
 								player.getInventory().remove(new Item(12728, 1), slot);

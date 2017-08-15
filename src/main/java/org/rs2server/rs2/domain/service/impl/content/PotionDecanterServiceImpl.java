@@ -11,8 +11,10 @@ import org.rs2server.rs2.domain.service.api.PlayerStatisticsService;
 import org.rs2server.rs2.domain.service.api.content.PotionDecanterService;
 import org.rs2server.rs2.model.DialogueManager;
 import org.rs2server.rs2.model.Item;
+import org.rs2server.rs2.model.Animation.FacialAnimation;
 import org.rs2server.rs2.model.npc.NPC;
 import org.rs2server.rs2.model.player.Player;
+import org.rs2server.rs2.net.ActionSender.DialogueType;
 
 import javax.annotation.Nonnull;
 
@@ -92,8 +94,11 @@ public class PotionDecanterServiceImpl implements PotionDecanterService {
             case OPTION_1:
                 DialogueManager.openDialogue(player, 5449);
                 break;
+            case OPTION_TRADE:
+                DialogueManager.openDialogue(player, 5452);
+                break;
             case OPTION_2:
-                DialogueManager.openDialogue(player, 5453);
+                DialogueManager.openDialogue(player, 5454);
                 break;
         }
     }

@@ -482,6 +482,14 @@ public class Constants
 	public static final Item HC_STARTER_ITEMS[] = new Item[] {
 	};
 	
+	public static final int[] GRACEFUL = {11850, 11852, 11854, 11856, 11858, 11860};
+	public static final int[] PURPLE_GRACEFUL = {13579, 13581, 13583, 13585, 13587, 13589};
+	public static final int[] TEAL_GRACEFUL = {13591, 13593, 13595, 13597, 13599, 13601};
+	public static final int[] YELLOW_GRACEFUL = {13603, 13605, 13607, 13609, 13611, 13613};
+	public static final int[] RED_GRACEFUL = {13615, 13617, 13619, 13621, 13623, 13625};
+	public static final int[] GREEN_GRACEFUL = {13627, 13629, 13631, 13633, 13635, 13637};
+	public static final int[] WHITE_GRACEFUL = {13667, 13669, 13671, 13673, 13675, 13677};
+	
 	/*public static final int EQUIP_ITEMS[][] = new int[][] {
 		{1061, 1, Equipment.SLOT_BOOTS}, {1007, 1, Equipment.SLOT_CAPE}, {1725, Equipment.SLOT_AMULET}
 	};*/
@@ -1121,11 +1129,4 @@ public class Constants
 		public static final int ERROR_LOADING_PROFILE = 24;
 		public static final int USERNAME_TOO_LONG = 60;
 	}
-
-	public static final int[] GRACEFUL = {11850, 11852, 11854, 11856, 11858, 11860};
-	public static final int[] PURPLE_GRACEFUL = {13579, 13581, 13583, 13585, 13587, 13589};
-	public static final int[] BLUE_GRACEFUL = {13591, 13593, 13595, 13597, 13599, 13601};
-	public static final int[] YELLOW_GRACEFUL = {13603, 13605, 13607, 13609, 13611, 13613};
-	public static final int[] RED_GRACEFUL = {13615, 13617, 13619, 13621, 13623, 13625};
-	public static final int[] GREEN_GRACEFUL = {13627, 13629, 13631, 13633, 13635, 13637};
 }

@@ -48,7 +48,8 @@ public class EnergyRestoreTick extends Tickable {
 		Container equip = mob.getEquipment();
 		return equip != null && (equip.containsItems(Constants.GRACEFUL) ||
 				equip.containsItems(Constants.PURPLE_GRACEFUL) || equip.containsItems(Constants.GREEN_GRACEFUL) ||
-		equip.containsItems(Constants.YELLOW_GRACEFUL) || equip.containsItems(Constants.RED_GRACEFUL) || equip.containsItems(Constants.BLUE_GRACEFUL));
+		equip.containsItems(Constants.YELLOW_GRACEFUL) || equip.containsItems(Constants.RED_GRACEFUL) || equip.containsItems(Constants.TEAL_GRACEFUL)
+		|| equip.containsItems(Constants.WHITE_GRACEFUL));
 	}
 
 }
