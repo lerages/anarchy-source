@@ -158,6 +158,11 @@ class PlayerSkillSlayerEntity {
 	 * If the player has bought the boss tasks unlock.
 	 */
 	private boolean unlockedBossTasks;
+	
+	/**
+	 * I the player has bought superior creatures
+	 */
+	private boolean setUnlockedSuperiors;
 
 	public String getBlockedTask1() {
 		return blockedTask1;
@@ -389,5 +394,13 @@ class PlayerSkillSlayerEntity {
 
 	public void setUnlockedBossTasks(boolean unlockedBossTasks) {
 		this.unlockedBossTasks = unlockedBossTasks;
+	}
+
+	public void setUnlockedSuperiors(boolean unlockedSuperiors) {
+		this.setUnlockedSuperiors = unlockedSuperiors;	
+	}
+	
+	public boolean isUnlockedSuperiors() {
+		return setUnlockedSuperiors;
 	}
 }

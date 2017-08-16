@@ -17,6 +17,7 @@ import org.rs2server.rs2.model.Item;
 import org.rs2server.rs2.model.Location;
 import org.rs2server.rs2.model.Mob;
 import org.rs2server.rs2.model.Prayers;
+import org.rs2server.rs2.model.Skills;
 import org.rs2server.rs2.model.UpdateFlags;
 import org.rs2server.rs2.model.UpdateFlags.UpdateFlag;
 import org.rs2server.rs2.model.World;
@@ -215,6 +216,27 @@ public class DeathTick extends Tickable
 					final Player player = (Player) killer;
 					if (player.getSlayer().getSlayerTask() != null)
 					{
+						if(npc.getId() == 7404) //choke devil
+							player.getSkills().addExperience(Skills.SLAYER, 3000);
+						if(npc.getId() == 7405) //insatiable bloodveld
+							player.getSkills().addExperience(Skills.SLAYER, 2900);
+						if(npc.getId() == 7397) //king kurask
+							player.getSkills().addExperience(Skills.SLAYER, 2767);
+						if(npc.getId() == 7401) //cave abomination
+							player.getSkills().addExperience(Skills.SLAYER, 1300);
+						if(npc.getId() == 7402) //abhorrent spectre
+							player.getSkills().addExperience(Skills.SLAYER, 2500);
+						if(npc.getId() == 7407) //marble gargoyle
+							player.getSkills().addExperience(Skills.SLAYER, 3044);
+						if(npc.getId() == 7411) //nechryarch
+							player.getSkills().addExperience(Skills.SLAYER, 3068);
+						if(npc.getId() == 7410) //greater abyssal demon
+							player.getSkills().addExperience(Skills.SLAYER, 4200);
+						if(npc.getId() == 7409) //night beast
+							player.getSkills().addExperience(Skills.SLAYER, 6462);
+						if(npc.getId() == 7406) //nuclear smoke devil
+							player.getSkills().addExperience(Skills.SLAYER, 2400);
+						
 						/* CHEAP TEMP FIX TO SLAYER BOSSES UNTIL I REDO THE SLAYER SYSTEM*/
 						if(player.getSlayer().getSlayerTask().getName().contains(npc.getDefinition().getName()))
 							slayerService.onTaskKill((Player) killer, npc);

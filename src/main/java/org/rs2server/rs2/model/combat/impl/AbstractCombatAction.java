@@ -249,6 +249,7 @@ public abstract class AbstractCombatAction implements CombatAction {
 				switch(n.getId())
 				{
 				case 2: //abberant spectre
+				case 7402:
 					if(p.getEquipment().contains(NOSE_PEG) || p.getEquipment().contains(SLAYER_HELM))
 					{
 						
@@ -258,6 +259,8 @@ public abstract class AbstractCombatAction implements CombatAction {
 						p.getSkills().slayerDecreaseSkills(33);
 					}
 					break;
+				case 7404:
+				case 7406:
 				case 423: //dust devil
 				case 498: //smoke devil
 				case 499: //thermo
@@ -280,6 +283,7 @@ public abstract class AbstractCombatAction implements CombatAction {
 						p.getSkills().slayerDecreaseSkills(11);
 					}
 					break;
+				case 7401:
 				case 3209: //cave horror
 					if(p.getEquipment().contains(WITCHWOOD_ICON))
 					{
@@ -306,7 +310,7 @@ public abstract class AbstractCombatAction implements CombatAction {
 				n.setCanBeDamaged(true);
 			}
 			
-			if(n.getId() == 410|| n.getId () == 427)
+			if(n.getId() == 410|| n.getId () == 427 || n.getId() == 7405)
 			{
 				if(p.getEquipment().contains(4158) || p.getEquipment().contains(11902) || p.getEquipment().contains(20727))
 				{	

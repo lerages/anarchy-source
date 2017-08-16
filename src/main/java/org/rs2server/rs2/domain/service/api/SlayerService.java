@@ -98,7 +98,8 @@ public interface SlayerService {
 	 * @param deductPoints Should the players reward points be deducted as a penalty.
 	 */
 	void cancelTask(@Nonnull final Player player, boolean deductPoints);
-
+	
+	void sendConfigs(@Nonnull final Player player);
 	/**
 	 * Blocks and resets the player's current slayer task.
 	 * Deducts reward points from the player.

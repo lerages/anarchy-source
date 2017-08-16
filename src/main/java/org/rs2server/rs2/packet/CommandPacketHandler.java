@@ -141,7 +141,7 @@ public class CommandPacketHandler implements PacketHandler {
 		if (player.getAttribute("cutScene") != null) {
 			return;
 		}
-
+		
 		commandString = commandString.replaceAll(":", "");
 		String[] args = commandString.split(" ");
 		String command = args[0].toLowerCase();
@@ -155,9 +155,10 @@ public class CommandPacketHandler implements PacketHandler {
 		 * if (command.equals("forums")) { player.getActionSender().sendCS2Script(745,
 		 * ,22609930, "https://www.Kronos-os.com"); }
 		 */
-		if (command.equals("empty")) {
-			player.getInventory().clear();
-		}
+		//if (command.equals("empty")) {
+		//	player.getInventory().clear();
+		//}
+		
 		// if (command.equals("npc")) {
 		// NPC npc = new NPC(Integer.parseInt(args[1]),
 		// Location.create(player.getLocation().getX(), player.getLocation().getY(),
@@ -175,14 +176,39 @@ public class CommandPacketHandler implements PacketHandler {
 		// n.playAnimation(Animation.create(anim));
 		// }
 		// }
-		if (command.equals("claimdonation")) {
-			try {
-				DonationManager.rspsdata(player, player.getName());
-				return;
-			} catch (Exception e) {
+		//if (command.equals("claimdonation")) {
+		//	try {
+		//		DonationManager.rspsdata(player, player.getName());
+		//		return;
+		//	} catch (Exception e) {
+		//	}
+	//	}
+		
+		if(command.startsWith("blocktask"))
+		{
+			if(player.getSlayer().getSlayerTask() != null)
+			{
+				slayerService.blockTask(player);
+				slayerService.sendConfigs(player);
+			} else {
+				player.sendMessage("You do not have a slayer task to block.");
 			}
+			
 		}
-
+		
+		if(command.startsWith("unblockslot"))
+		{
+			int buttonIndex = Integer.parseInt(args[1]);
+			if(buttonIndex >= 1 && buttonIndex < 6)
+			{
+				buttonIndex -= 1;
+				slayerService.unblockTask(player, buttonIndex);
+				slayerService.sendConfigs(player);
+			} else { 
+				player.sendMessage("Syntax: ::unblockslot #; where # is 1-5.");
+			}
+			
+		}
 		/*
 		 * if (command.startsWith("specpl0x0r")) {
 		 * player.getCombatState().setSpecialEnergy(9500);

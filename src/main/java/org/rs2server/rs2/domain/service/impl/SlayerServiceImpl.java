@@ -8,9 +8,11 @@ import org.rs2server.rs2.domain.model.player.PlayerStatisticsEntity;
 import org.rs2server.rs2.domain.service.api.PermissionService;
 import org.rs2server.rs2.domain.service.api.PlayerStatisticsService;
 import org.rs2server.rs2.domain.service.api.SlayerService;
+import org.rs2server.rs2.model.bit.BitConfig;
 import org.rs2server.rs2.model.bit.BitConfigBuilder;
 import org.rs2server.rs2.model.DialogueManager;
 import org.rs2server.rs2.model.Skills;
+import org.rs2server.rs2.model.World;
 import org.rs2server.rs2.model.npc.NPC;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.model.skills.slayer.SlayerTask;
@@ -67,8 +69,8 @@ public class SlayerServiceImpl implements SlayerService {
 			// combat level is too low. Keep in mind that to have enough points
 			// to block several tasks, this is impossible.
 			iterations++;
-			if (iterations >= 20) {
-				player.sendMessage("Contact a developer - this should not happen!");
+			if (iterations >= 30) {
+				player.sendMessage("Could not find an assigment. Try again or speak to a developer");
 				break;
 			}
 
@@ -94,14 +96,14 @@ public class SlayerServiceImpl implements SlayerService {
 
             int amount = Misc.random(minimum, maximum);
 
-            final SlayerTask task = new SlayerTask(master, random, (int) (amount * 0.75));
+            final SlayerTask task = new SlayerTask(master, random, amount);
             player.getSlayer().setSlayerTask(task);
             return task;
         }
 
 		return null;
     }
-
+       
 	private boolean extendTask(Player player, SlayerTask.TaskGroup group) {
 		PlayerSkillSlayerEntity slayer = player.getDatabaseEntity().getSlayerSkill();
 		if (group == SlayerTask.TaskGroup.ABYSSAL_DEMONS && slayer.isExtendTaskAbyssalDemon()) {
@@ -145,11 +147,86 @@ public class SlayerServiceImpl implements SlayerService {
     public void onTaskKill(@Nonnull Player player, @Nonnull NPC npc) {
         final SlayerTask task = player.getSlayer().getSlayerTask();
         double slayerXp = npc.getSkills().getLevel(Skills.HITPOINTS);
+        int superiorChance = Misc.random(199);
         if(slayerXp == 0)
         	slayerXp = task.getXPAmount();
         player.getSkills().addExperience(Skills.SLAYER, slayerXp); //HOTFIX SLAYER ----
         //player.getActionSender().sendMessage("Slayer XP should be: " + slayerXp);
         task.decreaseAmount();
+        
+        if(superiorChance == 0 && player.getDatabaseEntity().getSlayerSkill().isUnlockedSuperiors())
+        {
+        	if(player.getSlayer().getSlayerTask().getName().contains("Dust devil"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC choke_devil = new NPC(7404, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(choke_devil);
+        		choke_devil.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Bloodveld"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC king_kurask = new NPC(7405, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(king_kurask);
+        		king_kurask.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Kurask"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC insatiable_blood_veld = new NPC(7397, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(insatiable_blood_veld);
+        		insatiable_blood_veld.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Cave horror"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC cave_abomination = new NPC(7401, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(cave_abomination);
+        		cave_abomination.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Aberrant spectre"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC abhorrent_spectre = new NPC(7402, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(abhorrent_spectre);
+        		abhorrent_spectre.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Gargoyle"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC marble_gargoyle = new NPC(7407, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(marble_gargoyle);
+        		marble_gargoyle.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Nechryael"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC nechryarch = new NPC(7411, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(nechryarch);
+        		nechryarch.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Abyssal demon"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC greater_abyssal_demon = new NPC(7410, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(greater_abyssal_demon);
+        		greater_abyssal_demon.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Smoke devil"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC nuclear_smoke_devil = new NPC(7406, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(nuclear_smoke_devil);
+        		nuclear_smoke_devil.setInstancedPlayer(player);
+        	}
+        	if(player.getSlayer().getSlayerTask().getName().contains("Dark bast"))
+        	{
+        		player.sendMessage("<col=ff000>A superior foe has appeared...</col>");
+            	NPC night_beast = new NPC(7409, npc.getLocation(), npc.getLocation(), npc.getLocation(), npc.getDirection());
+        		World.getWorld().register(night_beast);
+        		night_beast.setInstancedPlayer(player);
+        	}
+        }
         if (task.getTaskAmount() < 1) {
             statisticsService.increaseSlayerTasksCompleted(player, 1);
             statisticsService.increaseSlayerConsecutiveTasksCompleted(player, 1);
@@ -223,19 +300,23 @@ public class SlayerServiceImpl implements SlayerService {
 
         player.sendBitConfig(rewardBuilder.build());
         player.sendBitConfig(rowBuilder(blockedTasks).build());
-        player.sendBitConfig(helmUnlockBuilder(player.getDatabaseEntity().getSlayerSkill()).build());//unlockBuilder(player.getStatistics()).build());
+        player.sendBitConfig(helmUnlockBuilder(player.getDatabaseEntity().getSlayerSkill()).build());
+        player.sendBitConfig(fifthSlotBuilder().build());
+        player.sendBitConfig(fifthSlotBuilder().build());
+        player.getActionSender().sendAccessMask(1052, TASK_WIDGET_ID, 23, 0, 3)
+        .sendAccessMask(2, TASK_WIDGET_ID, 8, 0, 37)
+        .sendConfig(262, taskId)
+        .sendConfig(261, taskAmount)
+		//.sendConfig(101, 1000)// Set quest points so rows are 'Empty'.
+        .sendInterface(TASK_WIDGET_ID, false);
+        //unlockBuilder(player.getStatistics()).build());
 //        player.sendBitConfig(darkBeastUnlockBuilder(player.getDatabaseEntity().getSlayerSkill()).build());
 //		player.sendBitConfig(abyssalUnlockBuilder(player.getDatabaseEntity().getSlayerSkill()).build());
 //		player.sendBitConfig(metalDragonsUnlockBuilder(player.getDatabaseEntity().getSlayerSkill()).build());
 //		player.sendBitConfig(krakenUnlockBuilder(player.getDatabaseEntity().getSlayerSkill()).build());
-		player.sendBitConfig(fifthSlotBuilder().build());
+		
 
-        player.getActionSender().sendAccessMask(1052, TASK_WIDGET_ID, 23, 0, 3)
-                .sendAccessMask(2, TASK_WIDGET_ID, 8, 0, 37)
-                .sendConfig(262, taskId)
-                .sendConfig(261, taskAmount)
-				//.sendConfig(101, 1000)// Set quest points so rows are 'Empty'.
-                .sendInterface(TASK_WIDGET_ID, false);
+        
     }
 
     @Override
@@ -333,17 +414,17 @@ public class SlayerServiceImpl implements SlayerService {
 		final SlayerTask.TaskGroup[] blockedGroups = new SlayerTask.TaskGroup[5];
 
 		blockedGroups[0] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask1());
-		blockedGroups[1] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask2());
-		blockedGroups[2] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask3());
-		blockedGroups[3] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask4());
-		blockedGroups[4] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask5());
+		blockedGroups[4] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask2());
+		blockedGroups[1] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask3());
+		blockedGroups[2] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask4());
+		blockedGroups[3] = SlayerTask.TaskGroup.forName(slayer.getBlockedTask5());
 
 		return blockedGroups;
 	}
 
 	@Override
 		public void cancelTask(@Nonnull final Player player, boolean deductPoints) {
-	        int deduction = permissionService.is(player, PermissionService.PlayerPermissions.ADMINISTRATOR) ? 15 : 30;
+	        int deduction = permissionService.is(player, PermissionService.PlayerPermissions.DONATOR) ? 15 : 30;
 			if (deductPoints && player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() < 30) {
 				player.sendMessage("You do not have enough points to reset your task.");
 				return;
@@ -356,40 +437,77 @@ public class SlayerServiceImpl implements SlayerService {
 		}
 
 	@Override
+	public void sendConfigs(Player player)
+    {
+		 int taskId = 0;
+	        int taskAmount = 0;
+	        if (player.getSlayer().getSlayerTask() != null) {
+	            final SlayerTask task = player.getSlayer().getSlayerTask();
+	            taskId = getTaskGroup(task).getId();
+	            taskAmount = task.getTaskAmount();
+	        }
+	        
+		final SlayerTask.TaskGroup[] blockedTasks = getBlockedTaskGroups(player);
+		final BitConfigBuilder rewardBuilder = rewardPointBuilder(player.getDatabaseEntity().getStatistics())
+				.set(blockedTasks[0] != null ? blockedTasks[0].getId() : 0, FIRST_ROW_BIT);
+		
+    	BitConfig points = BitConfigBuilder.of(661)
+				.set(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints(), 6).build();
+		player.getActionSender().sendConfig(points.getId(), points.getValue());
+		 player.sendBitConfig(rewardBuilder.build());
+	        player.sendBitConfig(rowBuilder(blockedTasks).build());
+	        player.sendBitConfig(helmUnlockBuilder(player.getDatabaseEntity().getSlayerSkill()).build());
+	        player.sendBitConfig(fifthSlotBuilder().build());
+	        player.sendBitConfig(fifthSlotBuilder().build());
+	        player.getActionSender().sendAccessMask(1052, TASK_WIDGET_ID, 23, 0, 3)
+	        .sendAccessMask(2, TASK_WIDGET_ID, 8, 0, 37)
+	        .sendConfig(262, taskId)
+	        .sendConfig(261, taskAmount);
+			//.sendConfig(101, 1000)// Set quest points so rows are 'Empty'.
+	       // .sendInterface(TASK_WIDGET_ID, false);
+    }
+	
+	@Override
 	public void blockTask(@Nonnull Player player) {
-		if (player.getSlayer().getSlayerTask() == null) {
-			return;
-		} else if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() < 100) {
-			player.sendMessage("You do not have enough points to block your current task.");
-			return;
+		//if (player.getSlayer().getSlayerTask() == null) {
+			//return;
+	if(player.getSlayer().getSlayerTask() != null)
+	{
+		if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() < 100) 
+		{
+				player.sendMessage("You do not have enough points to block your current task.");
+				return;
 		}
 
-		final PlayerSkillSlayerEntity slayer = player.getDatabaseEntity().getSlayerSkill();
-		final SlayerTask.TaskGroup group = getTaskGroup(player.getSlayer().getSlayerTask());
+			final PlayerSkillSlayerEntity slayer = player.getDatabaseEntity().getSlayerSkill();
+			final SlayerTask.TaskGroup group = getTaskGroup(player.getSlayer().getSlayerTask());
+			String blocked_task = group.name();
+			
+			boolean blocked = false;
+			
+			if (slayer.getBlockedTask1() == null) {
+				slayer.setBlockedTask1(blocked_task);
+				blocked = true;
+			} else if (slayer.getBlockedTask2() == null) {
+					slayer.setBlockedTask2(blocked_task);
+					blocked = true;
+			} else if (slayer.getBlockedTask3() == null) {
+				slayer.setBlockedTask3(blocked_task);
+				blocked = true;
+			} else if (slayer.getBlockedTask4() == null) {
+				slayer.setBlockedTask4(blocked_task);
+				blocked = true;
+			} else if (slayer.getBlockedTask5() == null) {
+				slayer.setBlockedTask5(blocked_task);
+				blocked = true;
+			}
 
-		boolean blocked = false;
-		if (slayer.getBlockedTask1() == null) {
-			slayer.setBlockedTask1(group.name());
-			blocked = true;
-		} else if (slayer.getBlockedTask2() == null) {
-			slayer.setBlockedTask2(group.name());
-			blocked = true;
-		} else if (slayer.getBlockedTask3() == null) {
-			slayer.setBlockedTask3(group.name());
-			blocked = true;
-		} else if (slayer.getBlockedTask4() == null) {
-			slayer.setBlockedTask4(group.name());
-			blocked = true;
-		} else if (slayer.getBlockedTask5() == null) {
-			slayer.setBlockedTask5(group.name());
-			blocked = true;
-		}
-
-		if (blocked) {
-			logger.info("Player {} has blocked slayer task group {}", player.getName(), group.name());
-			player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-			cancelTask(player, false);
-		}
+			if (blocked) {
+				logger.info("Player {} has blocked slayer task group {}", player.getName(), group.name());
+				player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
+				cancelTask(player, false);
+			}	
+	}
 	}
 
 	@Override

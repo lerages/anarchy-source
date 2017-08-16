@@ -404,122 +404,172 @@ public class ActionButtonPacketHandler implements PacketHandler {
             case BankDepositBoxServiceImpl.DEPOSIT_INTERFACE:
                 bankDepositBox.handleInterfaceActions(player, button, childButton, childButton2, menuIndex);
                 break;
+                
             case SlayerServiceImpl.TASK_WIDGET_ID://Rewards interface
+            	//player.sendMessage("Interface: " + interfaceId + " Button: " + button + " childButton: " + childButton);
                 if (button == 8) {
                 	System.out.println("Unhandled action button : " + interfaceId + " - " + button + " - " + childButton);
-                    if (childButton == 5) { // Unlock slayer helm
+                	switch(childButton)
+                	{
+                	case 5: // Unlock slayer helm
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 400) {
 							player.getDatabaseEntity().getSlayerSkill().setUnlockedSlayerHelm(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 400);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 4) { //Extend Dark beasts
+					break;
+                	case 4: //Extend Dark beasts
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskDarkBeast(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 10) { //Extend Black Dragon
-						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
+						break;
+                	case 8: //Extend Ankous
+                	case 9: //Extend Suqah
+                	case 12: //Spritiual creatures
+                	case 22: //aviansies
+                	case 23: //Extend Cave Horror
+                	case 20: //bloodveld
+                	case 21: //abberant spectre
+                	case 25: //dust devil
+                	case 36: //scarabas
+						player.sendMessage("This task cannot currently be extended.");
+						break;
+                	case 35://super creatures
+                		//player.sendMessage("Superior creatures are currently not added.");
+                		if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 150 && !player.getDatabaseEntity().getSlayerSkill().isUnlockedSuperiors()) {
+							player.getDatabaseEntity().getSlayerSkill().setUnlockedSuperiors(true);
+							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 150);
+							player.sendMessage("<col=ff0000>Super slayer creatures have been unlocked.");
+							//slayerService.openRewardsScreen(player);
+                		} else if(player.getDatabaseEntity().getSlayerSkill().isUnlockedSuperiors()) {
+                			player.sendMessage("<col=ff0000>Super slayer creatures have already been unlocked.");
+						} else {
+							player.sendMessage("You do not have enough points to buy that.");
+						}
+                		break;
+                	case 10: //Extend Black Dragon
+						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 50) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskBlackDragon(true);
-							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 50);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 11) { //Extend Bronze, Iron, Steel dragons
+						break;
+                	case 11://Extend Bronze, Iron, Steel dragons
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskMetalDragons(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 13) { //Extend Abyssal demons
+						break;
+                	case 13://Extend Abyssal demons
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskAbyssalDemon(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 14) { //Extend Black demons
+						break;
+                	case 14: //Extend Black demons
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskBlackDemon(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 15) { //Extend Greater demons
+						break;
+                	case 15: //Extend Greater demons
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskGreaterDemon(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 24) { //Extend Cave Horrors
+						break;
+                	case 24: //Extend Cave Horrors
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskCaveHorror(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 26) { //Extend Skeletal Wyvern
+						break;
+                	case 26: //Extend Skeletal Wyvern
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskSkeletalWyvern(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 27) { //Extend Gargoyle
+						break;
+                	case 27: //Extend Gargoyle
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskGargoyle(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 28) { //Extend Nechryaels
+						break;
+                	case 28: //Extend Nechryaels
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskNechryael(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-					} else if (childButton == 29) { //Extend Kraken
+						break;
+                	case 29: //Extend Kraken
 						if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 100) {
 							player.getDatabaseEntity().getSlayerSkill().setExtendTaskCaveKraken(true);
 							player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 100);
-							slayerService.openRewardsScreen(player);
+							//slayerService.openRewardsScreen(player);
 						} else {
 							player.sendMessage("You do not have enough points to buy that.");
 						}
-                    } else if (childButton == 37) {// Cancel task
+						break;
+                	case 37:// Cancel task
                         slayerService.cancelTask(player, true);
-                        slayerService.openRewardsScreen(player);
-                    } else if (childButton == 38) {// Block task
+                      //  slayerService.openRewardsScreen(player);
+                        break;
+                	case 38:// Block task
+                		player.sendMessage("Block task button");
 						slayerService.blockTask(player);
-                        slayerService.openRewardsScreen(player);
-                    } else if (childButton >= 39 && childButton < 44) {// Unblock task buttons [1..5]
-                        int buttonIndex = childButton - 38;
+                    //  //  slayerService.openRewardsScreen(player);
+                        break;
+                	case 39:// Unblock task buttons [1..5]
+                	case 40:
+                	case 41:
+                	case 42:
+                	case 43:
+                		player.sendMessage("Unblock task button: " + childButton);
+                       int buttonIndex = childButton - 38;
 						slayerService.unblockTask(player, buttonIndex);
-                        slayerService.openRewardsScreen(player);
-                    }
-                } else if (button == 23) {
+                     // slayerService.openRewardsScreen(player);
+                    break;
+                	}
+                	//player.getActionSender().sendMessage("InterfaceID : " + interfaceId + ". ButtonID: " + button + ". ChildButtonID: " + childButton);
+                	} else if (button == 23) {
                     if (childButton == 0 && menuIndex == 1) { // Buy 1 slayer ring
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 75) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 75);
                             playerService.giveItem(player, new Item(11866, 1), true);
-                            slayerService.openRewardsScreen(player);
+                          //  slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
                         }
@@ -527,7 +577,7 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 35) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 35);
                             playerService.giveItem(player, new Item(11875, 250), true);
-                            slayerService.openRewardsScreen(player);
+                          //  slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
                         }
@@ -535,7 +585,7 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 35) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 35);
                             playerService.giveItem(player, new Item(4160, 250), true);
-                            slayerService.openRewardsScreen(player);
+                          //  slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
                         }
@@ -543,7 +593,7 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 750) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 750);
                             playerService.giveItem(player, new Item(13226, 1), true);
-                            slayerService.openRewardsScreen(player);
+                           // slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
                         }
@@ -551,7 +601,15 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 375) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 375);
                             playerService.giveItem(player, new Item(11866, 5), true);
-                            slayerService.openRewardsScreen(player);
+                          //  slayerService.openRewardsScreen(player);
+                        } else {
+                            player.sendMessage("You do not have enough points to buy that.");
+                        }
+                    } else if (childButton == 0 && menuIndex == 3) { // Buy 10 slayer ring
+                        if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 750) {
+                            player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 750);
+                            playerService.giveItem(player, new Item(11866, 10), true);
+                          //  slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
                         }
@@ -559,7 +617,7 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 175) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 175);
                             playerService.giveItem(player, new Item(11875, 1250), true);
-                            slayerService.openRewardsScreen(player);
+                           // slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
                         }
@@ -567,7 +625,7 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 175) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 175);
                             playerService.giveItem(player, new Item(4160, 1250), true);
-                            slayerService.openRewardsScreen(player);
+                           // slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
                         }
@@ -575,7 +633,7 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 350) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 350);
                             playerService.giveItem(player, new Item(11875, 2500), true);
-                            slayerService.openRewardsScreen(player);
+                          //  slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
                         }
@@ -583,13 +641,14 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         if (player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() >= 350) {
                             player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() - 350);
                             playerService.giveItem(player, new Item(4160, 2500), true);
-                            slayerService.openRewardsScreen(player);
+                           // slayerService.openRewardsScreen(player);
                         } else {
                             player.sendMessage("You do not have enough points to buy that.");
-                            System.out.println("Unhandled action button : " + interfaceId + " - " + button + " - " + childButton);
+                          //  System.out.println("Unhandled action button : " + interfaceId + " - " + button + " - " + childButton);
                         }
                     }
                 }
+                slayerService.sendConfigs(player);
                 break;
 
             case 320:

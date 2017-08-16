@@ -184,11 +184,11 @@ public class SlayerTask {
 				{ "Hellhound", 1, 50, 100, 116, TaskGroup.HELLHOUNDS}, 
 				{ "Turoth", 55, 30, 80, 79, TaskGroup.TUROTHS},
 				{ "Kurask", 70, 40, 100, 97, TaskGroup.KURASKS}, 
-				{"Cave Kraken", 87, 100, 125, 125.0, TaskGroup.CAVE_KRAKEN},
+				{ "Cave kraken", 87, 100, 125, 125.0, TaskGroup.CAVE_KRAKEN},
 				{ "Dust devil", 65, 120, 185, 105.0, TaskGroup.DUST_DEVILS},
 				{ "Spiritual mage", 83, 120, 185, 75.0, TaskGroup.SPIRITUAL_CREATURES},
 				{ "Jelly", 52, 30, 80, 75, TaskGroup.JELLIES},
-				{ "Abyssal demons", 85, 60, 130, 150, TaskGroup.ABYSSAL_DEMONS}
+				{ "Abyssal demon", 85, 60, 130, 150, TaskGroup.ABYSSAL_DEMONS}
 				});
 
 		private int id;
