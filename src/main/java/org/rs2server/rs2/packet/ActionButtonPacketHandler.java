@@ -38,6 +38,7 @@ import org.rs2server.rs2.model.container.Container;
 import org.rs2server.rs2.model.container.Equipment;
 import org.rs2server.rs2.model.container.Inventory;
 import org.rs2server.rs2.model.container.PriceChecker;
+import org.rs2server.rs2.model.player.ExperienceDropdown;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.model.player.PrivateChat.EntryRank;
 import org.rs2server.rs2.model.player.PrivateChat.KickRank;
@@ -938,10 +939,12 @@ public class ActionButtonPacketHandler implements PacketHandler {
                     player.getActionSender().removeAllInterfaces();
                 }
                 break;
-//            case 137:
-              /*  switch (button) {
+            case 137:
+                switch (button) 
+                {
                     case 50://Position
-                        switch (childButton) {
+                        switch (childButton) 
+                        {
                             case 1:
                                 player.getDropdown().setAlignment(ExperienceDropdown.ALIGN_RIGHT);
                                 break;
@@ -954,7 +957,8 @@ public class ActionButtonPacketHandler implements PacketHandler {
                         }
                         break;
                     case 51://Size
-                        switch (childButton) {
+                        switch (childButton) 
+                        {
                             case 1:
                                 player.getDropdown().setFontSize(ExperienceDropdown.SMALLEST_FONT);
                                 break;
@@ -966,15 +970,15 @@ public class ActionButtonPacketHandler implements PacketHandler {
                                 break;
                         }
                         break;
-                 *//*   case 53:
+                    case 53:
                         player.getDropdown().setSelectedSkill(childButton - 1);
                         break;
                     case 54:
                         player.getDropdown().setExperienceBarSkill(childButton - 1);
-                        break;*//*
+                        break;
                 }
                 player.getActionSender().sendConfig(1227, player.getDropdown().hashCode());
-                break;*/
+                break;
             case Smithing.INTERFACE:
                 Smithing.handleForgingOptions(player, button, menuIndex);
                 break;
