@@ -48,6 +48,8 @@ import org.rs2server.rs2.model.container.Bank;
 import org.rs2server.rs2.model.container.Container;
 import org.rs2server.rs2.model.container.Equipment;
 import org.rs2server.rs2.model.container.impl.InterfaceContainerListener;
+import org.rs2server.rs2.model.event.EventListener.ClickOption;
+import org.rs2server.rs2.model.event.impl.object.BarrowsTunnelListener;
 import org.rs2server.rs2.model.map.DynamicTileBuilder;
 import org.rs2server.rs2.model.map.RegionClipping;
 import org.rs2server.rs2.model.map.path.ClippingFlag;
@@ -183,6 +185,17 @@ public class CommandPacketHandler implements PacketHandler {
 		//	} catch (Exception e) {
 		//	}
 	//	}
+		
+		if(command.startsWith("down"))
+		{
+			if(player.getLocation().getX() == 3755 && player.getLocation().getY() == 5675)
+			{
+				player.setTeleportTarget(Location.create(3755, 5672, 0));
+			} else {
+				player.sendMessage("You need to be stood by the ladder in the Motherlode mine to use this.");
+			}
+			
+		}
 		
 		if(command.startsWith("blocktask"))
 		{
@@ -811,7 +824,7 @@ public class CommandPacketHandler implements PacketHandler {
 				String msg = commandString.substring(5);
 				int highest = Misc.getModIconForPerm(permissionService.getHighestPermission(player));
 				World.getWorld()
-					.sendWorldMessage("<img=0>[<col=880088>Moderator</col>]" + player.getName() + ": "+ msg);
+					.sendWorldMessage("<img=0>[<col=880088>Moderator</col>] " + player.getName() + ": "+ msg);
 			}
 			
 			if (command.equals("checkinv")) 
@@ -2140,7 +2153,7 @@ public class CommandPacketHandler implements PacketHandler {
 			String msg = commandString.substring(5);
 			int highest = Misc.getModIconForPerm(permissionService.getHighestPermission(player));
 			World.getWorld()
-					.sendWorldMessage("<img=1>[<col=880000>Developer</col>]" + player.getName() + ": "+ msg);
+					.sendWorldMessage("<img=1>[<col=880000>Developer</col>] " + player.getName() + ": "+ msg);
 									/*
 									 * ("[<img=" + highest + ">") : "Moderator")
 									 * 
@@ -2663,7 +2676,24 @@ public class CommandPacketHandler implements PacketHandler {
 			}
 		}
 		
-		if (command.startsWith("getplayerlvl")) {
+		if(command.equals("barrowsloot"))
+		{
+			player.getKilledBrothers().put(1672, true);
+			player.increaseKC();
+			player.getKilledBrothers().put(1673, true);
+			player.increaseKC();
+			player.getKilledBrothers().put(1674, true);
+			player.increaseKC();
+			player.getKilledBrothers().put(1675, true);
+			player.increaseKC();
+			player.getKilledBrothers().put(1676, true);
+			player.increaseKC();
+			player.getKilledBrothers().put(1677, true);
+			player.increaseKC();
+			BarrowsTunnelListener.lootChest(player);
+		}
+				
+		if (command.startsWith("getlvl")) {
 			final String playerName = NameUtils.formatName(args[1]);
 			final int skill = Integer.parseInt(args[2]);
 			final Player target = playerService.getPlayer(playerName);
@@ -2675,7 +2705,7 @@ public class CommandPacketHandler implements PacketHandler {
 			+ target.getSkills().getLevel(skill) + " (" + NumberFormat.getInstance().format(target.getSkills().getExperience(skill)) + " XP)");
 		}
 		
-		if (command.startsWith("setplayerxp")) {
+		if (command.startsWith("setxp")) {
 			final String playerName = NameUtils.formatName(args[1]);
 			final int skill = Integer.parseInt(args[2]);
 			final int xp = Integer.parseInt(args[3]);
@@ -2684,11 +2714,10 @@ public class CommandPacketHandler implements PacketHandler {
 				player.getActionSender().sendMessage("No player found for name '" + playerName + "'");
 				return;
 			}
-			target.getSkills().setLevel(skill, xp);
+			target.getSkills().setExperience(skill, xp);
 			if (skill == Skills.PRAYER) {
 				target.getSkills().setPrayerPoints(target.getSkills().getLevelForExperience(xp), true);
 			}
-			target.getSkills().setExperience(skill, xp);
 			
 			player.getActionSender().sendMessage("You have set the " + Skills.SKILL_NAME[skill] + " level of " 
 					+ target.getName() + " to " + target.getSkills().getLevel(skill) + " (" + 
@@ -2701,7 +2730,7 @@ public class CommandPacketHandler implements PacketHandler {
 			target.getActionSender().sendString(593, 2, "Combat lvl: " + target.getSkills().getCombatLevel());
 		}
 		
-		if (command.startsWith("setplayerlvl")) {
+		if (command.startsWith("setlvl")) {
 			final String playerName = NameUtils.formatName(args[1]);
 			final int skill = Integer.parseInt(args[2]);
 			final int level = Integer.parseInt(args[3]);

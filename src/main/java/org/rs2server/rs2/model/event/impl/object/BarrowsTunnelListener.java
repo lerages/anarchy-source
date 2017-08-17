@@ -33,7 +33,7 @@ public class BarrowsTunnelListener extends EventListener {
  
     public static final int[][] COMMON_REWARDS = {
             {561, 1, 65}, {558, 1, 200}, {562, 1, 125}, {560, 1, 100}, {565, 1, 75},
-            {995, 800, 5000}, {4740, 50, 150}
+            {995, 100, 5000}, {4740, 50, 150}
     };
     public static final int[] RARE_REWARDS = {
             1149, 985, 987
@@ -122,7 +122,7 @@ public class BarrowsTunnelListener extends EventListener {
             {3558, 9677, 3562, 9678},
     };
  
-    private final PlayerService playerService = Server.getInjector().getInstance(PlayerService.class);
+    private final static PlayerService playerService = Server.getInjector().getInstance(PlayerService.class);
  
  
     @Override
@@ -143,64 +143,7 @@ public class BarrowsTunnelListener extends EventListener {
         }
        if (objectId == 20973) {
             if (player.getAttribute("canLoot") == Boolean.TRUE) {
-                List<Integer>BARROW_REWARDS = new ArrayList<Integer>();
-                BARROW_REWARDS.add(12851);
-                //int[] BARROW_REWARDS = {
-                //      12851 // Amulet of the damned
-                //};
-                player.removeAttribute("canLoot");
-                for(int i = 0; i < 6; i++){
-                    if(player.getKilledBrothers().get(BROTHERS[i])){
-                        for(int var : BROTHERS_REWARDS[i]){
-                            BARROW_REWARDS.add(var);
-                        }
-                    }
-                }
-                player.getDatabaseEntity().getStatistics().setBarrowsChestCount(player.getDatabaseEntity().getStatistics().getBarrowsChestCount() + 1);
-                logger.info("Barrows chest count increased to " + player.getDatabaseEntity().getStatistics().getBarrowsChestCount() + " for " + player.getName());
-                player.getActionSender().sendMessage("Your Barrows chest count is: <col=ff0000>" + player.getDatabaseEntity().getStatistics().getBarrowsChestCount() + ".");
- 
-                final List<Item> rewards = new ArrayList<>();
-                for (int[] data : COMMON_REWARDS) {
-                    if (player.getRandom().nextDouble() > 0.40) {
-                        int id = data[0];
-                        int amount = Misc.random(data[1], data[2]);
-                        rewards.add(new Item(id, amount));
-                    }
-                }
-                if (Misc.random(200) == 0) {
-                    rewards.add(new Item(12073));
-                }
- 
-                final int chance = player.getKilledBrothers().entrySet().stream()
-                        .filter(Map.Entry::getValue)
-                        .mapToInt(e -> 2)
-                        .sum() * 2;
-                player.getKilledBrothers().clear();
- 
-                int random = player.getRandom().nextInt(99);
-                System.out.println(BARROW_REWARDS.size());
-                System.out.println(random + " - " + (chance > 15 ? 15 : chance));
-                if (random <= (chance > 15 ? 15 : chance)) {
-                   
-                    int item = BARROW_REWARDS.get(player.getRandom().nextInt(BARROW_REWARDS.size()));
-                    World.getWorld().sendWorldMessage("<col=7f00ff>" + player.getName() + " has just received 1x " + CacheItemDefinition.get(item).getName() + ".");
-                    rewards.add(new Item(item, 1));
-                }
-                player.setKC(0);
-                player.removeAttribute("barrows_tunnel");
-               
-                for (int i = 0; i < BarrowsBrother.values().length; i++) {
-                    BarrowsBrother brother = BarrowsBrother.values()[i];
-                    player.getKilledBrothers().put(brother.getNpcId(), false);
-                }
-               
-                player.getActionSender().sendString(24, 9, "Kill Count: " + player.getKC());
-                player.setAttribute("looted_barrows", Boolean.TRUE);
- 
-                player.getActionSender().sendInterface(REWARDS_INTERFACE_ID, false);
-                player.getActionSender().sendUpdateItems(REWARDS_INTERFACE_ID, 1, 0, rewards.toArray(new Item[rewards.size()]));
-                rewards.stream().forEach(i -> playerService.giveItem(player, i, true));
+               lootChest(player);
             } else {
                 if (player.getAttribute("currentlyFightingBrother") == null && player.getAttribute("looted_barrows") != Boolean.TRUE) {
                     BarrowsBrother brother = player.getAttribute("barrows_tunnel");
@@ -215,7 +158,69 @@ public class BarrowsTunnelListener extends EventListener {
         }
         return true;
     }
- 
+    
+    public static void lootChest(Player player)
+    {
+    	 List<Integer>BARROW_REWARDS = new ArrayList<Integer>();
+         BARROW_REWARDS.add(12851);
+         //int[] BARROW_REWARDS = {
+         //      12851 // Amulet of the damned
+         //};
+         player.removeAttribute("canLoot");
+         for(int i = 0; i < 6; i++){
+             if(player.getKilledBrothers().get(BROTHERS[i])){
+                 for(int var : BROTHERS_REWARDS[i]){
+                     BARROW_REWARDS.add(var);
+                 }
+             }
+         }
+         player.getDatabaseEntity().getStatistics().setBarrowsChestCount(player.getDatabaseEntity().getStatistics().getBarrowsChestCount() + 1);
+         logger.info("Barrows chest count increased to " + player.getDatabaseEntity().getStatistics().getBarrowsChestCount() + " for " + player.getName());
+         player.getActionSender().sendMessage("<col=ff0000>Your Barrows chest count is: " + player.getDatabaseEntity().getStatistics().getBarrowsChestCount() + ".");
+
+         final List<Item> rewards = new ArrayList<>();
+         for (int[] data : COMMON_REWARDS) {
+             if (player.getRandom().nextDouble() > 0.40) {
+                 int id = data[0];
+                 int amount = Misc.random(data[1], data[2]);
+                 rewards.add(new Item(id, amount));
+             }
+         }
+         if (Misc.random(200) == 0) {
+             rewards.add(new Item(12073));
+         }
+
+         final int chance = player.getKilledBrothers().entrySet().stream()
+                 .filter(Map.Entry::getValue)
+                 .mapToInt(e -> 2)
+                 .sum() / 6;
+         player.getKilledBrothers().clear();
+
+         int random = player.getRandom().nextInt(99);
+         System.out.println(BARROW_REWARDS.size());
+         System.out.println(random + " - " + (chance > 15 ? 15 : chance));
+         if (random <= (chance > 15 ? 15 : chance)) {
+            
+             int item = BARROW_REWARDS.get(player.getRandom().nextInt(BARROW_REWARDS.size()));
+             World.getWorld().sendWorldMessage("<col=884422><img=33> News: " + player.getName() + " has just received 1x " + CacheItemDefinition.get(item).getName() + ".");
+             rewards.add(new Item(item, 1));
+         }
+         player.setKC(0);
+         player.removeAttribute("barrows_tunnel");
+        
+         for (int i = 0; i < BarrowsBrother.values().length; i++) {
+             BarrowsBrother brother = BarrowsBrother.values()[i];
+             player.getKilledBrothers().put(brother.getNpcId(), false);
+         }
+        
+         player.getActionSender().sendString(24, 9, "Kill Count: " + player.getKC());
+         player.setAttribute("looted_barrows", Boolean.TRUE);
+
+         player.getActionSender().sendInterface(REWARDS_INTERFACE_ID, false);
+         player.getActionSender().sendUpdateItems(REWARDS_INTERFACE_ID, 1, 0, rewards.toArray(new Item[rewards.size()]));
+         rewards.stream().forEach(i -> playerService.giveItem(player, i, true));
+    }
+    
     private static int[] getWalkDirections(Player p, int index, int index2, boolean betweenDoors) {
         int openDirection = DOOR_OPEN_DIRECTION[index][2];
         int[] direction = new int[2];

@@ -353,6 +353,7 @@ public class Music {
         new Music("Null and Void" ,2624,2624,2687,2687, 587, 18466, 381),
         new Music("Oriental" ,2880,9344,2943,9407, 103, 4377, 206),
         new Music("Out of the Deep" ,2496,9984,2559,10047, 322, 10132, 207),
+        new Music("Out of the Deep" ,2500,4626,2540,4665, 322, 10132, 207),
         new Music("Over to Nardah" ,3392,2880,3455,2943, 447, 15590, 208),
         new Music("Overpass" ,2304,3264,2367,3327, 256, 8573, 209),
         new Music("Overture" ,2688,3456,2751,3519, 7, 4378, 210),

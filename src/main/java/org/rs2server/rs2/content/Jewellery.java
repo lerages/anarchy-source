@@ -229,6 +229,12 @@ public class Jewellery {
 			player.getActionSender().sendMessage("A magical force stops you from teleporting.");
 			return;
 		}
+		
+		if(Location.getWildernessLevel(player, player.getLocation()) > 30)
+		{
+			player.getActionSender().sendMessage("You cannot teleport above level 30 wilderness.");
+			return;
+		}
 		player.getInstancedNPCs().clear();
 		Container con = operate ? player.getEquipment() : player.getInventory();
 		switch (gem) {			

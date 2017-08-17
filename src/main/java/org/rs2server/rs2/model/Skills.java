@@ -451,6 +451,10 @@ public class Skills {
      * @param exp   The experience to add.
      */
     public void addExperience(int skill, double exp) {
+    	boolean canAchieve = false;
+    	if(mob.getSkills().getExperience(skill) < 200000000)
+    		canAchieve = true;
+    	
 		if (mob.isPlayer()) {
 			Player player = (Player) mob;
 			if (player.getDatabaseEntity().getPlayerSettings().getLockedSkills().contains(skill)) {
@@ -480,6 +484,8 @@ public class Skills {
         }
         if (mob.getActionSender() != null) {
             mob.getActionSender().sendSkillLevel(skill);
+       if (canAchieve && mob.getSkills().getExperience(skill) >= 200000000) 
+    		World.getWorld().sendWorldMessage("<img=35><col=884422>News: " + ((Player) mob).getName() + " has just achieved 200 million experience in " + Skills.SKILL_NAME[skill] + ".");
         }
     }
 

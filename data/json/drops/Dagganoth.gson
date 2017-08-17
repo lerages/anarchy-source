@@ -1,7 +1,10 @@
 {
   "rolls": 1,
   "npcIdentifiers": [
-      970
+      970,
+	  973,
+	  2259,
+	  3185
   ],
   "staticDrops": [
     {

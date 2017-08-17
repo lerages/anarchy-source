@@ -193,15 +193,20 @@ public class NPCOptionPacketHandler implements PacketHandler {
 							ResourceArenaService resourceArenaService = Server.getInjector().getInstance(ResourceArenaService.class);
 							resourceArenaService.handleItemOnNPC(player, npc, item);
 							break;
-						case 403:
-							if (item.getId() == 11864) {
-								DialogueManager.openDialogue(player, 11864);
-							}
-							break;
 						case 1755:
 							if (item.getId() == 6731 || item.getId() == 6733 || item.getId() == 6735 || item.getId() == 6737) {
 								DialogueManager.openDialogue(player, 1755);
 								player.setInterfaceAttribute("ring", item.getId());
+							}
+							break;
+						case 401:
+						case 402:
+						case 403:
+						case 404:
+						case 6797:
+						case 405:
+							if (item.getId() == 11864) {
+								DialogueManager.openDialogue(player, 11864);
 							}
 							break;
 

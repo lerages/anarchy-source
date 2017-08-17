@@ -329,6 +329,19 @@
     <boundary>
         <name>MultiCombat</name>
         <bottomLeft>
+            <x>2500</x>
+            <y>4626</y>
+            <z>0</z>
+        </bottomLeft>
+        <topRight>
+            <x>2540</x>
+            <y>4665</y>
+            <z>0</z>
+        </topRight>
+    </boundary>
+	<boundary>
+        <name>MultiCombat</name>
+        <bottomLeft>
             <x>1410</x>
             <y>3688</y>
             <z>0</z>

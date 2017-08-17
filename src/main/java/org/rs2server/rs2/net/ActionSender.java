@@ -84,7 +84,7 @@ public class ActionSender {
     private static final Logger logger = LoggerFactory.getLogger(ActionSender.class);
 
     public static final String ADMINS[] = {"zero", "zaros", "nomac"};
-    public static final String MODERATORS[] = {"royal", "ice"};
+    public static final String MODERATORS[] = {"iron titan", "ice"};
 	public static final String HELPERS[] = {"", ""};
 	
 	//private static final PlayerVariable RIGOUR = PlayerVariable.of(5451);

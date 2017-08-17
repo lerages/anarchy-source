@@ -250,7 +250,7 @@ public abstract class AbstractCombatAction implements CombatAction {
 				{
 				case 2: //abberant spectre
 				case 7402:
-					if(p.getEquipment().contains(NOSE_PEG) || p.getEquipment().contains(SLAYER_HELM))
+					if(p.getEquipment().contains(NOSE_PEG) || p.getEquipment().contains(SLAYER_HELM) || p.getEquipment().contains(SLAYER_HELM_i))
 					{
 						
 					}
@@ -264,7 +264,7 @@ public abstract class AbstractCombatAction implements CombatAction {
 				case 423: //dust devil
 				case 498: //smoke devil
 				case 499: //thermo
-					if(p.getEquipment().contains(FACE_MASK) || p.getEquipment().contains(SLAYER_HELM))
+					if(p.getEquipment().contains(FACE_MASK) || p.getEquipment().contains(SLAYER_HELM) || p.getEquipment().contains(SLAYER_HELM_i))
 					{
 					}
 					else

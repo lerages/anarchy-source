@@ -23,7 +23,7 @@ private static Graphic levelUp = Graphic.create(199, 2);
 		DialogueManager.openDialogue(player, skill + 100);
 		player.getActionSender().sendMessage("Congratulations, you just advanced a " + Skills.SKILL_NAME[skill] + " level");
 		if (player.getSkills().getLevelForExperience(skill) >= 99) {
-			World.getWorld().sendWorldMessage("<img=32><col=0407a3>News: " + player.getName() + " has just achieved 99 " + Skills.SKILL_NAME[skill] + ".");
+			World.getWorld().sendWorldMessage("<img=35><col=884422>News: " + player.getName() + " has just achieved 99 " + Skills.SKILL_NAME[skill] + ".");
 		}
 	}
 

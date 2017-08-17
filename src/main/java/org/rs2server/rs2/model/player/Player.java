@@ -1715,6 +1715,11 @@ public class Player extends Mob implements Persistable
 		if (location == null) {
 			return;
 		}
+		if(Location.getWildernessLevel(this, getLocation()) > 20)
+		{
+			getActionSender().sendMessage("You can't use this teleport after level 20 wilderness.");
+			return;
+		}
 		if (getAttribute("stunned") != null) {
 			getActionSender().sendMessage("You're stunned!");
 			return;

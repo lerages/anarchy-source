@@ -69,9 +69,6 @@ public class MotherlodeMineServiceImpl implements MotherlodeMineService {
 	private static final Location PAY_DIRT_NPC_LOCATION = Location.create(3748, 5671, 0);
 	private static final Location PAY_DIRT_NPC_LOCATION_TARGET = PAY_DIRT_NPC_LOCATION.transform(0, -12, 0);
 
-	private static final Location LADDER_LOCATION_BOTTOM = Location.create(3755, 5672, 0);
-	private static final Location LADDER_LOCATION_TOP = Location.create(3755, 5674, 0);
-
 	private static final Location TUNNEL_LOCATION_EXIT = Location.create(3728, 5692);
 	private static final Location TUNNEL_LOCATION_ENTRANCE = Location.create(3059, 9766);
 
@@ -120,17 +117,9 @@ public class MotherlodeMineServiceImpl implements MotherlodeMineService {
 					break;
 
 				/* Ladder to second floor */
-				case 19044:
-					if (player.getSkills().getLevel(Skill.MINING.getId()) < 72) {
-						player.getActionSender().sendMessage("You need a mining level of 72 to mine at the upper level.");
-						break;
-					}
-					if (player.getLocation().getY() <= LADDER_LOCATION_BOTTOM.getY()) {
-						player.getActionQueue().addAction(new ClimbLadderAction(player, LADDER_LOCATION_TOP));
-					} else {
-						player.getActionQueue().addAction(new ClimbLadderAction(player, LADDER_LOCATION_BOTTOM));
-					}
-					break;
+				//case 19044:
+					
+					//break;
 
 				/* Sack */
 				case 26688:

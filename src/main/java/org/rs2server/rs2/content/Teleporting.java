@@ -41,7 +41,12 @@ public class Teleporting {
         if (mob.getAttribute("stunned") != null) {
             return false;
         }
-
+        
+        if(Location.getWildernessLevel((Player)mob, ((Player)mob).getLocation()) > 20)
+		{
+			mob.getActionSender().sendMessage("You can't use this teleport after level 20 wilderness.");
+		}
+        
 		if (BoundaryManager.isWithinBoundaryNoZ(mob.getLocation(), "ClanWarsFFAFull")) {
 			mob.getActionSender().sendMessage("You can't teleport from here, please use the portal to leave.");
 			return false;

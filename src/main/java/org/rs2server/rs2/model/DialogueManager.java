@@ -594,11 +594,22 @@ public class DialogueManager
 			break;
 		case 6991:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"I need another assignment.|Do you have anything for trade?|Other slayer masters.|Er...nothing...");
+					"I need another assignment.|Do you have anything for trade?|Other slayer masters.|Can you imbue slayer helmets?|Er...nothing...");
 			player.getInterfaceState().setNextDialogueId(0, 6992);
 			player.getInterfaceState().setNextDialogueId(1, 6993);
 			player.getInterfaceState().setNextDialogueId(2, 6994);
-			player.getInterfaceState().setNextDialogueId(3, 6995);
+			player.getInterfaceState().setNextDialogueId(3, 106995);
+			player.getInterfaceState().setNextDialogueId(4, 6995);
+			break;
+		case 106995:
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.HAPPY, 
+					"Could you imbue a slayer helmet to work with magic and ranged attacks?");
+			player.getInterfaceState().setNextDialogueId(0, 106996);
+			break;
+		case 106996:
+			player.getActionSender().sendDialogue(CacheNPCDefinition.get(player.getAttribute("talkingNpc")).getName(), DialogueType.NPC, player.getAttribute("talkingNpc"), FacialAnimation.DEFAULT, 
+					"Of course. Simply hand me a helmet and I'll make the necessary adjustments for you. You'll need an additional 400 slayer points, however.");
+			player.getInterfaceState().setNextDialogueId(0, -1);
 			break;
 		case 6992:
 			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, "I need another assignment.");
@@ -818,11 +829,12 @@ public class DialogueManager
 			break;
 		case 757586:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"Smoke Dungeon|Asgarnia Ice Dungeon|Abyssal Area|Mourner Tunnels");
+					"Smoke Dungeon|Asgarnia Ice Dungeon|Abyssal Area|Mourner Tunnels|Dagannoths");
 			player.getInterfaceState().setNextDialogueId(0, 757587);
 			player.getInterfaceState().setNextDialogueId(1, 757588);
 			player.getInterfaceState().setNextDialogueId(2, 757589);
 			player.getInterfaceState().setNextDialogueId(3, 757590);
+			player.getInterfaceState().setNextDialogueId(4, 757591);
 			break;
 		case 757587:
 			player.teleport(Constants.SMOKE_DUNGEON, 0, 0, true);
@@ -838,6 +850,20 @@ public class DialogueManager
 			break;
 		case 757590:
 			player.teleport(Constants.MOURNER_TUNNELS, 0, 0, true);
+			player.getActionSender().removeChatboxInterface();
+			break;
+		case 757591:
+			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"Lighthouse Dungeon dagannoths (multi)|Waterbirth Isle dagannoths (single)");
+			player.getInterfaceState().setNextDialogueId(0, 757592);
+			player.getInterfaceState().setNextDialogueId(1, 757593);
+			break;
+		case 757592:
+			player.teleport(Constants.LIGHTHOUSE_DUNGEON, 0, 0, true);
+			player.getActionSender().removeChatboxInterface();
+			break;
+		case 757593:
+			player.teleport(Constants.WATERBIRTH_DUNGEON, 0, 0, true);
 			player.getActionSender().removeChatboxInterface();
 			break;
 		case 75:
@@ -4059,34 +4085,32 @@ public class DialogueManager
 			player.getActionSender().sendMessage("You sell all your emblems for " + NumberFormat.getNumberInstance(Locale.ENGLISH).format(addedPoints) + " Bounties.");
 			break;
 
-		case 11864:
-			player.getActionSender().sendDialogue(
-					CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
-					player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.DEFAULT,
-					"Would you like to upgrade your Slayer helm for 250 Slayer Points?");
+		case 11865:
+			player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE, 11864, null, 
+					"The slayer master will imbue your helmet for you for 400 slayer points. Would you like them to?");//6603 20251
 			player.getInterfaceState().setNextDialogueId(0, 11865);
 			break;
-		case 11865:
-			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"Yes|No.");
+		case 11864:
+			player.getActionSender().sendDialogue("Select an option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"Have the master imbue your slayer helmet|Nevermind.");
 			player.getInterfaceState().setNextDialogueId(0, 11866);
 			player.getInterfaceState().setNextDialogueId(1, -1);
 			break;
 		case 11866:
 			int points = player.getDatabaseEntity().getStatistics().getSlayerRewardPoints();
-			if (points < 250) {
-				player.getActionSender().sendDialogue(
-						CacheNPCDefinition.get(player.getSlayer().getSlayerTask().getMaster().getId()).getName(), DialogueType.NPC, 
-						player.getSlayer().getSlayerTask().getMaster().getId(), FacialAnimation.DEFAULT,
-						"You don't have enough points to complete this.");
+			if (points < 400) {
+				player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE, -1, null,
+						"You need 400 slayer points to imbue your slayer helmet.");
 				player.getInterfaceState().setNextDialogueId(0, -1);
 			} else {
 				player.getActionSender().removeChatboxInterface();
 				if (player.getInventory().hasItem(new Item(11864))) {
 					player.getInventory().remove(new Item(11864));
 					player.getInventory().add(new Item(11865));
-					player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(points - 250);
-					player.getActionSender().sendMessage("You upgrade your Slayer helm for 250 Slayer reward points.");
+					player.getDatabaseEntity().getStatistics().setSlayerRewardPoints(points - 400);
+					player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE_MODEL_LEFT, 11865, null, 
+							"The slayer master imbues your helmet and hands it back to you; its effect will now pertain to magic and ranged attacks on slayer targets");//6603 20251
+					player.getInterfaceState().setNextDialogueId(1, -1);
 				}
 			}
 			break;

@@ -535,6 +535,12 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                     case 21738:
                         player.setTeleportTarget(Location.create(2647, 9557, 0));
                         break;
+                    case 4485:
+                    	player.setTeleportTarget(Location.create(2515, 4632, 0));
+                    	break;
+                    case 4413:
+                    player.getActionQueue().addAction(new ClimbLadderAction(player, Location.create(2515, 4629, 1)));
+                    	break;
                     case 1579: //edgeville dungeon trapdoor
                         player.setAttribute("busy", true);
                         player.playAnimation(Animation.create(827));
@@ -1504,10 +1510,24 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                         player.setTeleportTarget(Location.create(3137, 3516));
                         player.playAnimation(Animation.create(2591));
                         break;
-//						case 19044:
-//							player.playAnimation(Animation.create(828));
-//							player.setTeleportTarget(Location.create(3755, 5675));
-//							break;
+                    case 19044:
+                    	final Location LADDER_LOCATION_BOTTOM = Location.create(3755, 5672, 0);
+                    	final Location LADDER_LOCATION_TOP = Location.create(3755, 5675, 0);
+                    	
+                    	if (player.getSkills().getLevel(Skill.MINING.getId()) < 72) {
+    						player.getActionSender().sendMessage("You need a mining level of 72 to mine at the upper level.");
+    						break;
+    					}
+    					
+    					if (player.getLocation().getY() > 5674){
+    						player.setTeleportTarget(LADDER_LOCATION_BOTTOM);
+    					} else if (player.getLocation().getY() < 5674) {
+    						player.getActionQueue().addAction(new ClimbLadderAction(player, LADDER_LOCATION_TOP));
+    					} else {
+    						player.sendMessage("invalid");
+    					}
+                    	break;
+                    	
                     case 2623:
                         int xOff = 0;
                         yOff = 0;
@@ -2353,6 +2373,40 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                     }
                 }
                 if (obj.getDefinition().getName().equalsIgnoreCase("Anvil")) {
+                	if(item.getId() == 2366 || item.getId() == 2368)
+                	{
+                		if(player.getInventory().hasItem(new Item(2366)) && player.getInventory().hasItem(new Item(2368)))
+                		{
+                			if(player.getSkills().getLevel(Skills.SMITHING) > 60)
+                			{
+                				if(player.getInventory().contains(2347))
+                				{
+                				player.playAnimation(Animation.create(898));
+                				player.setAttribute("busy", true);
+                				World.getWorld().submit(new Tickable(1) {
+                                    @Override
+                                    public void execute() {
+                                        this.stop();
+                                        player.playAnimation(Animation.create(898));
+                                        player.getInventory().remove(new Item(2366));
+                             			player.getInventory().remove(new Item(2368));
+                             			player.getInventory().add(new Item(1187));
+                             			player.getSkills().addExperience(Skills.SMITHING, 75);
+                                        player.removeAttribute("busy");
+                                        player.sendMessage("You have restored the dragon square shield to its former glory.");
+                                     }
+
+                                 });
+                				} 
+                				else
+                				{
+                					player.sendMessage("You need a hammer to smith this.");
+                				}
+                			} else {
+                				player.sendMessage("You need a smithing level of 60 to do this.");
+                			}                			
+                		}
+                	}
                     ForgingBar bar = ForgingBar.forId(item.getId());
                     if (bar != null) {
                         Smithing.openSmithingInterface(player, bar);

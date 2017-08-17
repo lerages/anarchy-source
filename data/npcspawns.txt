@@ -280,6 +280,42 @@
 6095 2468 3458 0 SOUTH true //gnome
 6094 2464 3454 0 SOUTH true //gnome
 
+//lighthouse dagannoths
+970 2515 4638 0 WEST true //dagannoth
+973 2519 4639 0 SOUTH true //dagannoth
+970 2523 4637 0 EAST true //dagannoth
+973 2521 4643 0 NORTH true //dagannoth
+973 2517 4644 0 SOUTH_EAST true //dagannoth
+970 2513 4642 0 SOUTH_WEST true //dagannoth
+970 2516 4648 0 WEST true //dagannoth
+973 2520 4646 0 SOUTH true //dagannoth
+970 2524 4644 0 EAST true //dagannoth
+973 2531 4646 0 NORTH true //dagannoth
+973 2535 4648 0 SOUTH_EAST true //dagannoth
+970 2534 4652 0 SOUTH_WEST true //dagannoth
+970 2530 4654 0 WEST true //dagannoth
+973 2527 4655 0 SOUTH true //dagannoth
+970 2525 4654 0 EAST true //dagannoth
+973 2521 4656 0 NORTH true //dagannoth
+973 2517 4651 0 SOUTH_EAST true //dagannoth
+970 2513 4654 0 SOUTH_WEST true //dagannoth
+
+//waterbirth dagannoths
+2259 2449 10146 0 WEST true //dagannoth
+3185 2453 10152 0 SOUTH true //dagannoth
+2259 2458 10147 0 EAST true //dagannoth
+3185 2457 10155 0 NORTH true //dagannoth
+3185 2464 10162 0 SOUTH_EAST true //dagannoth
+2259 2454 10160 0 SOUTH_WEST true //dagannoth
+2259 2477 10151 0 WEST true //dagannoth
+3185 2485 10154 0 SOUTH true //dagannoth
+2259 2486 10147 0 EAST true //dagannoth
+3185 2488 10138 0 NORTH true //dagannoth
+3185 2487 10129 0 SOUTH_EAST true //dagannoth
+2259 2471 10134 0 SOUTH_WEST true //dagannoth
+2259 2459 10133 0 WEST true //dagannoth
+3185 2456 10142 0 SOUTH true //dagannoth
+
 //edge hill giants
 2098 3111 9835 0 SOUTH true //hillgiant
 2098 3110 9837 0 SOUTH true //hillgiant
