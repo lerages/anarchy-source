@@ -827,6 +827,29 @@ public class NPCOptionPacketHandler implements PacketHandler {
 					case 7374:
 						Shop.open(player, 22, 0);
 						break;
+					case 6092: //last teleport
+						//TeleportManager.handleTeleport(player);
+						boolean donator = permissionService.is(player, PermissionService.PlayerPermissions.DONATOR);
+						if(donator || !donator && player.getInventory().getCount(995) >= 10000)
+						{
+							if(player.getSettings().getLastLocation() !=null)
+							{
+								player.teleport(player.getSettings().getLastLocation(), 0, 0, true);
+								if(!donator)
+								{
+									player.getInventory().remove(new Item(995, 10000));
+									player.sendMessage("The gnome glider charges you 10,000 coins to take you to your previous destination.");
+								}
+								else if(donator)
+									player.sendMessage("The gnome glider takes you to your previous destination for free.");
+							} else {
+								player.sendMessage("You don't have a previous location that you can teleport to.");
+							}
+						
+						} else {
+							player.sendMessage("You need 10,000 coins to teleport to your previous location.");
+						}
+						break;
 					case 1306:
 						DialogueManager.openDialogue(player, 1458);
 						break;

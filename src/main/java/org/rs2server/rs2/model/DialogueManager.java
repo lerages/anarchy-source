@@ -1455,6 +1455,48 @@ public class DialogueManager
 				player.getInterfaceState().setNextDialogueId(0, 1604);
 			}
 			break;
+		case 2414:
+			player.getActionSender().sendDialogue("Kolodion", DialogueType.NPC, 1603, FacialAnimation.HAPPY, 
+					"Impressive work in the arena, mage. As a reward I will grant you a staff infused with the power of one of the Gods. Which will you use?");
+			player.getInterfaceState().setNextDialogueId(0, 2415);
+			break;
+		case 2415:
+			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"Saradomin Staff|Guthix Staff|Zamorak Staff");
+			player.getInterfaceState().setNextDialogueId(0, 2416);
+			player.getInterfaceState().setNextDialogueId(1, 2417);
+			player.getInterfaceState().setNextDialogueId(2, 2418);
+			break;
+		case 2416:
+			if(player.getInventory().freeSlots() > 0)
+				player.getInventory().add(new Item(2415));
+			else
+			World.getWorld().createGroundItem(new GroundItem(player.getName(), new Item(2415), Location.create(player.getLocation().getX(), player.getLocation().getY())),
+						player);
+			player.getActionSender().sendDialogue("Kolodion", DialogueType.NPC, 1603, FacialAnimation.HAPPY, 
+					"You have chosen the Saradomin Staff. A wise choice.");
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 2417:
+			if(player.getInventory().freeSlots() > 0)
+				player.getInventory().add(new Item(2416));
+			else
+			World.getWorld().createGroundItem(new GroundItem(player.getName(), new Item(2416), Location.create(player.getLocation().getX(), player.getLocation().getY())),
+						player);
+			player.getActionSender().sendDialogue("Kolodion", DialogueType.NPC, 1603, FacialAnimation.HAPPY, 
+					"You have chosen the Guthix Staff. A wise choice.");
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 2418:
+			if(player.getInventory().freeSlots() > 0)
+				player.getInventory().add(new Item(2417));
+			else
+			World.getWorld().createGroundItem(new GroundItem(player.getName(), new Item(2417), Location.create(player.getLocation().getX(), player.getLocation().getY())),
+						player);
+			player.getActionSender().sendDialogue("Kolodion", DialogueType.NPC, 1603, FacialAnimation.HAPPY, 
+					"You have chosen the Zamorak Staff. A wise choice.");
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
 		case 1604:
 			player.getActionSender().sendDialogue("Kolodion", DialogueType.NPC, 1603, FacialAnimation.HAPPY, "I am the great Kolodion, master of battle magic, and<br>this is my battle arena. Top wizards travel from all over<br>Survival to fight here.");
 			player.getInterfaceState().setNextDialogueId(0, 1605);

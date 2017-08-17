@@ -147,7 +147,7 @@ public class SlayerServiceImpl implements SlayerService {
     public void onTaskKill(@Nonnull Player player, @Nonnull NPC npc) {
         final SlayerTask task = player.getSlayer().getSlayerTask();
         double slayerXp = npc.getSkills().getLevel(Skills.HITPOINTS);
-        int superiorChance = Misc.random(199);
+        int superiorChance =  player.getPerks()[3].isOwned() ? Misc.random(49) : Misc.random(199);
         if(slayerXp == 0)
         	slayerXp = task.getXPAmount();
         player.getSkills().addExperience(Skills.SLAYER, slayerXp); //HOTFIX SLAYER ----
@@ -377,21 +377,19 @@ public class SlayerServiceImpl implements SlayerService {
     public void openSlayerLog(@Nonnull Player player) {
         Map<Integer, Integer> kills = player.getDatabaseEntity().getStatistics().getSlayerMonsterKillCount();
 
-        List<String> names = kills.keySet().stream().map(i -> {
-            CacheNPCDefinition def = CacheNPCDefinition.get(i);
-            return def != null ? def.getName() : "";
-        }).collect(toList());
+       List<String> names = kills.keySet().stream().map(i -> {
+           CacheNPCDefinition def = CacheNPCDefinition.get(i);
+           return def != null ? def.getName() : "null";
+       }).collect(toList());
 
-        StringBuilder idBreak = new StringBuilder();
-        kills.keySet().forEach(i -> idBreak.append(kills.get(i)).append("<br>"));
+       StringBuilder idBreak = new StringBuilder();
+       kills.keySet().forEach(i -> idBreak.append(kills.get(i)).append("<br>"));
 
-        StringBuilder namesBreak = new StringBuilder();
+       StringBuilder namesBreak = new StringBuilder();
         names.forEach(n -> namesBreak.append(n).append("<br>"));
 
-        player.getActionSender().sendCS2Script(917, new Object[]{200, 0}, "ii").sendCS2Script(404, new Object[] {
-                        idBreak.toString(),
-                        namesBreak.toString()
-                }, "ss").sendInterface(187, false);
+      //player.getActionSender().sendCS2Script(917, new Object[]{200, 0}, "ii")
+      //.sendCS2Script(404, new Object[] {idBreak.toString(), namesBreak.toString()}, "ss").sendInterface(187, false);
     }
 
     @Override
@@ -424,8 +422,8 @@ public class SlayerServiceImpl implements SlayerService {
 
 	@Override
 		public void cancelTask(@Nonnull final Player player, boolean deductPoints) {
-	        int deduction = permissionService.is(player, PermissionService.PlayerPermissions.DONATOR) ? 15 : 30;
-			if (deductPoints && player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() < 30) {
+	        int deduction =  player.getPerks()[4].isOwned() ? 10 : 30;
+			if (deductPoints && player.getDatabaseEntity().getStatistics().getSlayerRewardPoints() < deduction) {
 				player.sendMessage("You do not have enough points to reset your task.");
 				return;
 			}

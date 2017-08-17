@@ -17,6 +17,7 @@ public class Settings {
 	 */
 	private boolean swapping = true;
 
+	private Location last_location = null;
 	/**
 	 * The player's brightness setting.
 	 */
@@ -147,7 +148,16 @@ public class Settings {
 	public void setTwoMouseButtons(boolean twoMouseButtons) {
 		this.twoMouseButtons = twoMouseButtons;
 	}
-
+	
+	public void setLastLocation(Location last_location)
+	{
+		this.last_location = last_location;
+	}
+	
+	public Location getLastLocation()
+	{
+		return last_location;
+	}
 	/**
 	 * @return the chatEffects
 	 */

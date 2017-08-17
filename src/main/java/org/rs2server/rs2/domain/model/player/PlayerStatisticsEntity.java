@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.joda.time.Duration;
 import org.rs2server.rs2.domain.dao.MongoEntity;
 import org.rs2server.rs2.domain.model.player.treasuretrail.clue.ClueScrollType;
+import org.rs2server.rs2.model.Location;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ class PlayerStatisticsEntity extends MongoEntity {
 	 * The overall player kill count.
 	 */
 	private int playerKillCount;
-
+	
 	/**
 	 * The overall Barrows run count.
 	 */
@@ -83,7 +84,7 @@ class PlayerStatisticsEntity extends MongoEntity {
 	public int getPlayerKillCount() {
 		return playerKillCount;
 	}
-
+	
 	public void setPlayerKillCount(int playerKillCount) {
 		this.playerKillCount = playerKillCount;
 	}

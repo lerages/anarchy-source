@@ -58,6 +58,7 @@ import org.rs2server.rs2.model.npc.NPC;
 import org.rs2server.rs2.model.npc.NPCLoot;
 import org.rs2server.rs2.model.npc.NPCLootTable;
 import org.rs2server.rs2.model.npc.Pet;
+import org.rs2server.rs2.model.player.Perk;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.model.player.RequestManager;
 import org.rs2server.rs2.model.quests.impl.CooksAssistant;
@@ -186,6 +187,80 @@ public class CommandPacketHandler implements PacketHandler {
 		//	}
 	//	}
 		
+		if(command.startsWith("commands"))
+		{
+				final List<String> commands = new ArrayList<>();
+				commands.add("::players");
+				commands.add("::lock skillName");
+				commands.add("::unlock skillName");
+				commands.add("::perks");
+				commands.add("::viewperks targetPlayerName");
+				commands.add("::changepass newPassword");
+				commands.add("::blocktask");
+				commands.add("::unblockslot slotNumber");
+				commands.add("::donaterewards");
+				player.getActionSender().sendTextListInterface("<u>OS-Anarchy Commands</u>",
+						commands.toArray(new String[commands.size()]));
+		}
+		
+		
+		if(command.startsWith("donaterewards"))
+		{
+				final List<String> text = new ArrayList<>();
+				text.add("When you donate to OS-Anarchy, you can choose a perk of equal");
+				text.add("value to the amount that you donated.The perk will be added to your");
+				text.add("account and you will instantly start gaining its benefits. Additionally");
+				text.add("the total amount that you have donated is saved to your account.");
+				text.add("");
+				text.add("Once you have donated at least $20 you receive additional benefits");
+				text.add(" for free along with any perks you currently have:");
+				text.add("- Instant home teleport spell");
+				text.add("- No cost for using bones on the altar in Edgeville");
+				text.add("- No cost for having Bob Barter decant potions");
+				text.add("- No cost for using 'Last-teleport'");
+				player.getActionSender().sendTextListInterface("<u>OS-Anarchy Donator Rewards</u>",
+						text.toArray(new String[text.size()]));
+		}
+		
+		if(command.startsWith("viewperks"))
+		{
+			final String playerName = NameUtils.formatName(args[1]);
+			final Player foundPlayer = playerService.getPlayer(playerName);
+			if(foundPlayer != null)
+			{
+				final List<String> perks = new ArrayList<>();
+				for (final Perk perk : foundPlayer.getPerks()) 
+				{
+					if (perk != null && perk.isOwned() == true)
+					{	
+						perks.add("");
+						perks.add("<u>" + perk.getName() + "</u>");
+						perks.add(perk.getDescription());
+					}
+				}
+				player.getActionSender().sendTextListInterface("<u>" + foundPlayer.getName() + "'s Perks</u>",
+						perks.toArray(new String[perks.size()]));
+			} else {
+				player.sendMessage(playerName + " could not be found. Either they are offline or do not exist.");
+			}
+		}
+		
+		if(command.startsWith("perks"))
+		{
+			final List<String> perks = new ArrayList<>();
+			
+			for (final Perk perk : player.getPerks()) 
+			{
+				if (perk != null && perk.isOwned() == true)
+				{	
+					perks.add("");
+					perks.add("<u>" + perk.getName() + "</u>");
+					perks.add(perk.getDescription());
+				}
+			}
+			player.getActionSender().sendTextListInterface("<u>Perks</u>",
+					perks.toArray(new String[perks.size()]));
+		}
 		if(command.startsWith("down"))
 		{
 			if(player.getLocation().getX() == 3755 && player.getLocation().getY() == 5675)
@@ -412,6 +487,12 @@ public class CommandPacketHandler implements PacketHandler {
 		 * player.sendMessage(Arrays.toString(player.getDatabaseEntity().getPermissions(
 		 * ).toArray())); }
 		 */
+		
+		 if (commandString.equalsIgnoreCase("pcommands")) 
+		 {
+		 }
+			
+		 
 		if (command.equals("changepass")) {
 			if (!player.isEnteredPinOnce() && player.getDatabaseEntity().getPlayerSettings().isBankSecured()) {
 				player.getActionSender()
@@ -1245,11 +1326,12 @@ public class CommandPacketHandler implements PacketHandler {
 		if (command.equals("simdrops")) { // my baby
 			int npcId = Integer.parseInt(args[1]);
 			int kills = Integer.parseInt(args[2]);
-			if (kills > 25565) {
-				player.sendMessage("You can only simulate up to 10,000 kills.");
+			if (kills > 50000) {
+				player.sendMessage("You can only simulate up to 50,000 kills.");
 				return;
 			}
 			// MAKE IT CLOSE INTERFACE OR RETURN IF AN INTERFACE IS OPEN AT LEAST
+			player.getActionSender().closeAll();
 			for (int i = 0; i < kills; i++) {
 				try {
 					for (final NPCLoot loot : NPCLootTable.forID(npcId).getGeneratedLoot(1.0)) {
@@ -1390,6 +1472,49 @@ public class CommandPacketHandler implements PacketHandler {
 		}
 		
 		//player, administrator, moderator, iron_man, ultimate_iron_man, hardcore_iron_man
+		
+		if(command.equals("giveperk"))
+		{
+			final String playerName = NameUtils.formatName(args[1]);
+			int id = Integer.parseInt(args[2]);
+			
+			final Player target = playerService.getPlayer(playerName);
+			Perk perk = target.getPerks()[id];
+			if(target != null)
+			{
+				if(!perk.isOwned())
+				{
+					perk.givePerk();
+					player.getDatabaseEntity().setOwnedPerks(id, true);
+					target.sendMessage("You now own " + NameUtils.formatName(perk.getName()));
+					player.sendMessage(target.getName() + " now owns " + NameUtils.formatName(perk.getName()));	
+				} else {
+					player.sendMessage("That player already owns " + NameUtils.formatName(perk.getName()));
+				}
+			}
+		}
+		
+		if(command.equals("removeperk"))
+		{
+			final String playerName = NameUtils.formatName(args[1]);
+			int id = Integer.parseInt(args[2]);
+			
+			final Player target = playerService.getPlayer(playerName);
+			Perk perk = target.getPerks()[id];
+			if(target != null)
+			{
+				if(perk.isOwned())
+				{
+					perk.removePerk();
+					player.getDatabaseEntity().setOwnedPerks(id, false);
+					target.sendMessage("You no longer own " + NameUtils.formatName(perk.getName()));
+					player.sendMessage(target.getName() + " no longer owns " + NameUtils.formatName(perk.getName()));	
+				} else {
+					player.sendMessage("That player doesn't own " + NameUtils.formatName(perk.getName()));
+				}
+			}
+		}
+		
 		if (command.equals("givepermission")) {
 			final String playerName = NameUtils.formatName(args[1]);
 			final String permissionName = args[2];
@@ -1622,6 +1747,7 @@ public class CommandPacketHandler implements PacketHandler {
 			player.getDatabaseEntity().getPlayerSettings().setBankPinDigit4(d4);
 			player.getDatabaseEntity().getPlayerSettings().setBankSecured(true);
 		}
+		
 		if (command.startsWith("setlvl")) {// && (player.getName().toLowerCase().equals("canine") ||
 											// player.getName().toLowerCase().equals("deer low"))) {
 			// if (BoundaryManager.isWithinBoundaryNoZ(player.getLocation(),

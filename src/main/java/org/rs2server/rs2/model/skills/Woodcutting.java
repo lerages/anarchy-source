@@ -410,12 +410,13 @@ public class Woodcutting extends HarvestingAction {
 
 	@Override
 	public double getExperience() {
+		if (!getMob().isPlayer()) {
+		}
+		Player player = (Player) getMob();
 		int random = Misc.random(tree.getPetRate());
 		if (random == 0) {
 			Pet.Pets pets = Pet.Pets.BEAVER;
-			if (!getMob().isPlayer()) {
-			}
-			Player player = (Player) getMob();
+			
 			if (player.getPet() != null) {
 				return tree.getExperience();
 			} else {
@@ -428,6 +429,12 @@ public class Woodcutting extends HarvestingAction {
 				World.getWorld().sendWorldMessage("<col=884422><img=33>  News: " + player.getName() + " has just received a beaver pet!");
 				return tree.getExperience();
 			}
+		}
+		if(player.getPerks()[9].isOwned() && Misc.random(9) == 0)
+		{
+			player.getInventory().add(new Item(tree.getLogId(), 1));
+			player.getSkills().addExperience(Skills.MINING, tree.getExperience());
+			player.sendMessage("You manage to cut an additional log.");
 		}
 		return tree.getExperience();
 	}

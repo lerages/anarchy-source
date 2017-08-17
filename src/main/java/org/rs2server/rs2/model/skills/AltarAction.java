@@ -67,7 +67,7 @@ public class AltarAction extends ProductionAction
         LAVA_DRAGON_BONES(11943, 85),
         WOLF_BONES(2859, 4),
         JOGRE_BONES(3125, 15),
-        DAGANNOTH_BONES(6729, 72),
+        DAGANNOTH_BONES(6729, 125),
         WYVERN_BONES(6812, 72),
         SHAIKAHAN_BONES(3123, 25),
         OURG_BONES(4834, 140);

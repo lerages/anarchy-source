@@ -269,6 +269,20 @@ public class Player extends Mob implements Persistable
 	 * The last date that the players recovery questions were set.
 	 */
 	private String recoveryQuestionsLastSet = "never";
+	
+	private Perk perks[] = {
+			new Perk("Lazy Bones", "Dragon and Dagannoth bone drops are noted", 7.50, false),
+			new Perk("No Holds Barred", "Metal dragons bar drops are noted.", 5, false),
+			new Perk("Gold Digger", "Coin drops are sent directly to your bank", 5, false), 
+			new Perk("Superior Orders", "Superior slayer monsters are 4x more likely to appear.", 7.50, false),
+			new Perk("Slayer Betrayer", "Cancelling slayer tasks costs 10 slayer points", 7.50, false),
+			new Perk("Teacher's Pet", "Skilling pets rates are twice as common", 5, false),
+			new Perk("Good Graces", "Increased chance at Marks of Grace from rooftop courses", 3, false),
+			new Perk("Five Finger Dicount", "10% increased chance of successful thieving", 3, false),
+			new Perk("More Ore", "10% chance of receiving double ore while mining", 5, false),
+			new Perk("Chop Shop", "10% chance of receiving double logs while woodcutting", 5, false),
+			new Perk("Fish Wish", "10% chance of receiving double fish while fishing", 5, false),
+			};
 
 	/**
 	 * The last logged in time.
@@ -870,7 +884,12 @@ public class Player extends Mob implements Persistable
 	public PlayerDetails getDetails() {
 		return details;
 	}
-
+	
+	public Perk[] getPerks()
+	{
+		return perks;
+	}
+	
 	/**
 	 * Gets two containers, one being the items you keep on death, and the
 	 * second being the lost items.
@@ -1816,6 +1835,8 @@ public class Player extends Mob implements Persistable
 		playGraphics(Graphic.create(gfx, 48, getCombatState().getSpellBook() == MagicCombatAction.SpellBook.ANCIENT_MAGICKS.getSpellBookId() ? 0 : 100));//48  0 : 100
 		Random r = new Random();
 		setCanBeDamaged(false);
+		if(npcTeleport)
+		settings.setLastLocation(location);
 		World.getWorld().submit(new Tickable(ticks) {
 			public void execute() {
 				resetInteractingEntity();
@@ -2163,7 +2184,7 @@ public class Player extends Mob implements Persistable
 		if (buf.hasRemaining() && buf.get() == 1) {
 			getSettings().setCompletedMageArena(true);
 		}
-
+		
 		if (buf.remaining() >= 2) {
 			buf.get();
 			buf.get();

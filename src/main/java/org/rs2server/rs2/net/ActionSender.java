@@ -220,7 +220,14 @@ public class ActionSender {
 				permissionService.give(player, PermissionService.PlayerPermissions.HELPER);
 			}
 		}
-		
+	
+		for(int i = 0; i < player.getDatabaseEntity().getOwnedPerks().length; i++)
+		{
+			if(player.getDatabaseEntity().getOwnedPerks()[i] == true)
+			{
+				player.getPerks()[i].givePerk();
+			}
+		}
         sendMapRegion();
 		player.setActive(true);
         player.setAttribute("transparentChat", false);

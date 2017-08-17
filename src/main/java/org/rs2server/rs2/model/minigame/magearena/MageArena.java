@@ -1,6 +1,8 @@
 package org.rs2server.rs2.model.minigame.magearena;
 
 import com.google.common.collect.Iterables;
+
+import org.rs2server.rs2.model.DialogueManager;
 import org.rs2server.rs2.model.Location;
 import org.rs2server.rs2.model.World;
 import org.rs2server.rs2.model.npc.NPC;
@@ -93,6 +95,7 @@ public class MageArena {
 						startTime = -1;
 						IN_ARENA.remove(player);
 						started = false;
+						DialogueManager.openDialogue(player, 2414);
 					} else {
 						wave.set(wave.getStage() + 1);
 						startTime = 3;

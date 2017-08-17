@@ -460,6 +460,30 @@ public class NPC extends Mob {
 //                        item.setId(537);
 //                    }
                     
+					if(player.getPerks()[1].isOwned())
+					{
+						if(this.getId() == 270 || this.getId() == 272 || this.getId() == 274)
+						{
+							if(item.getId() == 2349 || item.getId() == 2351 || item.getId() == 2353)
+								item.setId(item.getId() + 1);
+						}
+					}
+					
+					if(player.getPerks()[2].isOwned())
+					{
+						if(item.getId() == 995)
+						{
+							player.getBank().add(new Item(item.getId(), Misc.random(loot.getMinAmount(), loot.getMaxAmount())));
+							player.sendMessage("coins added to bank");
+							continue;
+						}
+					}
+					
+					if(player.getPerks()[0].isOwned())
+					{
+						if(item.getId() == 536 || item.getId() == 6729 || item.getId() == 4384)
+						item.setId(item.getId() + 1);
+					}
                     //BONECRUSHER
                     if(player.getInventory().contains(13116))
                     {
@@ -482,6 +506,7 @@ public class NPC extends Mob {
                     
                     for(int i = 0; i < rare_drops.length; i++)
                     {
+                    
                     if (item.getDefinition() != null && loot.getItemID() == rare_drops[i] || isBossNPC(this.getId()) || (item.getDefinition2().getName() != null && item.getDefinition2().getName().toLowerCase().contains("clue"))) {
                         CacheItemDefinition def = CacheItemDefinition.get(item.getId());
 						if (def == null) {

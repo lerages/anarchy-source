@@ -973,6 +973,7 @@ public class ActionButtonPacketHandler implements PacketHandler {
                     case 53:
                         player.getDropdown().setSelectedSkill(childButton - 1);
                         break;
+                        
                     case 54:
                         player.getDropdown().setExperienceBarSkill(childButton - 1);
                         break;

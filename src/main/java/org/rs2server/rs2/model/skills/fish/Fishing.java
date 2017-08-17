@@ -146,6 +146,14 @@ public class Fishing extends SkillAction {
 		player.getSkills().addExperience(Skills.FISHING, fishingSpot.getHarvest()[harvestId].getXp());
 		player.getSkills().addExperience(Skills.STRENGTH, fishingSpot.getHarvest()[harvestId].getBarbXp());
 		player.getSkills().addExperience(Skills.AGILITY, fishingSpot.getHarvest()[harvestId].getBarbXp());
+		if(player.getPerks()[10].isOwned() && Misc.random(9) == 0)
+		{
+			player.getInventory().add(new Item(fishingSpot.getHarvest()[harvestId].getId(), 1));
+			player.getSkills().addExperience(Skills.FISHING, fishingSpot.getHarvest()[harvestId].getXp());
+			player.getSkills().addExperience(Skills.STRENGTH, fishingSpot.getHarvest()[harvestId].getBarbXp());
+			player.getSkills().addExperience(Skills.AGILITY, fishingSpot.getHarvest()[harvestId].getBarbXp());
+			player.sendMessage("You manage to catch an additional fish.");
+		}
 		
 		//if (fishingSpot == fishingSpot.BARBFISH) {
 		//	player.getSkills().addExperience(Skills.STRENGTH, 500);

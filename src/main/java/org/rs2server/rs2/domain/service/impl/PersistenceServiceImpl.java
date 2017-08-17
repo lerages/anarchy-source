@@ -58,7 +58,12 @@ public class PersistenceServiceImpl implements PersistenceService {
 		playerEntity.setLocationX(player.getLocation().getX());
 		playerEntity.setLocationY(player.getLocation().getY());
 		playerEntity.setLocationZ(player.getLocation().getZ());
-
+		
+		for(int i = 0; i < playerEntity.getOwnedPerks().length; i++)
+		{
+			playerEntity.setOwnedPerks(i, playerEntity.getOwnedPerks()[i]);
+		}
+		
 		playerEntity.setPermissions(EnumSet.of(PermissionService.PlayerPermissions.PLAYER, PermissionService.PlayerPermissions.of(player.getDetails().getForumRights())));
 		return playerEntityDao.save(playerEntity);
 	}
@@ -97,7 +102,10 @@ public class PersistenceServiceImpl implements PersistenceService {
 		entity.setLocationX(player.getLocation().getX());
 		entity.setLocationY(player.getLocation().getY());
 		entity.setLocationZ(player.getLocation().getZ());
-
+		for(int i = 0; i < entity.getOwnedPerks().length; i++)
+		{
+			entity.setOwnedPerks(i, entity.getOwnedPerks()[i]);
+		}
 		playerEntityDao.save(entity);
 		System.out.println("Saved player {"+ entity.getAccountName() +"} with display name {"+ entity.getDisplayName() + "}");
 		return entity;
@@ -167,7 +175,12 @@ public class PersistenceServiceImpl implements PersistenceService {
 		if (player.getDetails().getForumRights() == 19) {
 			permissionService.give(player, PermissionService.PlayerPermissions.SPONSOR);
 		}*/
-
+		
+		for(int i = 0; i < playerEntity.getOwnedPerks().length; i++)
+		{
+			playerEntity.setOwnedPerks(i, playerEntity.getOwnedPerks()[i]);
+		}
+		
 		PlayerStatisticsEntity statistics = Helpers.fallback(playerEntity.getStatistics(), new PlayerStatisticsEntity());
 		if (statistics.getBossKillCount() == null) {
 			statistics.setBossKillCount(new HashMap<>());

@@ -74,6 +74,8 @@ class PlayerEntity extends MongoEntity {
 	private PlayerBankEntity bank;
 
 	private PlayerTreasureTrail treasureTrail;
+	
+	private boolean ownedPerks[] = {false, false, false, false, false, false, false, false, false, false, false};
 
 	private PlayerEquipmentEntity equipment;
 	private PlayerBountyHunterEntity bountyHunter;
@@ -84,11 +86,20 @@ class PlayerEntity extends MongoEntity {
 	private Map<RunecraftingService.PouchType, Integer> runePouches;
 
 	private PlayerPrivateChatEntity privateChat;
-
+	
+	public void setOwnedPerks(int index, boolean state)
+	{
+		ownedPerks[index] = state;
+	}
+	
+	public boolean[] getOwnedPerks()
+	{
+		return ownedPerks;
+	}
+	
 	public PlayerSettingsEntity getPlayerSettings() {
 		return playerSettings;
 	}
-
 	public void setPlayerSettings(PlayerSettingsEntity playerSettings) {
 		this.playerSettings = playerSettings;
 	}

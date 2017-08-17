@@ -407,15 +407,17 @@ public class Mining extends HarvestingAction {
 
 	@Override
 	public double getExperience() {
+		if (!getMob().isPlayer()) {
+		}
+		Player player = (Player) getMob();
+		
 		int random = Misc.random(rock.getPetRate());
 		if (rock == Rock.DENSE_ESSENCE) {
 			getMob().getSkills().addExperience(Skills.CRAFTING, 8);
 		}
 		if (random == 0) {
 			Pet.Pets pets = Pet.Pets.ROCK_GOLEM;
-			if (!getMob().isPlayer()) {
-			}
-			Player player = (Player) getMob();
+			
 			if (player.getPet() != null) {
 				return rock.getExperience() * (getMob().isPlayer() ? miningService.getProspectorKitExperienceModifier((Player) getMob()) : 1f) * 2;
 			} else {
@@ -428,6 +430,13 @@ public class Mining extends HarvestingAction {
 				World.getWorld().sendWorldMessage("<col=884422><img=33> News:" + player.getName() + " has just a rock golem pet.");
 				return rock.getExperience() * (getMob().isPlayer() ? miningService.getProspectorKitExperienceModifier((Player) getMob()) : 1f) * 2;
 			}
+			
+		}
+		if(player.getPerks()[8].isOwned() && Misc.random(9) == 0)
+		{
+			player.getInventory().add(new Item(rock.getOreId(), 1));
+			player.getSkills().addExperience(Skills.MINING, rock.getExperience());
+			player.sendMessage("You manage to mine an additional ore.");
 		}
 		return rock.getExperience() * (getMob().isPlayer() ? miningService.getProspectorKitExperienceModifier((Player) getMob()) : 1f);
 	}
