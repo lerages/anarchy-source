@@ -879,7 +879,7 @@ public class DialogueManager
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
 					"Barrows|Warriors Guild|Pest Control");
 			//player.getInterfaceState().setNextDialogueId(0, 81);
-			player.getInterfaceState().setNextDialogueId(0, -1);
+			player.getInterfaceState().setNextDialogueId(0, 81);
 			player.getInterfaceState().setNextDialogueId(1, 86);
 			player.getInterfaceState().setNextDialogueId(2, 10186);
 			break;
