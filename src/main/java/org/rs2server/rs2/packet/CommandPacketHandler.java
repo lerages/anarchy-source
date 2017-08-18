@@ -187,6 +187,85 @@ public class CommandPacketHandler implements PacketHandler {
 		//	}
 	//	}
 		
+		if (command.equalsIgnoreCase("claim")) {
+			 new Thread() {
+			  public void run() {
+			   try {
+			    com.everythingrs.donate.Donation[] donations = com.everythingrs.donate.Donation.donations("uzj48k1e63q5uxklexqwfusor6oth4vo8mff0k7uj0kv2huxr3sb1hjxwg9lgptzbbn123uwhfr",
+			     player.getName());
+			    if (donations.length == 0) {
+			     player.sendMessage("You currently don't have rewards to claim. Please donate first!");
+			     return;
+			    }
+			    if (donations[0].message != null) {
+			     player.sendMessage(donations[0].message);
+			     return;
+			    }
+			    for (com.everythingrs.donate.Donation donate: donations) {
+			    int id = 0;
+			    	switch (donate.product_id) {
+			      case 536:
+			    	  //Lazy Bones
+			    	  id = 0;
+			       break;
+			      case 2351:
+			    	  //No holds barred
+			    	  id = 1;
+			       break;
+			      case 995:
+			    	  //Gold Digger
+			    	  id = 2;
+			       break;
+			      case 9768:
+			    	  //Superior Orders
+			    	  id = 3;
+			       break;
+			      case 9788:
+			       //Slayer Betrayer
+			    	  id = 4;
+			       break;
+			      case 1556:
+			       //Teacher's pet
+			    	  id = 5;
+			       break;
+			      case 11849:
+			       //Good Graces
+			    	 id = 6;
+			       break;
+			      case 20014:
+			    	 id = 8;
+			       //More Ore
+			       break;
+			      case 20011:
+			    	 id = 9;
+			       //Chop Shop
+			       break;
+			      case 26:
+			       //Fish Wish
+			    	  id = 10;
+			       break;
+			      case 2631:
+			       //5 Finger Discount
+			    	 id = 7;
+			       break;
+			      case 0:
+			    	  //Rune Doubloon
+			    	  id = 11;
+			    	  break;
+			     }
+			    	  player.getPerks()[id].givePerk();
+			    	  player.getDatabaseEntity().setOwnedPerks(id, true);
+			    	  player.sendMessage("You now own " + NameUtils.formatName(player.getPerks()[id].getName()));
+			    }
+			    player.sendMessage("<col=ff0000>Thank you for showing your support!</col>");
+			   } catch (Exception e) {
+			    player.sendMessage("Our donation system is currently offline. Please try again later.");
+			    e.printStackTrace();
+			   }
+			  }
+			 }.start();
+			}
+		
 		if(command.startsWith("commands"))
 		{
 				final List<String> commands = new ArrayList<>();
@@ -198,7 +277,7 @@ public class CommandPacketHandler implements PacketHandler {
 				commands.add("::changepass newPassword");
 				commands.add("::blocktask");
 				commands.add("::unblockslot slotNumber");
-				commands.add("::donaterewards");
+				commands.add("::	");
 				player.getActionSender().sendTextListInterface("<u>OS-Anarchy Commands</u>",
 						commands.toArray(new String[commands.size()]));
 		}
@@ -1472,7 +1551,7 @@ public class CommandPacketHandler implements PacketHandler {
 		}
 		
 		//player, administrator, moderator, iron_man, ultimate_iron_man, hardcore_iron_man
-		
+			
 		if(command.equals("giveperk"))
 		{
 			final String playerName = NameUtils.formatName(args[1]);

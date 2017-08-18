@@ -75,7 +75,7 @@ class PlayerEntity extends MongoEntity {
 
 	private PlayerTreasureTrail treasureTrail;
 	
-	private boolean ownedPerks[] = {false, false, false, false, false, false, false, false, false, false, false};
+	private boolean ownedPerks[] = {false, false, false, false, false, false, false, false, false, false, false, false};
 
 	private PlayerEquipmentEntity equipment;
 	private PlayerBountyHunterEntity bountyHunter;

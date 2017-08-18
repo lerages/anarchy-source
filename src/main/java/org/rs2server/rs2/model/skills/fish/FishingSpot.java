@@ -7,20 +7,20 @@ import java.util.Map;
 
 public enum FishingSpot {
 
-    NET_NET_AND_BAIT(1, 1518, Animation.create(621), 303, -1, 100000, Fish.SHRIMP, Fish.ANCHOVIES),
-    BAIT_NET_AND_BAIT(2, 1518, Animation.create(622), 307, 313, 80000, Fish.SARDINE, Fish.HERRING),
-    LURE_LURE_AND_BAIT(1, 1512, Animation.create(622), 309, 314, 6000, Fish.TROUT, Fish.SALMON),
-    BAIT_LURE_AND_BAIT(2, 1512, Animation.create(622), 307, 313, 60000, Fish.PIKE),
-    CAGE_CAGE_AND_HARPOON(1, 1510, Animation.create(619), 301, -1, 50000, Fish.LOBSTER),
-    HARPOON_CAGE_AND_HARPOON(2, 1510, Animation.create(618), 311, -1, 50000, Fish.TUNA, Fish.SWORDFISH),
-    BIG_NET_NET_AND_HARPOON(1, 1520, Animation.create(621), 305, -1, 60000, Fish.MACKEREL, Fish.COD, Fish.BASS),
-    HARPOON_NET_AND_HARPOON(2, 1520, Animation.create(618), 311, -1, 40000, Fish.SHARK),
-	BIG_NET_AND_HARPOON(1, 4316, Animation.create(621), 303, -1, 45000, Fish.MONKFISH),
-	HARPOON(2, 4316, Animation.create(618), 311, -1, 5000, Fish.TUNA, Fish.SWORDFISH),
-	BAIT(1, 6825, Animation.create(622), 307, 13431, 3500, Fish.ANGLER_FISH),
-    CAGE(1, 1536, Animation.create(619), 301, -1, 3500, Fish.DARK_CRAB),
-	KARAMBWAN_NET(1, 1517, Animation.create(621), 303, -1, 65000, Fish.KARAMBWAN),
-	BARBFISH(1, 1516, Animation.create(622), 11323, 314, 70000, Fish.LEAPING_TROUT, Fish.LEAPING_SALMON, Fish.LEAPING_STURGEON),
+    NET_NET_AND_BAIT(1, 1518, Animation.create(621), 303, -1, 10000, Fish.SHRIMP, Fish.ANCHOVIES),
+    BAIT_NET_AND_BAIT(2, 1518, Animation.create(622), 307, 313, 10000, Fish.SARDINE, Fish.HERRING),
+    LURE_LURE_AND_BAIT(1, 1512, Animation.create(622), 309, 314, 10000, Fish.TROUT, Fish.SALMON),
+    BAIT_LURE_AND_BAIT(2, 1512, Animation.create(622), 307, 313, 10000, Fish.PIKE),
+    CAGE_CAGE_AND_HARPOON(1, 1510, Animation.create(619), 301, -1, 10000, Fish.LOBSTER),
+    HARPOON_CAGE_AND_HARPOON(2, 1510, Animation.create(618), 311, -1, 10000, Fish.TUNA, Fish.SWORDFISH),
+    BIG_NET_NET_AND_HARPOON(1, 1520, Animation.create(621), 305, -1, 10000, Fish.MACKEREL, Fish.COD, Fish.BASS),
+    HARPOON_NET_AND_HARPOON(2, 1520, Animation.create(618), 311, -1, 7000, Fish.SHARK),
+	BIG_NET_AND_HARPOON(1, 4316, Animation.create(621), 303, -1, 9000, Fish.MONKFISH),
+	HARPOON(2, 4316, Animation.create(618), 311, -1, 10000, Fish.TUNA, Fish.SWORDFISH),
+	BAIT(1, 6825, Animation.create(622), 307, 13431, 7500, Fish.ANGLER_FISH),
+    CAGE(1, 1536, Animation.create(619), 301, -1, 7000, Fish.DARK_CRAB),
+	KARAMBWAN_NET(1, 1517, Animation.create(621), 303, -1, 10000, Fish.KARAMBWAN),
+	BARBFISH(1, 1516, Animation.create(622), 11323, 314, 11000, Fish.LEAPING_TROUT, Fish.LEAPING_SALMON, Fish.LEAPING_STURGEON),
 	;
 	
     private static final Map<Integer, FishingSpot> fishingSpot = new HashMap<>();

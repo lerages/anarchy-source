@@ -7,6 +7,7 @@ import org.rs2server.rs2.model.Graphic;
 import org.rs2server.rs2.model.Item;
 import org.rs2server.rs2.model.Skills;
 import org.rs2server.rs2.model.player.Player;
+import org.rs2server.rs2.util.Misc;
 
 public class Runecrafting extends SkillAction {
 	/**
@@ -90,6 +91,12 @@ public class Runecrafting extends SkillAction {
 		player.getSkills().addExperience(Skills.RUNECRAFTING, talisman.getRewardExp()*essCount);
 		player.getInventory().removeAll(new Item(getEssType(player, talisman)));
 		player.getInventory().add(new Item(talisman.getRewardId(), amount));
+		if(player.getPerks()[11].isOwned() && Misc.random(1) == 0)
+		{
+			player.getInventory().add(new Item(talisman.getRewardId(), amount));
+			player.getSkills().addExperience(Skills.RUNECRAFTING, talisman.getRewardExp()*essCount);
+			player.sendMessage("You manage to craft additional runes.");
+		}
 		return true;
 	}
 
