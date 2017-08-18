@@ -1836,7 +1836,7 @@ public class Player extends Mob implements Persistable
 		playGraphics(Graphic.create(gfx, 48, getCombatState().getSpellBook() == MagicCombatAction.SpellBook.ANCIENT_MAGICKS.getSpellBookId() ? 0 : 100));//48  0 : 100
 		Random r = new Random();
 		setCanBeDamaged(false);
-		if(npcTeleport)
+		if(npcTeleport && location != Constants.HOME_TELEPORT)
 		settings.setLastLocation(location);
 		World.getWorld().submit(new Tickable(ticks) {
 			public void execute() {

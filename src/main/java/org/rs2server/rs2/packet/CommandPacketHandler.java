@@ -272,12 +272,13 @@ public class CommandPacketHandler implements PacketHandler {
 				commands.add("::players");
 				commands.add("::lock skillName");
 				commands.add("::unlock skillName");
-				commands.add("::perks");
-				commands.add("::viewperks targetPlayerName");
 				commands.add("::changepass newPassword");
 				commands.add("::blocktask");
 				commands.add("::unblockslot slotNumber");
-				commands.add("::	");
+				commands.add("::perks");
+				commands.add("::viewperks targetPlayerName");
+				commands.add("::donaterewards");
+				commands.add("::claim");
 				player.getActionSender().sendTextListInterface("<u>OS-Anarchy Commands</u>",
 						commands.toArray(new String[commands.size()]));
 		}
@@ -337,7 +338,7 @@ public class CommandPacketHandler implements PacketHandler {
 					perks.add(perk.getDescription());
 				}
 			}
-			player.getActionSender().sendTextListInterface("<u>Perks</u>",
+			player.getActionSender().sendTextListInterface("<u>Your Perks</u>",
 					perks.toArray(new String[perks.size()]));
 		}
 		if(command.startsWith("down"))

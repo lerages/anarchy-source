@@ -193,7 +193,7 @@ public class BarrowsTunnelListener extends EventListener {
          final int chance = player.getKilledBrothers().entrySet().stream()
                  .filter(Map.Entry::getValue)
                  .mapToInt(e -> 2)
-                 .sum() / 6;
+                 .sum() / 4;
          player.getKilledBrothers().clear();
 
          int random = player.getRandom().nextInt(99);
