@@ -581,7 +581,7 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                         break;
                     case 28857:
                         player.setTeleportTarget(Location.create(
-                                player.getLocation().getX() - 2, player.getLocation().getY(), 1
+                                player.getLocation().getX() - 2, player.getLocation().getY(), 2
                         ));
                         break;
                     case 28858:

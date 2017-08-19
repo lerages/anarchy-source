@@ -2854,11 +2854,12 @@ public class DialogueManager
 			break;
 		case 403:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"Ancient Altar|Lunar Altar|Dark Altar|Rogue's Den");
+					"Ancient Altar|Lunar Altar|Dark Altar|Rogue's Den|Woodcutting Guild");
 			player.getInterfaceState().setNextDialogueId(0, 9409);
 			player.getInterfaceState().setNextDialogueId(1, 9410);
 			player.getInterfaceState().setNextDialogueId(2, 9411);
 			player.getInterfaceState().setNextDialogueId(3, 9412);
+			player.getInterfaceState().setNextDialogueId(4, 9413);
 			break;
 		case 9409:
 			player.getActionSender().removeChatboxInterface();
@@ -2875,6 +2876,10 @@ public class DialogueManager
 		case 9412:
 			player.getActionSender().removeChatboxInterface();
 			player.teleport(Constants.ROGUES_DEN, 0, 0, true);
+			break;
+		case 9413:
+			player.getActionSender().removeChatboxInterface();
+			player.teleport(Constants.WOODCUTTING_GUILD, 0, 0, true);
 			break;
 		case 404:
 			player.getActionSender().removeChatboxInterface();

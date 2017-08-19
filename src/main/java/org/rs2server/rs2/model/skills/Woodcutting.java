@@ -433,7 +433,7 @@ public class Woodcutting extends HarvestingAction {
 		if(player.getPerks()[9].isOwned() && Misc.random(9) == 0)
 		{
 			player.getInventory().add(new Item(tree.getLogId(), 1));
-			player.getSkills().addExperience(Skills.MINING, tree.getExperience());
+			player.getSkills().addExperience(Skills.WOODCUTTING, tree.getExperience());
 			player.sendMessage("You manage to cut an additional log.");
 		}
 		return tree.getExperience();

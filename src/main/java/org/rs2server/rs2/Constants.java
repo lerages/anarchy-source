@@ -461,7 +461,8 @@ public class Constants
 	public static final Location LUNAR_ALTAR = Location.create(2154, 3866, 0);
 	public static final Location DARK_ALTAR = Location.create(1712, 3883, 0);
 	public static final Location ROGUES_DEN = Location.create(3061, 4985, 1);
-
+	public static final Location WOODCUTTING_GUILD = Location.create(1591, 3477, 0);
+	
 	//public static final Location[] HOME_TELEPORTS = {Location.create(2964, 3381, 0), Location.create(2967, 3382, 0), Location.create(2964, 3379, 0), Location.create(2967, 3379, 0)};
 	public static final Location HOME_TELEPORT = Entity.HOME;
 
