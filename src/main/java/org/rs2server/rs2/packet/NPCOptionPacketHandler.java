@@ -291,7 +291,9 @@ public class NPCOptionPacketHandler implements PacketHandler {
 				case 1644:					
 					PuroPuro.catchImpling(player, npc);
 		            break;
-		            
+				case 3308:
+					DialogueManager.openDialogue(player, 3308);
+					break;
 				//case 5514://Horvik
 				//	DialogueManager.openDialogue(player, 14250);
 				//	break;

@@ -428,6 +428,7 @@ public class Constants
 	public static final Location MOURNER_TUNNELS = Location.create(2044, 4649, 0);
 	public static final Location LIGHTHOUSE_DUNGEON = Location.create(2514, 4628, 1);
 	public static final Location WATERBIRTH_DUNGEON = Location.create(2443, 10147, 0);
+	public static final Location TROLL_STRONGHOLD = Location.create(2859, 3663, 0);
 	
 	public static final Location CHICKENS = Location.create(3234, 3292, 0);
 	public static final Location SAND_CRABS = Location.create(1720, 3465, 0);

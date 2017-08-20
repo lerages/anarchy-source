@@ -70,6 +70,73 @@
             <randomDrops/>
         </CombatDefinition>
     </entry>
+	<entry>
+        <int>936</int>
+        <CombatDefinition>
+            <maxHit>13</maxHit>
+            <aggressive>true</aggressive>
+            <combatCooldownDelay>5</combatCooldownDelay>
+            <respawnTicks>32</respawnTicks>
+            <attack>
+                <id>284</id>
+                <delay>0</delay>
+            </attack>
+            <defend>
+                <id>285</id>
+                <delay>0</delay>
+            </defend>
+            <death>
+                <id>287</id>
+                <delay>0</delay>
+            </death>
+            <attackType>CRUSH</attackType>
+            <combatStyle>ACCURATE</combatStyle>
+            <combatActionType>MELEE</combatActionType>
+            <skills>
+               <entry>
+                    <skill>STRENGTH</skill>
+                    <int>75</int>
+                </entry>
+                <entry>
+                    <skill>ATTACK</skill>
+                    <int>40</int>
+                </entry>
+                <entry>
+                    <skill>DEFENCE</skill>
+                    <int>40</int>
+                </entry>
+                <entry>
+                    <skill>HITPOINTS</skill>
+                    <int>90</int>
+                </entry>
+            </skills>
+            <bonuses>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+            </bonuses>
+            <constantDrops>
+                <npcdrop>
+                    <frequency>1.0</frequency>
+                    <item>
+                        <id>526</id>
+                        <count>1</count>
+                    </item>
+                </npcdrop>
+            </constantDrops>
+            <randomDrops/>
+        </CombatDefinition>
+    </entry>
 		<entry>
         <int>2584</int>
         <CombatDefinition>

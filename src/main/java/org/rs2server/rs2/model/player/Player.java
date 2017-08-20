@@ -282,7 +282,8 @@ public class Player extends Mob implements Persistable
 			new Perk("More Ore", "10% chance of receiving double ore while mining", 5, false),
 			new Perk("Chop Shop", "10% chance of receiving double logs while woodcutting", 5, false),
 			new Perk("Fish Wish", "10% chance of receiving double fish while fishing", 5, false),
-			new Perk("Rune Doubloon", "10% chance of receiving double runes while runecrafting", 5, false)
+			new Perk("Rune Doubloon", "10% chance of receiving double runes while runecrafting", 5, false),
+			new Perk("Nest Obsessed", "Bird's Nests are twice as common and are sent straight to your bank", 5, false)
 			};
 
 	/**

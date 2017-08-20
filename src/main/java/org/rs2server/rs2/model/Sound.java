@@ -269,6 +269,9 @@ public class Sound
     public static final Sound VENGEANCE = Sound.create(2908, 0);
     public static final Sound VENGEANCE_OTHER = Sound.create(2907, 0);
     public static final Sound HUMIDIFY = Sound.create(3614, 0);
+    
+    //Skilling
+	public static final Sound BIRD_NEST = Sound.create(1986, 0);
 
 	/**
 	 * The id of this sound.

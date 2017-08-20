@@ -572,6 +572,15 @@ public class Shop {
 				}
 				break;
 			}
+			
+			if(shop.getShopType() == ShopType.GENERAL_STORE)
+			{
+				if(!shop.getDefaultStock().contains(item.getId()))
+				{
+					player.getActionSender().sendMessage("Iron Men cannot buy items other player have sold.");
+					return;
+				}
+			}
 		}
 
 		int transferAmount = player.getInventory().freeSlots();

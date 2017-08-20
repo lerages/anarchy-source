@@ -277,7 +277,6 @@ public class CommandPacketHandler implements PacketHandler {
 				commands.add("::unblockslot slotNumber");
 				commands.add("::perks");
 				commands.add("::viewperks targetPlayerName");
-				commands.add("::donaterewards");
 				commands.add("::claim");
 				player.getActionSender().sendTextListInterface("<u>OS-Anarchy Commands</u>",
 						commands.toArray(new String[commands.size()]));
@@ -329,13 +328,23 @@ public class CommandPacketHandler implements PacketHandler {
 		{
 			final List<String> perks = new ArrayList<>();
 			
+			perks.add("");
+			perks.add("Owned perks are displayed in <col=00ff00><shad=000000>green</shad></col>.");
+			perks.add("Unowned perks are displayed in <col=ff0000><shad=000000>red</shad></col>.");
+			
 			for (final Perk perk : player.getPerks()) 
 			{
 				if (perk != null && perk.isOwned() == true)
 				{	
 					perks.add("");
-					perks.add("<u>" + perk.getName() + "</u>");
-					perks.add(perk.getDescription());
+					perks.add("<col=00ff00><shad=000000><u>" + perk.getName() + "</u></shad></col>");
+					perks.add("<col=00ff00><shad=000000>" + perk.getDescription() + "</shad></col>");
+				} 
+				else if (perk != null && perk.isOwned() == false) 
+				{
+					perks.add("");
+					perks.add("<col=ff0000><shad=000000><u>" + perk.getName() + "</u></shad></col>");
+					perks.add("<col=ff0000><shad=000000>" + perk.getDescription() + "</shad></col>");
 				}
 			}
 			player.getActionSender().sendTextListInterface("<u>Your Perks</u>",

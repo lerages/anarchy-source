@@ -66,6 +66,7 @@
 1400 3084 3486 0 SOUTH false //Nulodian
 1306 3090 3498 0 SOUTH_EAST false // Make-Over mage
 5449 3094 3499 0 WEST false // Bob Barter(G.E)
+3308 3091 3493 0 SOUTH false // RuneScape Guide
 6092 3086 3502 0 WEST false //Captain Klemfoodle (Glider - teleports)
 514 3080 3509 0 NORTH true //Gen store
 822 3069 3517 0 WEST true //Oziach
@@ -78,6 +79,15 @@
 3078 3094 3511 0 WEST true //man
 3079 3092 3508 0 WEST true //man
 3080 3096 3508 0 WEST true //man
+
+//TROLL STRONGHOLD
+936 2852 3665 0 WEST true //mountain troll
+936 2847 3670 0 WEST true //mountain troll
+936 2846 3674 0 WEST true //mountain troll
+936 2853 3677 0 WEST true //mountain troll
+936 2849 3683 0 WEST true //mountain troll
+936 2856 3684 0 WEST true //mountain troll
+936 2850 3689 0 WEST true //mountain troll
 
 //ABYSSAL AREA
 2584 3059 4875 0 WEST true //abyssal leech

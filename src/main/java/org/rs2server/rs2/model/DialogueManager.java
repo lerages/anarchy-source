@@ -54,7 +54,88 @@ public class DialogueManager
 		player.getInterfaceState().setOpenDialogueId(dialogueId);
 		//NPC npc = (NPC) player.getInteractingEntity();
 		switch (dialogueId) {
-		case 13371:
+		case 3308:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT, 
+					"Greetings, " + player.getName() + "! I am here to help you with anything related to donating. What can I do for you?");
+			player.getInterfaceState().setNextDialogueId(0, 3309);
+			break;
+		case 3309:
+			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"How can I donate?|What are the rewards for donating?|Where do the donations go?|I'd like to claim a donation|Nevermind.");
+			player.getInterfaceState().setNextDialogueId(0, 3310);
+			player.getInterfaceState().setNextDialogueId(1, 3312);
+			player.getInterfaceState().setNextDialogueId(2, 3318);
+			player.getInterfaceState().setNextDialogueId(3, 3322);
+			player.getInterfaceState().setNextDialogueId(4, -1);
+			break;
+		case 3310:
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, 
+					"How can I donate?");
+			player.getInterfaceState().setNextDialogueId(0, 3311);
+			break;
+		case 3311:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"Donating is real easy! All you have to do is head to our website at: os-anarchy.com and click the 'donate' tab at the top of the page."
+					+ " After that, simply select the perks you would like to receive for donating!");
+			player.getInterfaceState().setNextDialogueId(0, 3312);
+			break;
+		case 3312:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"Perks are what we grant to players that are generous enough to donate to us. They are little additions that are added to your "
+					+ "account that help you further enjoy the ways you play OS-Anarchy.");
+			player.getInterfaceState().setNextDialogueId(0, 3312);
+			break;
+		case 3313:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"Typically, they tend to be small changes that increase the convenience of otherwise tedious tasks. "
+					+ "You can only gain each perk once. However, once you own a perk it lasts forever!");
+			player.getInterfaceState().setNextDialogueId(0, 3314);
+			break;
+		case 3314:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"Additionally, each time you donate the total amount you have donated to us increases. Once this surpasses"
+					+ "$20 you receive the donator rank.");
+			player.getInterfaceState().setNextDialogueId(0, 3315);
+			break;
+		case 3315:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"The rank doesn't give you any icon, but it does give you access to some cool additions on top of the"
+					+ " perks you get for donating!");
+			player.getInterfaceState().setNextDialogueId(0, 3316);
+			break;
+		case 3316:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"Currently, donating $20 or more gives you access to the ::yell command. Also, it removes the cost of using the"
+					+ "altar and decanter at home.");
+			player.getInterfaceState().setNextDialogueId(0, 3317);
+			break;
+		case 3317:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"Finally, being a donator also makes it free to use the 'Last-teleport' option of the teleporter by"
+					+ " the well in Edgeville!");
+			player.getInterfaceState().setNextDialogueId(0, 3318);
+			break;
+		case 3318:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"Any donations made to us are strictly used to fund anything required to keep OS-Anarchy online or help it grow.");
+			player.getInterfaceState().setNextDialogueId(0, 3319);
+			break;
+		case 3319:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"This could be anything from hosting costs to paid advertisements. Anything you can contribute to this cause"
+					+ " is greatly appreciated. If you can't, thats okay too! Thanks for joining us anyway.");
+			player.getInterfaceState().setNextDialogueId(0, 3320);
+			break;
+		case 3320:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"Whether you donate or not, we hope you choose to stay with us and enjoy your time. Do not hesitate to"
+					+ " contanct Zero or Zaros if there's anything you need. Farewell!");
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 3322:
+			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+					"You currently don't have a donation reward to claim, please donate first!");
+			player.getInterfaceState().setNextDialogueId(0, -1);
 			break;
 		case 13372:
 			if(player.getInventory().hasItem(new Item(995, 500000))) { //500k
@@ -829,12 +910,12 @@ public class DialogueManager
 			break;
 		case 757586:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"Smoke Dungeon|Asgarnia Ice Dungeon|Abyssal Area|Mourner Tunnels|Dagannoths");
+					"Smoke Dungeon|Asgarnia Ice Dungeon|Abyssal Area|Mourner Tunnels|More options...");
 			player.getInterfaceState().setNextDialogueId(0, 757587);
 			player.getInterfaceState().setNextDialogueId(1, 757588);
 			player.getInterfaceState().setNextDialogueId(2, 757589);
 			player.getInterfaceState().setNextDialogueId(3, 757590);
-			player.getInterfaceState().setNextDialogueId(4, 757591);
+			player.getInterfaceState().setNextDialogueId(4, 757594);
 			break;
 		case 757587:
 			player.teleport(Constants.SMOKE_DUNGEON, 0, 0, true);
@@ -852,6 +933,12 @@ public class DialogueManager
 			player.teleport(Constants.MOURNER_TUNNELS, 0, 0, true);
 			player.getActionSender().removeChatboxInterface();
 			break;
+		case 757594:
+			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"Dagannoths|Troll Stronghold");
+			player.getInterfaceState().setNextDialogueId(0, 757591);
+			player.getInterfaceState().setNextDialogueId(1, 757595);
+			break;
 		case 757591:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
 					"Lighthouse Dungeon dagannoths (multi)|Waterbirth Isle dagannoths (single)");
@@ -864,6 +951,10 @@ public class DialogueManager
 			break;
 		case 757593:
 			player.teleport(Constants.WATERBIRTH_DUNGEON, 0, 0, true);
+			player.getActionSender().removeChatboxInterface();
+			break;
+		case 757595:
+			player.teleport(Constants.TROLL_STRONGHOLD, 0, 0, true);
 			player.getActionSender().removeChatboxInterface();
 			break;
 		case 75:

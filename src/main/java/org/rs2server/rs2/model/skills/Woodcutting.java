@@ -413,6 +413,7 @@ public class Woodcutting extends HarvestingAction {
 		if (!getMob().isPlayer()) {
 		}
 		Player player = (Player) getMob();
+		int nest_chance = player.getPerks()[12].isOwned() ? Misc.random(255) : Misc.random(122);
 		int random = Misc.random(tree.getPetRate());
 		if (random == 0) {
 			Pet.Pets pets = Pet.Pets.BEAVER;
@@ -429,6 +430,35 @@ public class Woodcutting extends HarvestingAction {
 				World.getWorld().sendWorldMessage("<col=884422><img=33>  News: " + player.getName() + " has just received a beaver pet!");
 				return tree.getExperience();
 			}
+		}
+		if(nest_chance == 0)
+		{
+			int r = Misc.random(4);
+			Item nest = null;
+			if(r == 4)
+			nest = new Item(5070);
+			if(r == 3)
+			nest = new Item(5071);
+			if(r == 2)
+				nest = new Item(5072);
+			if(r == 1)
+				nest = new Item(5073);
+			if(r == 0)
+				nest = new Item(5074);
+			
+			player.playSound(Sound.BIRD_NEST);
+			
+			if(player.getPerks()[12].isOwned())
+			{
+				player.getBank().add(new Item(nest.getId(), 1));
+				player.sendMessage("<col=ff0000>A bird's nest falls out of the tree. It has been sent directly to your bank.");
+			}
+			else
+			{
+				World.getWorld().register(new GroundItem(player.getName(), nest, player.getLocation()), player);	
+				player.sendMessage("<col=ff0000>A bird's nest falls out of the tree.");
+			}
+			
 		}
 		if(player.getPerks()[9].isOwned() && Misc.random(9) == 0)
 		{

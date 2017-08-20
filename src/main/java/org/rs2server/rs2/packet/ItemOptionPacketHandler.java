@@ -18,6 +18,7 @@ import org.rs2server.rs2.content.misc.BabyImpJar;
 import org.rs2server.rs2.content.misc.BronzeSet;
 import org.rs2server.rs2.content.misc.Casket;
 import org.rs2server.rs2.content.misc.BagFullOfGems;
+import org.rs2server.rs2.content.misc.BirdNest;
 import org.rs2server.rs2.content.misc.DragonfireShield;
 import org.rs2server.rs2.content.misc.Ectophial;
 import org.rs2server.rs2.content.misc.GodBooks;
@@ -662,10 +663,11 @@ public class ItemOptionPacketHandler implements PacketHandler {
 							case 2572:
 								BossKillLog.handleBossLog(player);
 								break;
-						
+							
+							
 							case 4251:
-								player.teleport(Location.create(3658, 3522), 0, 0, false);
-						break;
+								//player.teleport(Location.create(3658, 3522), 0, 0, false);
+								break;
 							case 13124:
 								player.teleport(Location.create(2661, 3371, 0), 0, 0, false);
 								break;
@@ -1234,6 +1236,13 @@ public class ItemOptionPacketHandler implements PacketHandler {
 							if (player.getInventory().add(new Item(562, 100))) {
 								player.getInventory().remove(new Item(12738, 1), slot);
 							}
+							break;
+						case 5070:
+						case 5071:
+						case 5072:
+						case 5073:
+						case 5074:
+							BirdNest.empty(player, item);
 							break;
 						case 4251:
 							Ectophial.teleport(player);

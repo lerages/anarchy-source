@@ -420,9 +420,9 @@ public final class Zulrah extends CombatNpc<Zulrah> {
 			if (def != null) {
 				String name = def.isNoted() ? CacheItemDefinition.get(def.noted).getName() : def.getName();
 				if (loot.getHitRollCeil() <= 3) {
-					World.getWorld().sendWorldMessage("<col=884422><img=33> News:" + challenger.getName() + " has just received " + g.getCount() + "x " + name + ".");
+					//World.getWorld().sendWorldMessage("<col=884422><img=33> News:" + challenger.getName() + " has just received " + g.getCount() + "x " + name + ".");
 				} else {
-					challenger.getActionSender().sendMessage("<col=884422><img=33> News:" + challenger.getName() + " has just received " + g.getCount() + "x " + name + ".");
+					//challenger.getActionSender().sendMessage("<col=884422><img=33> News:" + challenger.getName() + " has just received " + g.getCount() + "x " + name + ".");
 				}
 			}
 			World.getWorld().createGroundItem(g, challenger);
