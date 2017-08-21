@@ -1846,6 +1846,7 @@ public class Player extends Mob implements Persistable
 				playAnimation(Animation.create(-1, 0));
 				setCanBeDamaged(true);
 				removeAttribute("teleporting");
+				pet.tick();
 				setCanBeDamaged(true);
 				this.stop();
 			}

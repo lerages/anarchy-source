@@ -8,6 +8,8 @@ import org.rs2server.rs2.domain.service.impl.PermissionServiceImpl;
 import org.rs2server.rs2.model.*;
 import org.rs2server.rs2.model.UpdateFlags.UpdateFlag;
 import org.rs2server.rs2.model.container.Equipment;
+import org.rs2server.rs2.model.npc.Pet;
+import org.rs2server.rs2.model.npc.Pet.Pets;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.model.region.Region;
 import org.rs2server.rs2.net.ActionSender.DialogueType;
@@ -323,6 +325,7 @@ public class Agility {
         }
         player.setAttribute("busy", true);
         if (ScriptManager.getScriptManager().invokeWithFailTest(obstacle.getScriptString(), player, obstacle, object)) {
+        	Pet.skillingPet(player, Pets.GIANT_SQUIRREL, 10000);
         } else {
             player.removeAttribute("busy");
             player.getActionSender().sendMessage("Nothing interesting happens.");

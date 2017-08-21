@@ -2,6 +2,7 @@ package org.rs2server.rs2.model.skills;
 
 import org.rs2server.rs2.Constants;
 import org.rs2server.rs2.action.Action;
+import org.rs2server.rs2.domain.model.player.PlayerSettingsEntity;
 import org.rs2server.rs2.model.Animation;
 import org.rs2server.rs2.model.Entity;
 import org.rs2server.rs2.model.GameObject;
@@ -15,7 +16,10 @@ import org.rs2server.rs2.model.Sound;
 import org.rs2server.rs2.model.World;
 import org.rs2server.rs2.model.container.Equipment;
 import org.rs2server.rs2.model.npc.NPC;
+import org.rs2server.rs2.model.npc.Pet;
+import org.rs2server.rs2.model.npc.Pet.Pets;
 import org.rs2server.rs2.model.player.Player;
+import org.rs2server.rs2.model.skills.fish.FishingSpot;
 import org.rs2server.rs2.net.ActionSender;
 import org.rs2server.rs2.tickable.Tickable;
 import org.rs2server.rs2.util.Misc;
@@ -594,6 +598,7 @@ public class ThievingAction extends Action
 						.sendMessage("You steal some " + item.getDefinition2().getName().toLowerCase() + ".");
 				player.getInventory().add(new Item(item.getId(), item.getCount()));
 				player.playSound(Sound.PICKUP);
+				Pet.skillingPet(player, Pets.ROCKY, 10000);
 				int id = -1;
 				for (int i = 0; i < stall.getObjectIds().length; i++) {
 					if (stall.getObjectIds()[i] == object.getId()) {
@@ -627,6 +632,7 @@ public class ThievingAction extends Action
 						.sendMessage("You loot the chest.");
 				player.getInventory().add(new Item(item.getId(), item.getCount()));
 				player.playSound(Sound.PICKUP);
+				Pet.skillingPet(player, Pets.ROCKY, 10000);
 				int id = -1;
 				for (int i = 0; i < chest.getObjectIds().length; i++) {
 					if (chest.getObjectIds()[i] == object.getId()) {
@@ -674,13 +680,15 @@ public class ThievingAction extends Action
 					World.getWorld().createGroundItem(new GroundItem(player.getName(), item, player.getLocation()),
 							player);
 				player.playSound(Sound.PICKUP);
+				Pet.skillingPet(player, Pets.ROCKY, 10000);
+	
 			}
 		}
 		ticks--;
 		if (ticks < 0)
 			this.stop();
 	}
-
+	
 	private int getIncreasedChance(Player player) {
 		int chance = 0;
 		if (npc != null) {

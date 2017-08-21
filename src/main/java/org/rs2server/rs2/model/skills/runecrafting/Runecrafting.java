@@ -6,6 +6,8 @@ import org.rs2server.rs2.model.GameObject;
 import org.rs2server.rs2.model.Graphic;
 import org.rs2server.rs2.model.Item;
 import org.rs2server.rs2.model.Skills;
+import org.rs2server.rs2.model.npc.Pet;
+import org.rs2server.rs2.model.npc.Pet.Pets;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.util.Misc;
 
@@ -91,6 +93,51 @@ public class Runecrafting extends SkillAction {
 		player.getSkills().addExperience(Skills.RUNECRAFTING, talisman.getRewardExp()*essCount);
 		player.getInventory().removeAll(new Item(getEssType(player, talisman)));
 		player.getInventory().add(new Item(talisman.getRewardId(), amount));
+		switch(talisman.getRewardId())
+		{
+		case 554:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_FIRE, 1000);
+			break;
+		case 555:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_WATER, 1000);
+			break;
+		case 556:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_AIR, 1000);
+			break;
+		case 557:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_EARTH, 1000);
+			break;
+		case 558:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_MIND, 1000);
+			break;
+		case 559:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_BODY, 1000);
+			break;
+		case 560:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_DEATH, 1000);
+			break;
+		case 561:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_NATURE, 1000);
+			break;
+		case 562:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_CHAOS, 1000);
+			break;
+		case 563:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_LAW, 1000);
+			break;
+		case 564:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_COSMIC, 1000);
+			break;
+		case 565:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_BLOOD, 1000);
+			break;
+		case 566:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_SOUL, 1000);
+			break;
+		case 9075:
+			Pet.skillingPet(player, Pets.RIFT_GUARDIAN_ASTRAL, 1000);
+			break;
+		}
 		if(player.getPerks()[11].isOwned() && Misc.random(1) == 0)
 		{
 			player.getInventory().add(new Item(talisman.getRewardId(), amount));

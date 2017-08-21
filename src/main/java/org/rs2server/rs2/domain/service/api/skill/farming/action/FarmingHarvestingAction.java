@@ -9,6 +9,9 @@ import org.rs2server.rs2.model.Animation;
 import org.rs2server.rs2.model.Item;
 import org.rs2server.rs2.model.Mob;
 import org.rs2server.rs2.model.Skill;
+import org.rs2server.rs2.model.Sound;
+import org.rs2server.rs2.model.npc.Pet;
+import org.rs2server.rs2.model.npc.Pet.Pets;
 import org.rs2server.rs2.model.player.Player;
 
 /**
@@ -55,7 +58,7 @@ public class FarmingHarvestingAction extends InfiniteHarvestingAction {
 
 	@Override
 	public double getExperience() {
-		return patch.getPlanted() != null ? patch.getPlanted().getExperience() * 1 : 0;
+		return patch.getPlanted() != null ? patch.getPlanted().getExperience() : 0;
 	}
 
 	@Override
@@ -85,10 +88,11 @@ public class FarmingHarvestingAction extends InfiniteHarvestingAction {
 
 	@Override
 	public boolean canHarvest() {
+		final Player player = (Player) getMob();
 		if (patch.getYield() <= 0) {
-			final Player player = (Player) getMob();
 			farmingService.clearPatch(player, patch);
-			player.playAnimation(Animation.create(-1));
+			player.playAnimation(Animation.create(831));
+			player.playSound(Sound.BURY_BONES);
 			return false;
 		}
 
@@ -99,6 +103,7 @@ public class FarmingHarvestingAction extends InfiniteHarvestingAction {
 				return false;
 			//}
 		}
+			Pet.skillingPet(player, Pets.TANGLEROOT, 10000);
 		return true;
 	}
 }

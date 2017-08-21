@@ -301,6 +301,34 @@ public class CommandPacketHandler implements PacketHandler {
 						text.toArray(new String[text.size()]));
 		}
 		
+		 if (command.equals("placeholders")) 
+		 {
+			 
+			 boolean enabled = player.getDatabaseEntity().getPlayerSettings().isPlaceHolderEnabled();
+			 
+			 if(enabled)
+				 player.getDatabaseEntity().getPlayerSettings().setPlaceHolderEnabled(false);
+			
+			 else if(!enabled)
+				 player.getDatabaseEntity().getPlayerSettings().setPlaceHolderEnabled(true);
+			 
+			 player.getActionSender().sendMessage("Placeholders in your bank have been " + (enabled ? "disabled." : "enabled."));
+			 
+			 if (enabled) 
+			 {
+				 player.getBank().stream().filter(Objects::nonNull).filter(i -> i.getCount()
+				 == 0).forEach(i -> {
+				 int slot = player.getBank().getSlotById(i.getId());
+				 int tabId = player.getBanking().getTabByItemSlot(slot);
+				 player.getBank().set(slot, null);
+				 player.getBanking().decreaseTabStartSlots(tabId);
+			 });
+			 player.getBank().shift();
+			 }
+		}
+		 
+		
+		 
 		if(command.startsWith("viewperks"))
 		{
 			final String playerName = NameUtils.formatName(args[1]);
@@ -808,26 +836,30 @@ public class CommandPacketHandler implements PacketHandler {
 		}
 
 		if (permissionService.isAny(player, PermissionServiceImpl.SPECIAL_PERMISSIONS)) {
-			// if (command.equals("placeholder")) {
-			// if (args.length > 2 || !args[1].equalsIgnoreCase("false") &&
-			// !args[1].equalsIgnoreCase("true")) {
-			// return;
-			// }
-			// boolean enabled = Boolean.parseBoolean(args[1]);
-			// player.getDatabaseEntity().getPlayerSettings().setPlaceHolderEnabled(enabled);
-			// player.getActionSender().sendMessage("Placeholders; " + (enabled ? " Enabled
-			// " : "Disabled"));
-			// if (!enabled) {
-			// player.getBank().stream().filter(Objects::nonNull).filter(i -> i.getCount()
-			// == 0).forEach(i -> {
-			// int slot = player.getBank().getSlotById(i.getId());
-			// int tabId = player.getBanking().getTabByItemSlot(slot);
-			// player.getBank().set(slot, null);
-			// player.getBanking().decreaseTabStartSlots(tabId);
-			// });
-			// player.getBank().shift();
-			// }
-			// }
+			 /*if (command.equals("placeholders")) 
+			 {
+				 
+				 if (args.length > 2 || !args[1].equalsIgnoreCase("false") &&
+				 !args[1].equalsIgnoreCase("true")) {
+					 return;
+				 }
+				 
+				 boolean enabled = Boolean.parseBoolean(args[1]);
+				 player.getDatabaseEntity().getPlayerSettings().setPlaceHolderEnabled(enabled);
+				 player.getActionSender().sendMessage("Placeholders; " + (enabled ? " Enabled " : "Disabled"));
+				 
+				 if (!enabled) 
+				 {
+					 player.getBank().stream().filter(Objects::nonNull).filter(i -> i.getCount()
+					 == 0).forEach(i -> {
+					 int slot = player.getBank().getSlotById(i.getId());
+					 int tabId = player.getBanking().getTabByItemSlot(slot);
+					 player.getBank().set(slot, null);
+					 player.getBanking().decreaseTabStartSlots(tabId);
+				 });
+				 player.getBank().shift();
+				 }
+			}*/
 		}
 
 		if (permissionService.is(player, PermissionService.PlayerPermissions.HELPER)) {
@@ -1277,7 +1309,7 @@ public class CommandPacketHandler implements PacketHandler {
 					.sendInterface(226, true);
 		}
 
-		if (command.equals("testimg")) {
+		if (command.equals("img")) {
 			int crownId = Integer.parseInt(args[1]);
 			player.getActionSender().sendMessage("<img=" + crownId + ">");
 		}
@@ -1561,7 +1593,7 @@ public class CommandPacketHandler implements PacketHandler {
 		}
 		
 		//player, administrator, moderator, iron_man, ultimate_iron_man, hardcore_iron_man
-			
+	
 		if(command.equals("giveperk"))
 		{
 			final String playerName = NameUtils.formatName(args[1]);

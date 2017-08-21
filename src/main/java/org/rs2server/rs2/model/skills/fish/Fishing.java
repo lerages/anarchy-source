@@ -9,6 +9,7 @@ import org.rs2server.rs2.model.Sound;
 import org.rs2server.rs2.model.World;
 import org.rs2server.rs2.model.npc.NPC;
 import org.rs2server.rs2.model.npc.Pet;
+import org.rs2server.rs2.model.npc.Pet.Pets;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.net.ActionSender;
 import org.rs2server.rs2.util.Misc;
@@ -142,7 +143,7 @@ public class Fishing extends SkillAction {
 		Item harvest = new Item(fishingSpot.getHarvest()[harvestId].getId(), 1);
 		player.getActionSender().sendMessage("You manage to catch some " + harvest.getDefinition2().getName().toLowerCase() + ".");
 		player.getInventory().add(new Item(harvest.getId(), 1));
-		heronPet(player, fishingSpot);
+		Pet.skillingPet(player, Pets.HERON, fishingSpot.getPetChance());
 		player.getSkills().addExperience(Skills.FISHING, fishingSpot.getHarvest()[harvestId].getXp());
 		player.getSkills().addExperience(Skills.STRENGTH, fishingSpot.getHarvest()[harvestId].getBarbXp());
 		player.getSkills().addExperience(Skills.AGILITY, fishingSpot.getHarvest()[harvestId].getBarbXp());

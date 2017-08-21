@@ -8,6 +8,7 @@ import org.rs2server.rs2.domain.service.api.skill.MiningService;
 import org.rs2server.rs2.model.*;
 import org.rs2server.rs2.model.container.Inventory;
 import org.rs2server.rs2.model.npc.Pet;
+import org.rs2server.rs2.model.npc.Pet.Pets;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.model.skills.smithing.SmithingUtils;
 import org.rs2server.rs2.net.ActionSender;
@@ -411,27 +412,11 @@ public class Mining extends HarvestingAction {
 		}
 		Player player = (Player) getMob();
 		
-		int random = Misc.random(rock.getPetRate());
+		Pet.skillingPet(player, Pets.ROCK_GOLEM, rock.getPetRate());
 		if (rock == Rock.DENSE_ESSENCE) {
 			getMob().getSkills().addExperience(Skills.CRAFTING, 8);
 		}
-		if (random == 0) {
-			Pet.Pets pets = Pet.Pets.ROCK_GOLEM;
-			
-			if (player.getPet() != null) {
-				return rock.getExperience() * (getMob().isPlayer() ? miningService.getProspectorKitExperienceModifier((Player) getMob()) : 1f) * 2;
-			} else {
-				PlayerSettingsEntity settings = player.getDatabaseEntity().getPlayerSettings();
-				Pet pet = new Pet(player, pets.getNpc());
-				player.setPet(pet);
-				settings.setPetSpawned(true);
-				settings.setPetId(pets.getNpc());
-				World.getWorld().register(pet);
-				World.getWorld().sendWorldMessage("<col=884422><img=33> News:" + player.getName() + " has just a rock golem pet.");
-				return rock.getExperience() * (getMob().isPlayer() ? miningService.getProspectorKitExperienceModifier((Player) getMob()) : 1f) * 2;
-			}
-			
-		}
+	
 		if(player.getPerks()[8].isOwned() && Misc.random(9) == 0)
 		{
 			player.getInventory().add(new Item(rock.getOreId(), 1));

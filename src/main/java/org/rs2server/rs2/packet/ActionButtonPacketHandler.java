@@ -2,6 +2,7 @@ package org.rs2server.rs2.packet;
 
 import org.rs2server.Server;
 import org.rs2server.rs2.Constants;
+import org.rs2server.rs2.action.impl.ConsumeItemAction;
 import org.rs2server.rs2.content.Jewellery;
 import org.rs2server.rs2.content.TeleportInterface;
 import org.rs2server.rs2.content.TeleportManager;
@@ -38,6 +39,7 @@ import org.rs2server.rs2.model.container.Container;
 import org.rs2server.rs2.model.container.Equipment;
 import org.rs2server.rs2.model.container.Inventory;
 import org.rs2server.rs2.model.container.PriceChecker;
+import org.rs2server.rs2.model.npc.Pet;
 import org.rs2server.rs2.model.player.ExperienceDropdown;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.model.player.PrivateChat.EntryRank;
@@ -1738,11 +1740,14 @@ public class ActionButtonPacketHandler implements PacketHandler {
             case Bank.BANK_INVENTORY_INTERFACE:
                 switch (button) {
                 
-                    case 25:
-						player.getActionSender().sendConfig(115, 0);
-                        boolean searching = player.getAttribute("bank_searching") != null;
-                        player.setAttribute("bank_searching", !searching);
-                        return;
+                    //case 25:
+						//player.getActionSender().sendConfig(115, 0);
+                        //boolean searching = player.getAttribute("bank_searching") != null;
+                        //player.setAttribute("bank_searching", !searching);
+                        //return;
+                case 25:
+                	player.sendMessage("Please type ::placeholders to enable or disable bank placeholders.");
+                	break;
                     case 29://27 116 - 29
                         player.getInventory().setFiringEvents(false);
                         player.getBank().setFiringEvents(false);
@@ -2015,7 +2020,7 @@ public class ActionButtonPacketHandler implements PacketHandler {
                                 break;
                         }
                         break;
-					/*case 4:
+					case 4:
 						if (player.getCombatState().getPoisonDamage() > 0) {
 							Container con = player.getInventory();
 							int anti = con.contains(179) ? 179 : con.contains(177) ? 177 : con.contains(175) ? 175 : con.contains(2446) ? 2446 : -1;
@@ -2024,9 +2029,11 @@ public class ActionButtonPacketHandler implements PacketHandler {
 								Item antiPot = new Item(anti);
 								player.getActionQueue().addAction(new ConsumeItemAction(player, antiPot, slot));
 								return;
+							} else {
+								player.sendMessage("You don't have anything you can use to cure yourself.");
 							}
 						}
-						break;*/
+						break;
                     case 22:
                         player.getWalkingQueue().setRunningToggled(!player.getWalkingQueue().isRunningToggled());
                         player.getActionSender().updateRunningConfig();
@@ -2242,7 +2249,22 @@ public class ActionButtonPacketHandler implements PacketHandler {
                                         .sendInterface(4, true);//102
                                 break;
                             case 23:
-                            	player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE, -1, null, "Call follower has not been implemented yet.");
+                				if(player.getPet() != null)
+                				{
+                					if(!settings.isPetSpawned())
+                					{
+                						player.sendMessage("spawning pet");
+                						settings.setPetSpawned(true);
+                					}
+                					Pet pet = player.getPet();
+                					player.setPet(pet);
+                					pet.tick();
+                					player.sendMessage(player.getLocation().getX() + ", " + player.getLocation().getY() + ".");
+                					player.sendMessage(pet.getLocation().getX() + ", " + pet.getLocation().getY() + ".");
+                				} else {
+                					player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE, -1, null, 
+                							"You do not have a follower.");	
+                				}
                             	break;
                         }
                         break;

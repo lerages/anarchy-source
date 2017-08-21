@@ -25,7 +25,6 @@ public class ItemSpawnTick extends Tickable {
 
     @Override
     public void execute() {
-        System.out.println("Item spawns updated!");
         GroundItemService groundItemService = Server.getInjector().getInstance(GroundItemService.class);
 
         for(ItemSpawn item : ItemSpawn.getSpawns()) {

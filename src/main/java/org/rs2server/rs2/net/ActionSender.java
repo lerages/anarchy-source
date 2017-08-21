@@ -269,7 +269,7 @@ public class ActionSender {
         
         sendConfig(1002, 536870920);
         
-        sendConfig(1055, 8784);//74304
+        sendConfig(1055, 0);//74304
         
         sendConfig(1017, 8192);
         sendConfig(1045, 1883184128);
@@ -408,6 +408,14 @@ public class ActionSender {
 			World.getWorld().submit(player.getVenomDrainTick());
 		}
 		sendGameObjectsInArea();
+		int config = 0;
+		if(player.hasAttribute("venom"))
+				config = 1000000;
+		else if (player.getCombatState().getPoisonDamage() > 0)
+			config = 1;
+		else 
+			config = 0;
+		sendConfig(102, config);
         return this;
     }
 
@@ -684,11 +692,14 @@ outer:
     }
 
     
-/*public ActionSender updateQuestText() {
+public ActionSender updateQuestText() {
     	
-    	StringBuilder builder = new StringBuilder();
+    	/*StringBuilder builder = new StringBuilder();
     	
     	builder.append("<col=a04203>Players Online: " + World.getWorld().getPlayers().size());//   <img=4>  + "<img=4>"
+    	builder.append("<br>whole lot of meme");
+    	builder.append("<br>two memes for me");
+    	builder.append(" do we need the break?");
     	builder.append("<br>");
     	builder.append("<br>");
     	builder.append("<br>");
@@ -703,15 +714,16 @@ outer:
     	builder.append("<br>");
     	builder.append("<br>");
     	builder.append("<br>");
-    	builder.append("<br>");
-    	builder.append("<br>");
-    	builder.append("<br>");
-    	builder.append("<br>");
-		
-		sendString(399, 0, builder.toString());
+    	builder.append("<br>");*/
+		//builder.toString()
+		sendString(399, 0, "0");
+		sendString(399, 1, "1");
+		sendString(399, 2, "2");
+		sendString(399, 3, "3");
+		sendString(399, 4, "4");
 		
         return this;
-    }*/
+    }
 
 	public ActionSender closeAll() {
 		if (player.getInterfaceState().isInterfaceOpen(FarmingServiceImpl.INTERFACE_TOOL_STORE_ID)) {

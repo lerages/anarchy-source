@@ -209,6 +209,7 @@ public class DeathTick extends Tickable
 					player.getUpdateFlags().flag(UpdateFlags.UpdateFlag.APPEARANCE);
 					player.getActionSender().removeWalkableInterface();
 					player.getCombatState().setPoisonDamage(0, null);
+					player.getActionSender().sendConfig(102, 0);
 					player.setTeleportTarget(Entity.HOME);
 			} else if(mob.isNPC()) {
 				final NPC npc = (NPC) mob;

@@ -306,7 +306,7 @@ public class Consumables {
 		
 		ANTIFIRE(new int[] {2458, 2456, 2454, 2452}, new int[] { }, PotionType.ANTIFIRE),
 		
-		ANTIDOTE_PLUS_PLUS(new int[] {5952, 5954, 5956, 5958}, new int[] { }, PotionType.ANTIDOTE_PLUS_PLUS),
+		ANTIDOTE_PLUS_PLUS(new int[] {5958, 5956, 5954, 5952}, new int[] { }, PotionType.ANTIDOTE_PLUS_PLUS),
 
         EXTENDED_ANTIFIRE(new int[] {11957, 11955, 11953, 11951}, new int[] { }, PotionType.EXTENDED_ANTIFIRE),
 		
@@ -323,6 +323,7 @@ public class Consumables {
         ANTI_VENOM_PLUS(new int[] {12919, 12917, 12915, 12913}, new int[] {}, PotionType.ANTI_VENOM_PLUS),
 
 		STAMINA_POTION(new int[] {12631, 12629, 12627, 12625}, new int[] {}, PotionType.STAMINA_POTION),
+		
 		SANFREW_SERUM(new int[] {10931, 10929, 10927, 10925}, new int[] {Skills.ATTACK, Skills.STRENGTH, Skills.DEFENCE, Skills.MAGIC, Skills.RANGE, Skills.PRAYER, Skills.AGILITY, Skills.COOKING, Skills.CRAFTING, Skills.FARMING, Skills.FIREMAKING, Skills.FISHING, Skills.FLETCHING, Skills.HERBLORE, Skills.MINING, Skills.RUNECRAFTING, Skills.SLAYER, Skills.SMITHING, Skills.THIEVING, Skills.WOODCUTTING }, PotionType.SANFEW_SERUM)
 		;
 		

@@ -55,23 +55,31 @@
 3320 3097 3108 0 SOUTH_EAST false //skippy
 
 4626 3079 3492 0 SOUTH false //RFD COOK
-401 3087 3484 0 NORTH_EAST false //turael
-535 3084 3492 0 SOUTH false //Horvik
-536 3084 3494 0 SOUTH false //Lowe
-532 3084 3496 0 SOUTH false //Zaff
-4920 3084 3498 0 SOUTH false //Alfonse the Waiter
-1308 3084 3500 0 SOUTH false //Diango
-527 3084 3490 0 SOUTH false //Zeke
-505 3084 3488 0 SOUTH false //bob
-1400 3084 3486 0 SOUTH false //Nulodian
+401 3086 3487 0 NORTH_EAST true //turael
+535 3081 3509 0 WEST false //Horvik
+536 3083 3509 0 WEST false //Lowe
+532 3083 3511 0 WEST false //Zaff
+4920 3081 3511 0 WEST false //Alfonse the Waiter
+1308 3079 3511 0 WEST false //Diango
+527 3077 3509 0 WEST false //Zeke
+505 3079 3509 0 WEST false //bob
+1400 3077 3511 0 WEST false //Nulodian
 1306 3090 3498 0 SOUTH_EAST false // Make-Over mage
 5449 3094 3499 0 WEST false // Bob Barter(G.E)
 3308 3091 3493 0 SOUTH false // RuneScape Guide
-6092 3086 3502 0 WEST false //Captain Klemfoodle (Glider - teleports)
-514 3080 3509 0 NORTH true //Gen store
+514 3081 3507 0 NORTH_EAST false //Gen store
 822 3069 3517 0 WEST true //Oziach
+1043 3095 3500 0 NORTH_EAST false //Silk Merchant
 5514 3119 3519 0 WEST true //Lesser Fanatic
 2581 3106 3558 0 WEST true //Mage of Zamorak(Abyss)
+
+//GNOME GLIDERS
+6092 3086 3502 0 WEST true //Edgeville
+6092 3225 3219 0 WEST true //Lumbridge
+6092 3212 3423 0 WEST true //Varrock
+6092 2965 3384 0 WEST true //Falador
+6092 2758 3477 0 WEST true //Camelot
+6092 2663 3305 0 WEST true //Ardougne
 
 3078 3096 3509 0 WEST true //man
 3079 3094 3511 0 WEST true //man
@@ -499,7 +507,6 @@
 
 2461 2846 3539 2 SOUTH_EAST false
 239 2272 4700 0 SOUTH true // KBD
-315 3095 3503 0 WEST true // bh homie
 3248 1634 3625 0 NORTH_EAST false // Wizard Distentor
 5074 1810 3783 0 WEST false //kent
 1510 2837 3431 0 WEST false
@@ -1673,6 +1680,7 @@
 3100 2661 3313 0 SOUTH true //Warrior
 3100 2660 3301 0 SOUTH true //Warrior
 1043 2656 3301 0 SOUTH false //Silk Merchant
+
 //Kourend
 2098 1662 10071 0 SOUTH true //hillgiant
 2100 1665 10074 0 SOUTH true //hillgiant

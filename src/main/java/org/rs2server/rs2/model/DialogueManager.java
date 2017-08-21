@@ -55,7 +55,7 @@ public class DialogueManager
 		//NPC npc = (NPC) player.getInteractingEntity();
 		switch (dialogueId) {
 		case 3308:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT, 
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT, 
 					"Greetings, " + player.getName() + "! I am here to help you with anything related to donating. What can I do for you?");
 			player.getInterfaceState().setNextDialogueId(0, 3309);
 			break;
@@ -74,66 +74,66 @@ public class DialogueManager
 			player.getInterfaceState().setNextDialogueId(0, 3311);
 			break;
 		case 3311:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Donating is real easy! All you have to do is head to our website at: os-anarchy.com and click the 'donate' tab at the top of the page."
 					+ " After that, simply select the perks you would like to receive for donating!");
 			player.getInterfaceState().setNextDialogueId(0, 3312);
 			break;
 		case 3312:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Perks are what we grant to players that are generous enough to donate to us. They are little additions that are added to your "
 					+ "account that help you further enjoy the ways you play OS-Anarchy.");
-			player.getInterfaceState().setNextDialogueId(0, 3312);
+			player.getInterfaceState().setNextDialogueId(0, 3313);
 			break;
 		case 3313:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Typically, they tend to be small changes that increase the convenience of otherwise tedious tasks. "
 					+ "You can only gain each perk once. However, once you own a perk it lasts forever!");
 			player.getInterfaceState().setNextDialogueId(0, 3314);
 			break;
 		case 3314:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Additionally, each time you donate the total amount you have donated to us increases. Once this surpasses"
 					+ "$20 you receive the donator rank.");
 			player.getInterfaceState().setNextDialogueId(0, 3315);
 			break;
 		case 3315:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"The rank doesn't give you any icon, but it does give you access to some cool additions on top of the"
 					+ " perks you get for donating!");
 			player.getInterfaceState().setNextDialogueId(0, 3316);
 			break;
 		case 3316:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Currently, donating $20 or more gives you access to the ::yell command. Also, it removes the cost of using the"
 					+ "altar and decanter at home.");
 			player.getInterfaceState().setNextDialogueId(0, 3317);
 			break;
 		case 3317:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Finally, being a donator also makes it free to use the 'Last-teleport' option of the teleporter by"
 					+ " the well in Edgeville!");
 			player.getInterfaceState().setNextDialogueId(0, 3318);
 			break;
 		case 3318:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Any donations made to us are strictly used to fund anything required to keep OS-Anarchy online or help it grow.");
 			player.getInterfaceState().setNextDialogueId(0, 3319);
 			break;
 		case 3319:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"This could be anything from hosting costs to paid advertisements. Anything you can contribute to this cause"
 					+ " is greatly appreciated. If you can't, thats okay too! Thanks for joining us anyway.");
 			player.getInterfaceState().setNextDialogueId(0, 3320);
 			break;
 		case 3320:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Whether you donate or not, we hope you choose to stay with us and enjoy your time. Do not hesitate to"
 					+ " contanct Zero or Zaros if there's anything you need. Farewell!");
 			player.getInterfaceState().setNextDialogueId(0, -1);
 			break;
 		case 3322:
-			player.getActionSender().sendDialogue("RuneScape Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
+			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"You currently don't have a donation reward to claim, please donate first!");
 			player.getInterfaceState().setNextDialogueId(0, -1);
 			break;
@@ -665,7 +665,7 @@ public class DialogueManager
 			player.getActionSender().removeChatboxInterface();
 			break;
 		case 70:
-			player.getActionSender().sendDialogue("Captain Klemfoodle", DialogueType.NPC, 6092, FacialAnimation.DEFAULT, 
+			player.getActionSender().sendDialogue("Gnome Glider", DialogueType.NPC, 6092, FacialAnimation.DEFAULT, 
 					"Hello human. What can I do for you?");
 			player.getInterfaceState().setNextDialogueId(0, 71);
 			break;
@@ -824,7 +824,7 @@ public class DialogueManager
 			player.getInterfaceState().setNextDialogueId(0, 73);
 			break;
 		case 73:
-			player.getActionSender().sendDialogue("Captain Klemfoodle", DialogueType.NPC, 6092, FacialAnimation.DEFAULT, 
+			player.getActionSender().sendDialogue("Gnome Glider", DialogueType.NPC, 6092, FacialAnimation.DEFAULT, 
 					"Where to?");
 			player.getInterfaceState().setNextDialogueId(0, 74);
 			break;
@@ -834,7 +834,7 @@ public class DialogueManager
 			player.getInterfaceState().setNextDialogueId(0, 737373);
 			break;
 		case 737373:
-			player.getActionSender().sendDialogue("Captain Klemfoodle", DialogueType.NPC, 6092, FacialAnimation.DEFAULT, 
+			player.getActionSender().sendDialogue("Gnome Glider", DialogueType.NPC, 6092, FacialAnimation.DEFAULT, 
 					"Please, browse at your leisure.");
 			player.getInterfaceState().setNextDialogueId(0, 737374);
 			break;
@@ -4732,34 +4732,39 @@ public class DialogueManager
 			break;
 		case 16103:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"20 coins.|80 coins.|120 coins.|200 coins.");
+					"60 coins.|240 coins.|900 coins.");
 			player.getInterfaceState().setNextDialogueId(0, 16104);
-			player.getInterfaceState().setNextDialogueId(1, -1);
+			player.getInterfaceState().setNextDialogueId(1, 161616);
 			player.getInterfaceState().setNextDialogueId(2, 16106);
-			player.getInterfaceState().setNextDialogueId(3, -1);
 			break;
 		case 16104:
-			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, "20 coins.");
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, "60 coins.");
 			player.getInterfaceState().setNextDialogueId(0, 16105);
 			break;
 		case 16105:
 			player.getActionSender().sendDialogue("Silk Merchant", DialogueType.NPC, 1043, FacialAnimation.DEFAULT, 
 					"Deal.");
-			player.sellSilk(20);
+			player.sellSilk(60);
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 161616:
+			player.getActionSender().sendDialogue("Silk Merchant", DialogueType.NPC, 1043, FacialAnimation.DEFAULT, 
+					"Deal.");
+			player.sellSilk(240);
 			player.getInterfaceState().setNextDialogueId(0, -1);
 			break;
 		case 16106:
-			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, "120 coins.");
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, "900 coins.");
 			player.getInterfaceState().setNextDialogueId(0, 16107);
 			break;
 		case 16107:
 			player.getActionSender().sendDialogue("Silk Merchant", DialogueType.NPC, 1043, FacialAnimation.DEFAULT, 
-					"You'll never get that much for it. I'll be generous and give you 50 for it.");
+					"You'll never get that much for it. I'll be generous and give you 300 for it.");
 			player.getInterfaceState().setNextDialogueId(0, 16108);
 			break;
 		case 16108:
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"Ok, I guess 50 will do.|I'll give it to you for 60.|No that is not enough.");
+					"Ok, I guess 300 will do.|I'll give it to you for 450.|No that is not enough.");
 			player.getInterfaceState().setNextDialogueId(0, 16109);
 			player.getInterfaceState().setNextDialogueId(1, 16110);
 			player.getInterfaceState().setNextDialogueId(2, -1);
@@ -4775,13 +4780,13 @@ public class DialogueManager
 		case 16111:
 			player.getActionSender().sendDialogue("Silk Merchant", DialogueType.NPC, 1043, FacialAnimation.DEFAULT, 
 					"Deal.");
-			player.sellSilk(50);
+			player.sellSilk(300);
 			player.getInterfaceState().setNextDialogueId(0, -1);
 			break;
 		case 16112:
 			player.getActionSender().sendDialogue("Silk Merchant", DialogueType.NPC, 1043, FacialAnimation.DEFAULT, 
 					"Deal.");
-			player.sellSilk(60);
+			player.sellSilk(450);
 			player.getInterfaceState().setNextDialogueId(0, -1);
 			break;
 			/**

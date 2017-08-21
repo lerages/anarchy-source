@@ -1,8 +1,15 @@
 package org.rs2server.rs2.model.npc;
 
 import org.rs2server.Server;
+import org.rs2server.cache.format.CacheNPCDefinition;
+import org.rs2server.rs2.domain.model.player.PlayerSettingsEntity;
 import org.rs2server.rs2.domain.service.api.PathfindingService;
+import org.rs2server.rs2.domain.service.api.PlayerService;
+import org.rs2server.rs2.model.Item;
+import org.rs2server.rs2.model.World;
 import org.rs2server.rs2.model.player.Player;
+import org.rs2server.rs2.model.skills.fish.FishingSpot;
+import org.rs2server.rs2.util.Misc;
 import org.rs2server.util.functional.Optionals;
 
 import java.util.HashMap;
@@ -76,35 +83,33 @@ public class Pet extends NPC {
 		
 		ROCKY(20663, 7336, ""),
 		
-		RIFT_GUARDIAN_I(20665, 7337, ""),
+		RIFT_GUARDIAN_FIRE(20665, 7337, ""),
 		
-		RIFT_GUARDIAN_II(20667, 7338, ""),
+		RIFT_GUARDIAN_AIR(20667, 7338, ""),
 		
-		RIFT_GUARDIAN_III(20669, 7339, ""),
+		RIFT_GUARDIAN_MIND(20669, 7339, ""),
 		
-		RIFT_GUARDIAN_IV(20671, 7340, ""),
+		RIFT_GUARDIAN_WATER(20671, 7340, ""),
 		
-		RIFT_GUARDIAN_V(20673, 7341, ""),
+		RIFT_GUARDIAN_EARTH(20673, 7341, ""),
 		
-		RIFT_GUARDIAN_VI(20675, 7342, ""),
+		RIFT_GUARDIAN_BODY(20675, 7342, ""),
 		
-		RIFT_GUARDIAN_VII(20677, 7343, ""),
+		RIFT_GUARDIAN_COSMIC(20677, 7343, ""),
 		
-		RIFT_GUARDIAN_VIII(20679, 7344, ""),
+		RIFT_GUARDIAN_CHAOS(20679, 7344, ""),
 		
-		RIFT_GUARDIAN_IX(20681, 7345, ""),
+		RIFT_GUARDIAN_NATURE(20681, 7345, ""),
 		
-		RIFT_GUARDIAN_X(20681, 7345, ""),
+		RIFT_GUARDIAN_LAW(20683, 7345, ""),
 		
-		RIFT_GUARDIAN_XII(20683, 7346, ""),
+		RIFT_GUARDIAN_DEATH(20685, 7346, ""),
 		
-		RIFT_GUARDIAN_XIII(20685, 7347, ""),
+		RIFT_GUARDIAN_SOUL(20687, 7347, ""),
 		
-		RIFT_GUARDIAN_XIV(20687, 7348, ""),
+		RIFT_GUARDIAN_ASTRAL(20689, 7348, ""),
 		
-		RIFT_GUARDIAN_XV(20689, 7349, ""),
-		
-		RIFT_GUARDIAN_XVI(20691, 7350, ""),
+		RIFT_GUARDIAN_BLOOD(20691, 7349, ""),
 		
 		PHOENIX(20693, 7368, ""),
 		
@@ -182,6 +187,40 @@ public class Pet extends NPC {
         this.setInstancedPlayer(owner);
         this.setInteractingEntity(InteractionMode.FOLLOW, owner);
     }
+    
+    public static void skillingPet(Player player, Pet.Pets skilling_pet, int base_chance)
+    {
+    		int chance = player.getPerks()[5].isOwned() ? Misc.random(base_chance / 2) : Misc.random(base_chance);
+    		
+    		if (chance == 0) {
+    			Pet.Pets pets = skilling_pet;
+    			//if(Server.getInjector().getInstance(PlayerService.class).hasItemInInventoryOrBank(player, new Item(skilling_pet.getItem())))
+    			if(player.getInventory().getCount(skilling_pet.getItem()) > 0 || player.getBank().getCount(skilling_pet.getItem()) > 0)
+    			{
+    				player.sendMessage("You have a funny feeling like you would have been followed...");
+    				return;
+    			}
+    			if (player.getPet() != null) {
+    				if(player.getPet().getId() == skilling_pet.getNpc())
+    				{
+    					player.sendMessage("You have a funny feeling like you would have been followed...");
+    				} else {
+    					player.sendMessage("You have a funny feeling like you're being followed...");
+    					player.getInventory().add(new Item(skilling_pet.getItem()));
+    				}
+    			} else {
+    				PlayerSettingsEntity settings = player.getDatabaseEntity().getPlayerSettings();
+        			Pet pet = new Pet(player, pets.getNpc());
+        			player.setPet(pet);
+        			settings.setPetSpawned(true);
+        			settings.setPetId(pets.getNpc());
+        			World.getWorld().register(pet);
+        			player.sendMessage("You have a funny feeling like you're being followed...");
+    			}
+    			World.getWorld().sendWorldMessage("<col=884422><img=35> " + player.getName() + " has just received a pet " +
+    			CacheNPCDefinition.get(pets.getNpc()).getName() + ".");
+    		}
+    }
 
     @Override
     public void tick() {
@@ -190,7 +229,7 @@ public class Pet extends NPC {
             Optionals.nearbyFreeLocation(owner.getLocation()).ifPresent(l -> pathfindingService.travel(this, l));
         } else if (distance > MAX_DISTANCE) {
             Optionals.nearbyFreeLocation(owner.getLocation()).ifPresent(l -> {
-                this.setTeleportTarget(l);
+                this.setLocation(owner.getLocation());
                 this.setInteractingEntity(InteractionMode.FOLLOW, owner);
             });
         } else if (distance > 1) {

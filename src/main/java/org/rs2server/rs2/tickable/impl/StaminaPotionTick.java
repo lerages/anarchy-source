@@ -22,6 +22,7 @@ public class StaminaPotionTick extends Tickable {
 		if (mob != null && attribute) {
 			mob.getActionSender().sendMessage("Your stamina potion has expired.");
 			mob.removeAttribute("staminaPotion");
+			mob.getActionSender().sendConfig(638, 0);
 		}
 	}
 }

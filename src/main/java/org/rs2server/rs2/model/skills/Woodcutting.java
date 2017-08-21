@@ -8,6 +8,7 @@ import org.rs2server.rs2.domain.service.api.content.ItemService;
 import org.rs2server.rs2.domain.service.impl.content.ItemServiceImpl;
 import org.rs2server.rs2.model.*;
 import org.rs2server.rs2.model.npc.Pet;
+import org.rs2server.rs2.model.npc.Pet.Pets;
 import org.rs2server.rs2.model.player.Player;
 import org.rs2server.rs2.net.ActionSender;
 import org.rs2server.rs2.util.Misc;
@@ -414,23 +415,7 @@ public class Woodcutting extends HarvestingAction {
 		}
 		Player player = (Player) getMob();
 		int nest_chance = player.getPerks()[12].isOwned() ? Misc.random(255) : Misc.random(122);
-		int random = Misc.random(tree.getPetRate());
-		if (random == 0) {
-			Pet.Pets pets = Pet.Pets.BEAVER;
-			
-			if (player.getPet() != null) {
-				return tree.getExperience();
-			} else {
-				PlayerSettingsEntity settings = player.getDatabaseEntity().getPlayerSettings();
-				Pet pet = new Pet(player, pets.getNpc());
-				player.setPet(pet);
-				settings.setPetSpawned(true);
-				settings.setPetId(pets.getNpc());
-				World.getWorld().register(pet);
-				World.getWorld().sendWorldMessage("<col=884422><img=33>  News: " + player.getName() + " has just received a beaver pet!");
-				return tree.getExperience();
-			}
-		}
+		Pet.skillingPet(player, Pets.BEAVER, tree.getPetRate());
 		if(nest_chance == 0)
 		{
 			int r = Misc.random(4);

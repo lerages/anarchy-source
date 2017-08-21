@@ -304,7 +304,9 @@ public class NPCOptionPacketHandler implements PacketHandler {
 				case 1043: // Silk merchant
 					DialogueManager.openDialogue(player, 16100);
 					break;
-					
+				case 3194:
+					Bank.open(player);
+					break;
 		         //IRONMEN SHOPS START
 				case 6562:
 					break;
@@ -807,6 +809,9 @@ public class NPCOptionPacketHandler implements PacketHandler {
 					case 535://Horvik
 						Shop.open(player, 45, 0);
 						break;*/
+					case 505: //BOB
+						Shop.open(player, 17,  0);
+						break;
 					case 514://Shopkeeper
 					case 515:
 					case 508:
@@ -979,7 +984,8 @@ public class NPCOptionPacketHandler implements PacketHandler {
 					case 3369: //Jaun
 						DialogueManager.openDialogue(player, 101363);
 						break;
-						
+					
+					
 					case 7608:
 						Shop.open(player, 9, 0);
 						break;
@@ -1237,7 +1243,7 @@ public class NPCOptionPacketHandler implements PacketHandler {
 							break;
 						case 6092:
 							//TeleportManager.handleTeleport(player);
-							DialogueManager.openDialogue(player, 73); //right click
+							DialogueManager.openDialogue(player, 74); //right click
 							break;
 						case 514:
 						case 515:
@@ -1377,7 +1383,10 @@ public class NPCOptionPacketHandler implements PacketHandler {
 		//examineService.openMonsterExamine(player, id);
 		NPCDefinition npcDef = NPCDefinition.forId(id);
 		if (npcDef != null) {
-			player.getActionSender().sendMessage(npcDef.getDescription());
+			if(permissionService.is(player, PermissionService.PlayerPermissions.ADMINISTRATOR))
+				player.getActionSender().sendMessage(npcDef.getDescription() + " (ID: " + id + ")");
+				else
+					player.getActionSender().sendMessage(npcDef.getDescription());
 		}
 	}
 

@@ -124,6 +124,7 @@ public class Teleporting {
                         public void execute() {
 							mob.setCanBeDamaged(true);
                             mob.setTeleportTarget((Location) teleports[i][1]);
+                            player.getPet().tick();
                             mob.playAnimation(Animation.create(-1));
                             mob.playAnimation(Animation.create(715));
                             mob.removeAttribute("busy");
@@ -142,6 +143,7 @@ public class Teleporting {
                         public void execute() {
 							mob.setCanBeDamaged(true);
                             mob.setTeleportTarget((Location) teleports[i][1]);
+                            player.getPet().tick();
                             mob.playAnimation(Animation.create(-1));
                             mob.removeAttribute("busy");
                             this.stop();
@@ -205,6 +207,7 @@ public class Teleporting {
                     public void execute() {
 						player.setCanBeDamaged(true);
                         player.setTeleportTarget(Location.create(teleTabs[i][1], teleTabs[i][2], 0));
+                        player.getPet().tick();
                         player.playAnimation(Animation.create(-1));
                         player.removeAttribute("busy");
                         this.stop();

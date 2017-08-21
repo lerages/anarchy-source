@@ -1,11 +1,22 @@
 <list>
 	<gameObject>
 		<location>
+			<x>3094</x>
+			<y>3506</y>
+			<z>0</z>
+		</location>
+		<id>409</id>
+		<type>10</type>
+		<direction>0</direction>
+		<loadedInLandscape>false</loadedInLandscape>
+	</gameObject>
+	<gameObject>
+		<location>
 			<x>3096</x>
 			<y>3500</y>
 			<z>0</z>
 		</location>
-		<id>409</id>
+		<id>11729</id>
 		<type>10</type>
 		<direction>0</direction>
 		<loadedInLandscape>false</loadedInLandscape>

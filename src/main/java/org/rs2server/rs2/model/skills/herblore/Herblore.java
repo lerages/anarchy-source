@@ -432,17 +432,17 @@ public class Herblore extends ProductionAction {
         /**
          * Magic Root - Antidote++
          */
-        MAGIC_ROOTS(17, 6051, new Item(5951, 1), 5952, 79, 177),
+        MAGIC_ROOTS(17, 6051, new Item(5951, 1), 5954, 79, 177),
 
         /**
          * Zulrah scales - Anti-Venom
          */
-        ZULRAH_SCALE(18, 5952, new Item(12934, 5), 12905, 87, 120),
+        ZULRAH_SCALE(18, 5954, new Item(12934, 5), 12907, 87, 120),
 
         /**
          * Extended Antifire
          */
-        ANTIFIRE(19, 2452, new Item(11994, 4), 11951, 84, 140),
+        ANTIFIRE(19, 2454, new Item(11994, 4), 11953, 84, 140),
 
         /**
          * Potato cactus - Magic potion
@@ -452,7 +452,7 @@ public class Herblore extends ProductionAction {
         /**
          * Super-Antivenom+
          */
-        ANTI_VENOM(21, 12905, new Item(269, 1), 12913, 94, 125),
+        ANTI_VENOM(21, 12907, new Item(269, 1), 12915, 94, 125),
 
         /**
          * Super-Antipoison

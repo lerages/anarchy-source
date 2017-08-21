@@ -63,7 +63,7 @@
    <shop>
       <!-- Shop 2 -->
       <mainStockId>727</mainStockId>
-      <name>Diango's Specialty Items</name>
+      <name>Diango's Quest Items</name>
       <shopType>SPECIALIST_STORE_BUY</shopType>
       <currency>995</currency>
       <mainItems>
@@ -137,7 +137,7 @@
    <shop>
       <!-- Shop 3 -->
       <mainStockId>727</mainStockId>
-      <name>Horvik's Armour</name>
+      <name>Horvik's Melee Armour</name>
       <shopType>SPECIALIST_STORE_BUY</shopType>
       <currency>995</currency>
       <mainItems>
@@ -481,7 +481,7 @@
    <shop>
       <!-- Shop 7 -->
       <mainStockId>727</mainStockId>
-      <name>Zaff's Staffs</name>
+      <name>Zaff's Magic Equipment</name>
       <shopType>SPECIALIST_STORE_BUY</shopType>
       <currency>995</currency>
       <mainItems>
@@ -651,7 +651,7 @@
    <shop>
       <!-- Shop 8 -->
       <mainStockId>727</mainStockId>
-      <name>Zeke's Superior Scimitars</name>
+      <name>Zeke's Melee Weapons</name>
       <shopType>SPECIALIST_STORE_BUY</shopType>
       <currency>995</currency>
       <mainItems>
@@ -821,7 +821,7 @@
    <shop>
       <!-- Shop 9 -->
       <mainStockId>727</mainStockId>
-      <name>Bob's Brilliant Axes</name>
+      <name>Bob's Skilling Supplies</name>
       <shopType>SPECIALIST_STORE_BUY</shopType>
       <currency>995</currency>
       <mainItems>
@@ -834,23 +834,11 @@
             <count>200</count>
          </item>
          <item>
-            <id>233</id>
-            <count>200</count>
-         </item>
-         <item>
-            <id>11879</id>
-            <count>750</count>
-         </item>
-         <item>
             <id>11881</id>
             <count>750</count>
          </item>
          <item>
-            <id>11883</id>
-            <count>750</count>
-         </item>
-         <item>
-            <id>12859</id>
+            <id>12883</id>
             <count>750</count>
          </item>
          <item>
@@ -1373,16 +1361,80 @@
    <shop>
       <!-- Shop 17 -->
       <mainStockId>727</mainStockId>
-      <name>null</name>
+      <name>Bob's Herblore Supplies</name>
       <shopType>SPECIALIST_STORE_BUY</shopType>
       <currency>995</currency>
       <mainItems>
+	   <item>
+            <id>233</id>
+            <count>200</count>
+         </item>
          <item>
-            <id>0</id>
-            <count>0</count>
+            <id>11879</id>
+            <count>5000</count>
+         </item>
+         <item>
+            <id>12859</id>
+            <count>5000</count>
+         </item>
+          <item>
+            <id>221</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>235</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>225</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>223</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>1975</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>239</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>231</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>2970</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>241</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>245</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>3138</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>247</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>6051</id>
+            <count>5000</count>
+         </item>
+		 <item>
+            <id>6693</id>
+            <count>5000</count>
          </item>
       </mainItems>
-      <playerItems />
+      <playerItems/>
    </shop>
    <shop>
       <!-- Shop 18 -->

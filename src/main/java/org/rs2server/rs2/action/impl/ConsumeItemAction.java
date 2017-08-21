@@ -384,7 +384,6 @@ public class ConsumeItemAction extends Action {
 							getMob().getActionSender().sendMessage("You drink some of your " + item.getDefinition2().name.toLowerCase().substring(0, item.getDefinition2().getName().length() - 3) + ".");
 							if (getMob().getCombatState().canBePoisoned()) {
 								getMob().getCombatState().setCanBePoisoned(false);
-								getMob().getActionSender().sendConfig(102, 0);
 								World.getWorld().submit(new Tickable(drink.getPotionType() == PotionType.ANTIPOISON ? 150 : 1000) {
 									public void execute() {
 										getMob().getCombatState().setCanBePoisoned(true);
@@ -392,8 +391,21 @@ public class ConsumeItemAction extends Action {
 									}
 								});
 							}
-							if (getMob().getCombatState().getPoisonDamage() > 0) {
+							if (getMob().hasAttribute("venom")) {
+								getMob().removeAttribute("venom");
+								if(!getMob().hasAttribute("venom"))
+								{
+									getMob().getCombatState().setPoisonDamage(6, getMob());
+									getMob().getActionSender().sendConfig(102, 1);
+								}
+							}
+							else if (getMob().getCombatState().getPoisonDamage() > 0) {
 								getMob().getCombatState().setPoisonDamage(0, null);
+								if(getMob().getCombatState().getPoisonDamage() == 0)
+								{
+									getMob().getActionSender().sendConfig(102, 0);
+								}
+							} else {
 							}
 							break;
 						case BEER:
@@ -494,6 +506,7 @@ public class ConsumeItemAction extends Action {
 							getMob().getWalkingQueue().setEnergy(energy);
 							getMob().getActionSender().sendEnergy();
 							getMob().setAttribute("staminaPotion", true);
+							getMob().getActionSender().sendConfig(638, 100000000);
 							World.getWorld().submit(new StaminaPotionTick(getMob()));
 							break;
 					}
@@ -505,7 +518,7 @@ public class ConsumeItemAction extends Action {
 						}
 					}
 					if (drink.getPotionType() != PotionType.BEER && drink.getPotionType() != PotionType.WINE) {
-						getMob().getActionSender().sendMessage(currentPotionDose > 1 ? ("You have"
+						getMob().getActionSender().sendMessage(currentPotionDose > 1 ? ("You have "
 					+ (currentPotionDose - 1) + " dose" + (currentPotionDose > 2 ? "s" : "") +
 					" of potion left.") : "You have finished your potion.");
 					}

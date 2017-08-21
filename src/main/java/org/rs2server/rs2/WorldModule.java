@@ -34,6 +34,7 @@ public class WorldModule extends AbstractModule {
 		eventBinder.addBinding().to(PlayerSaveEvent.class);
 //		eventBinder.addBinding().to(GroundItemEvent.class);
 		eventBinder.addBinding().to(FarmingUpdateEvent.class);
+		eventBinder.addBinding().to(TimedServerMessage.class);
 		eventBinder.addBinding().to(SecondTick.class);
 //		eventBinder.addBinding().to(ShopRestoreTick.class);
 		eventBinder.addBinding().to(ShopDecayTick.class);
