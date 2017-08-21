@@ -71,6 +71,77 @@
         </CombatDefinition>
     </entry>
 	<entry>
+        <int>6618</int>
+        <CombatDefinition>
+            <maxHit>15</maxHit>
+            <aggressive>true</aggressive>
+            <combatCooldownDelay>5</combatCooldownDelay>
+            <respawnTicks>48</respawnTicks>
+            <attack>
+                <id>422</id>
+                <delay>0</delay>
+            </attack>
+            <defend>
+                <id>424</id>
+                <delay>0</delay>
+            </defend>
+            <death>
+                <id>2304</id>
+                <delay>0</delay>
+            </death>
+            <attackType>STAB</attackType>
+            <combatStyle>ACCURATE</combatStyle>
+            <combatActionType>CUSTOM</combatActionType>
+            <skills>
+               <entry>
+                    <skill>STRENGTH</skill>
+                    <int>90</int>
+                </entry>
+                <entry>
+                    <skill>ATTACK</skill>
+                    <int>160</int>
+                </entry>
+                <entry>
+                    <skill>DEFENCE</skill>
+                    <int>240</int>
+                </entry>
+                <entry>
+                    <skill>HITPOINTS</skill>
+                    <int>225</int>
+                </entry>
+                <entry>
+                    <skill>RANGE</skill>
+                    <int>180</int>
+                </entry>
+            </skills>
+            <bonuses>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>75</int>
+                <int>5</int>
+                <int>5</int>
+                <int>30</int>
+                <int>250</int>
+                <int>250</int>
+                <int>25</int>
+                <int>0</int>
+                <int>0</int>
+            </bonuses>
+            <constantDrops>
+                <npcdrop>
+                    <frequency>1.0</frequency>
+                    <item>
+                        <id>526</id>
+                        <count>1</count>
+                    </item>
+                </npcdrop>
+            </constantDrops>
+            <randomDrops/>
+        </CombatDefinition>
+    </entry>
+	<entry>
         <int>936</int>
         <CombatDefinition>
             <maxHit>13</maxHit>

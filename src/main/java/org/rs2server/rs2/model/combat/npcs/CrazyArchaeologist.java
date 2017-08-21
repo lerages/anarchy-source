@@ -63,7 +63,7 @@ public class CrazyArchaeologist extends AbstractCombatAction {
 	            return; //this should be an NPC!
 	        }
 
-	        int maxHit = 31;
+	        int maxHit = 24;
 	        int randomHit;
 	        int hitDelay;
 	        boolean blockAnimation = false;
@@ -128,8 +128,8 @@ public class CrazyArchaeologist extends AbstractCombatAction {
 	                gfxDelay = 0;
 	                break;
 	        }
-	        attacker.getCombatState().setAttackDelay(style == CombatStyle.RANGE ? 2 : 4);
-	        attacker.getCombatState().setSpellBook(style == CombatStyle.RANGE ? 3 : 5);
+	        attacker.getCombatState().setAttackDelay(style == CombatStyle.RANGE ? 4 : 4);
+	        attacker.getCombatState().setSpellBook(style == CombatStyle.RANGE ? 5 : 5);
 
 	        final CombatStyle preStyle = style;
 	        hit = preHit;
@@ -182,6 +182,6 @@ public class CrazyArchaeologist extends AbstractCombatAction {
 
 	    @Override
 	    public int distance(Mob attacker) {
-	        return 6;
+	        return 8;
 	    }
 	}

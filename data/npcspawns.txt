@@ -45,6 +45,9 @@
 1536 3183 3926 0 WEST false // Dark crab fishing spot - Wilderness
 1536 3181 3926 0 WEST false // Dark crab fishing spot - Wilderness
 
+//Crazy arch
+6618 2967 3696 0 WEST true // crazy arch
+
 //Kourend Npcs
 7050 1718 3879 0 SOUTH_EAST true //Tyss
 
