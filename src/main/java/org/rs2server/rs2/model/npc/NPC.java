@@ -435,22 +435,12 @@ public class NPC extends Mob {
                         }
                     }
                     Pet.Pets pets = Pet.Pets.from(item.getId());
-                    if (pets != null) {
-                        if (player.getPet() != null) {
-                            continue;
-                        } else {
-                            PlayerSettingsEntity settings = player.getDatabaseEntity().getPlayerSettings();
-							Pet pet = new Pet(player, pets.getNpc());
-							player.setPet(pet);
-							settings.setPetSpawned(true);
-                            settings.setPetId(pets.getNpc());
-                            player.getActionSender().sendMessage("You have a funny feeling like you're being followed...");
-                            World.getWorld().register(pet);
-                            World.getWorld().sendWorldMessage("<col=884422><img=33> News:" + player.getName() + 
-                            		" has just received " + item.getCount() + "x " + item.getDefinition2().getName() + ".");
-                            continue;
-                        }
+                    if(pets != null)
+                    {
+                    DropPet(player, Pet.Pets.from(item.getId()));
+                    continue;
                     }
+                    
                     // Do not drop clue scrolls for player who already have one.
 					if (ClueScrollType.forClueScrollItemId(item.getId()) != null && 
 							Server.getInjector().getInstance(PlayerService.class).hasItemInInventoryOrBank(player, item)) {
@@ -542,7 +532,38 @@ public class NPC extends Mob {
 	public void setTransformId(int transformId) {
 		this.transformId = transformId;
 	}
-	private void splitDrop(NPCDrop d, PrivateChat clan) {
+	
+	private static void DropPet(Player player, Pet.Pets boss_pet)
+    {
+    			Pet.Pets pets = boss_pet;
+    			
+    			if(player.getInventory().getCount(boss_pet.getItem()) > 0 || player.getBank().getCount(boss_pet.getItem()) > 0)
+    			{
+    				player.sendMessage("You have a funny feeling like you would have been followed...");
+    				return;
+    			}
+    			if (player.getPet() != null) {
+    				if(player.getPet().getId() == boss_pet.getNpc())
+    				{
+    					player.sendMessage("You have a funny feeling like you would have been followed...");
+    				} else {
+    					player.sendMessage("You have a funny feeling like you're being followed...");
+    					player.getInventory().add(new Item(boss_pet.getItem()));
+    				}
+    			} else {
+    				PlayerSettingsEntity settings = player.getDatabaseEntity().getPlayerSettings();
+        			Pet pet = new Pet(player, pets.getNpc());
+        			player.setPet(pet);
+        			settings.setPetSpawned(true);
+        			settings.setPetId(pets.getNpc());
+        			World.getWorld().register(pet);
+        			player.sendMessage("You have a funny feeling like you're being followed...");
+    			}
+    			World.getWorld().sendWorldMessage("<col=884422><img=35> " + player.getName() + " has just received a " +
+    			CacheNPCDefinition.get(pets.getNpc()).getName() + ".");
+    }
+	
+//	private void splitDrop(NPCDrop d, PrivateChat clan) {
 //		ArrayList<Player> receivingPlayers = new ArrayList<Player>();
 //		int amount = d.getItem().getCount();
 //		int price = ItemDefinition.forId(d.getItem().getId()).getStorePrice() * amount;
@@ -559,8 +580,8 @@ public class NPC extends Mob {
 //			World.getWorld().createGroundItem(new GroundItem(pl.getName(), new Item(995, priceSplit), getLocation()), pl);
 //			pl.getActionSender().sendMessage("<col=009900>You received " + priceSplit + " coins as your split of the drop: " + d.getItem().getCount() + "x" + d.getItem().getDefinition().getName());
 //		}
-
-	}
+//
+//	}
 
 	public boolean isBossNPC(int id) {
 		return Bosses.of(id) != null;
