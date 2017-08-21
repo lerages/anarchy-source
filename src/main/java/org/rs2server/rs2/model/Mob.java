@@ -687,10 +687,6 @@ public abstract class Mob extends Entity {
 		if (this.getActionSender() != null) {
 			this.getActionSender().sendAreaInterface(null, teleportTarget);
 		}
-		if (!getMob().isPlayer()) {
-		}
-		Player player = (Player) getMob();
-		player.getPet().tick();
 	}
 	
 	public Object setTeleportTargetObj(Location teleportTarget) {
