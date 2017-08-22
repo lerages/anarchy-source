@@ -432,6 +432,17 @@ public class NPCOptionPacketHandler implements PacketHandler {
 					case 4626:
 						DialogueManager.openDialogue(player, 687);
 						break;
+					case 1310:
+						Shop.open(player, 36, 0);
+						break;
+					case 5082:
+						if(player.getSettings().getRFDState() == 10)
+						player.sendMessage("The Gypsy has no interest in speaking with you; you have finished Recipe for Disaster.");
+						else if(player.getSettings().getRFDState() == 9)
+							DialogueManager.openDialogue(player, 723);
+						else
+						DialogueManager.openDialogue(player, 700);
+						break;
 					case 1158:
 					//	LostCity lost = (LostCity) player.getQuests().get(LostCity.class);
 					//	if (lost == null) {

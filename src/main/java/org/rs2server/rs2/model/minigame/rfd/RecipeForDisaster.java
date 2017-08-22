@@ -2,10 +2,12 @@ package org.rs2server.rs2.model.minigame.rfd;
 
 import com.google.common.collect.Iterables;
 import org.rs2server.rs2.model.Entity;
+import org.rs2server.rs2.model.Item;
 import org.rs2server.rs2.model.Location;
 import org.rs2server.rs2.model.World;
 import org.rs2server.rs2.model.npc.NPC;
 import org.rs2server.rs2.model.player.Player;
+import org.rs2server.rs2.net.ActionSender.DialogueType;
 import org.rs2server.rs2.tickable.Tickable;
 
 import java.util.Iterator;
@@ -38,14 +40,14 @@ public class RecipeForDisaster {
 			public void execute() {
 				stop();
 				//DialogueManager.openDialogue(player, 22);
-				if (player.getSettings().getRFDState() == 4) {
+				if (player.getSettings().getRFDState() == 14) {
 					player.getActionSender().sendMessage("You've already completed this minigame.");
 					return;
 				}
 				started = true;
 				if (wave == null) {
 					wave = new RFDWave();
-					wave.set(1);
+					wave.set(player.getSettings().getBestRFDState());
 				}
 				//wave.set(player.getSettings().getRFDState());
 			}
@@ -68,7 +70,7 @@ public class RecipeForDisaster {
 				wave = new RFDWave();
 				wave.set(1);
 			}
-			player.getActionSender().sendMessage("Now starting wave " + wave.getStage() + ".");
+			//player.getActionSender().sendMessage("Now starting wave " + wave.getStage() + ".");
 
 			int[] spawns = wave.spawns();
 
@@ -94,9 +96,12 @@ public class RecipeForDisaster {
 				}
 				if (player.getInstancedNPCs().isEmpty()) {
 					if (wave.getStage() == 5) {
-						player.getActionSender().sendMessage("You have defeated the Culinaromancer!");
+						player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+	            				"<u>You have completed <col=ff0000>Recipe for Disaster</col>!</u> You now have<br>"
+	            				+ "Full access to the Culinaromancer's Chest<br>");
+						player.getInterfaceState().setNextDialogueId(0, -1);
 						player.setTeleportTarget(Entity.HOME);
-						player.getSettings().setRFDState(4);
+						player.getSettings().setRFDState(10);
                         player.getSettings().setBestRFDState(4);
 						player.setMultiplayerDisabled(false);
 						started = false;
@@ -147,7 +152,7 @@ public class RecipeForDisaster {
 			World.getWorld().unregister(player.getInstancedNPCs().get(i));
 		}*/
 		startTime = -1;
-		player.getSettings().setRFDState(wave.getStage() - 1);
+		//player.getSettings().setRFDState(wave.getStage() - 1);
         int currentWave = wave.getStage() - 1;
         if (currentWave > player.getSettings().getBestRFDState()) {
             player.getSettings().setBestRFDState(currentWave);

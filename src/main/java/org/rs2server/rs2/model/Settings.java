@@ -74,6 +74,8 @@ public class Settings {
 	
 	private int rfdState = 1;
 	
+	private int chosen_skill = -1;
+	
 	private int fcState = 1;
 	
 	private int maState = 1;
@@ -328,7 +330,17 @@ public class Settings {
 	public void setRFDState(int state) {
 		this.rfdState = state;
 	}
-
+	
+	public int getChosenSkill()
+	{
+		return chosen_skill;
+	}
+	
+	public void setChosenSkill(int skill_id)
+	{
+		chosen_skill = skill_id;
+	}
+	
 	public void setMagicDelay(long currentTimeMillis) {
 		this.magicDelay = currentTimeMillis;
 	}

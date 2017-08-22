@@ -523,11 +523,11 @@ public class Prayers
 			return;
 		}
 		
-		//if (player.getRFD().isStarted()) {
-		//	player.getActionSender().sendMessage("You can't use prayers in this fight.");
-		//	refresh(player);
-		//	return;
-		//}
+		if (player.getRFD().isStarted()) {
+			player.getActionSender().sendMessage("You can't use prayers during this fight!");
+			refresh(player);
+			return;
+		}
 		
 		ActionSender action = player.getActionSender();
 		Prayer prayer = Prayer.forId(id);

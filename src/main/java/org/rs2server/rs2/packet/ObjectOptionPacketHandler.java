@@ -68,6 +68,7 @@ import org.rs2server.rs2.model.skills.smithing.DragonfireShieldAction;
 import org.rs2server.rs2.model.skills.smithing.Smelting;
 import org.rs2server.rs2.model.skills.smithing.SmithingUtils.ForgingBar;
 import org.rs2server.rs2.net.ActionSender;
+import org.rs2server.rs2.net.ActionSender.DialogueType;
 import org.rs2server.rs2.net.Packet;
 import org.rs2server.rs2.tickable.Tickable;
 import org.rs2server.rs2.util.Misc;
@@ -85,12 +86,10 @@ public class ObjectOptionPacketHandler implements PacketHandler {
     /**
      * The array of possible crystal chest rewards.
      */
-    private static final Item[] CRYSTAL_CHEST_REWARDS = new Item[]{new Item(372, 5), new Item(995, 5000),
+    private static final Item[] CRYSTAL_CHEST_REWARDS = new Item[]{new Item(372, 5), new Item(995, 10000),
             new Item(554, 50), new Item(555, 50), new Item(556, 50), new Item(557, 50), new Item(558, 50),
             new Item(559, 50), new Item(560, 50), new Item(561, 50), new Item(562, 50), new Item(563, 50),
-            new Item(222, 35), new Item(236, 35), new Item(240, 35), new Item(231, 35), new Item(226, 35),
-            new Item(454, 100), new Item(1079, 1), new Item(1093, 1), new Item(441, 150), new Item(2364, 3),
-            new Item(242, 35)};
+            new Item(454, 100), new Item(1079, 1), new Item(1093, 1), new Item(441, 150), new Item(2364, 3)};
     private static final Item[] UNSIRED_REWARD = new Item[]{new Item(4151, 1), new Item(7979, 1), new Item(7979, 1)
             , new Item(13262, 1), new Item(13275, 1), new Item(13274, 1), new Item(13265, 1), new Item(13276, 1)
             , new Item(13277, 1), new Item(13277, 1), new Item(13277, 1), new Item(13277, 1), new Item(13277, 1)};
@@ -540,6 +539,39 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                     	break;
                     case 4413:
                     player.getActionQueue().addAction(new ClimbLadderAction(player, Location.create(2515, 4629, 1)));
+                    	break;
+                    case 12309:
+                    	if(player.getSettings().getRFDState() > 0)
+                    	Shop.open(player, 26 + player.getSettings().getRFDState(), 0);
+                    	else
+                    		player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+                    				"You attempt to open the chest but notice the nearby Cook glance over at you..."
+                            				+ " Maybe you should go talk to him?");
+                    break;
+                    case 12330: //dwarf
+                    	DialogueManager.openDialogue(player, 12330);
+                    	break;
+                    case 12337: //pirate pete
+                    	DialogueManager.openDialogue(player, 12337);
+                    	break;
+                    case 12332: //goblin 1
+                    case 12334: //goblin 2
+                    	DialogueManager.openDialogue(player, 12332);
+                    	break;
+                    case 12343: //ogre
+                    	DialogueManager.openDialogue(player, 12343);
+                    	break;
+                    case 12339: //lummy guide
+                    	DialogueManager.openDialogue(player, 12339);
+                    	break;
+                    case 12341: //evil dave
+                    	DialogueManager.openDialogue(player, 12341);
+                    	break;
+                    case 12345: //sir amik
+                    	DialogueManager.openDialogue(player, 12345);
+                    	break;
+                    case 12347: //awowogei
+                    	DialogueManager.openDialogue(player, 12347);
                     	break;
                     case 1579: //edgeville dungeon trapdoor
                         player.setAttribute("busy", true);
@@ -1135,7 +1167,7 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                         break;
                     case 172:
                         if (!player.getInventory().contains(989)) {
-                            player.getActionSender().sendMessage("The chest won't open without a key.");
+                            player.getActionSender().sendMessage("The chest won't open without a crystal key.");
                             return;
                         }
                         player.setAttribute("busy", true);
@@ -1826,6 +1858,7 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                         return;
                     }
                     switch (objectId) {
+                    	
                         case 4569:
                             if (obj.getLocation().equals(Location.create(2506, 3640, 1))) {
                                 player.setTeleportTarget(Location.create(2505, 3641, 2));

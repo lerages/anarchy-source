@@ -278,7 +278,7 @@ public class Player extends Mob implements Persistable
 			new Perk("Slayer Betrayer", "Cancelling slayer tasks costs 10 slayer points", 7.50, false),
 			new Perk("Teacher's Pet", "Skilling pets rates are twice as common", 5, false),
 			new Perk("Good Graces", "Increased chance at Marks of Grace from rooftop courses", 3, false),
-			new Perk("Five Finger Dicount", "10% increased chance of successful thieving", 3, false),
+			new Perk("Five Finger Dicount", "10% chance of receiving double loot while thieving", 5, false),
 			new Perk("More Ore", "10% chance of receiving double ore while mining", 5, false),
 			new Perk("Chop Shop", "10% chance of receiving double logs while woodcutting", 5, false),
 			new Perk("Fish Wish", "10% chance of receiving double fish while fishing", 5, false),
@@ -1846,6 +1846,7 @@ public class Player extends Mob implements Persistable
 				playAnimation(Animation.create(-1, 0));
 				setCanBeDamaged(true);
 				removeAttribute("teleporting");
+				if(pet != null )
 				pet.tick();
 				setCanBeDamaged(true);
 				this.stop();

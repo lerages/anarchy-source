@@ -23,8 +23,16 @@
             <id>2347</id>
             <count>500</count>
          </item>
+		 <item>
+            <id>2347</id>
+            <count>500</count>
+         </item>
          <item>
             <id>5605</id>
+            <count>500</count>
+         </item>
+		 <item>
+            <id>2313</id>
             <count>500</count>
          </item>
       </mainItems>
@@ -838,7 +846,7 @@
             <count>750</count>
          </item>
          <item>
-            <id>12883</id>
+            <id>11883</id>
             <count>750</count>
          </item>
          <item>
@@ -888,6 +896,10 @@
          <item>
             <id>11065</id>
             <count>200</count>
+         </item>
+		 <item>
+            <id>1778</id>
+            <count>10000</count>
          </item>
          <item>
             <id>1759</id>
@@ -1189,26 +1201,6 @@
       <shopType>SPECIALIST_STORE_BUY</shopType>
       <currency>995</currency>
       <mainItems>
-         <item>
-            <id>7454</id>
-            <count>25</count>
-         </item>
-         <item>
-            <id>7455</id>
-            <count>25</count>
-         </item>
-         <item>
-            <id>7456</id>
-            <count>25</count>
-         </item>
-         <item>
-            <id>7457</id>
-            <count>25</count>
-         </item>
-         <item>
-            <id>7458</id>
-            <count>25</count>
-         </item>
       </mainItems>
       <playerItems />
    </shop>
@@ -1680,29 +1672,415 @@
       <playerItems />
    </shop>
    <shop>
-      <!-- Shop 25 -->
-      <mainStockId>727</mainStockId>
-      <name>null</name>
+      <!-- Shop 26 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
       <shopType>SPECIALIST_STORE_BUY</shopType>
       <currency>995</currency>
       <mainItems>
-         <item>
-            <id>0</id>
-            <count>0</count>
+		<item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+  <shop>
+      <!-- Shop 27 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+	<shop>
+      <!-- Shop 28 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7455</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+<shop>
+      <!-- Shop 29 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7455</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7456</id>
+            <count>25</count>
          </item>
       </mainItems>
       <playerItems />
    </shop>
    <shop>
-      <!-- Shop 26 -->
+      <!-- Shop 30 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7455</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7456</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7457</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+   <shop>
+      <!-- Shop 31 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7455</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7456</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7457</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7458</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+	<shop>
+      <!-- Shop 32 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7455</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7456</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7457</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7458</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7459</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+   <shop>
+      <!-- Shop 33 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7455</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7456</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7457</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7458</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7459</id>
+            <count>25</count>
+         </item>
+		  <item>
+            <id>7460</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+   <shop>
+      <!-- Shop 34 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7455</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7456</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7457</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7458</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7459</id>
+            <count>25</count>
+         </item>
+		  <item>
+            <id>7460</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7461</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7462</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+   <shop>
+      <!-- Shop 35 -->
+      <mainStockId>982</mainStockId>
+      <name>Culinaromancer's Chest</name>
+      <shopType>SPECIALIST_STORE_BUY</shopType>
+      <currency>995</currency>
+      <mainItems>
+	  <item>
+            <id>1933</id>
+            <count>250</count>
+         </item>
+		 <item>
+            <id>1929</id>
+            <count>250</count>
+         </item>
+		<item>
+            <id>7453</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7454</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7455</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7456</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7457</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7458</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7459</id>
+            <count>25</count>
+         </item>
+		  <item>
+            <id>7460</id>
+            <count>25</count>
+         </item>
+		 <item>
+            <id>7461</id>
+            <count>25</count>
+         </item>
+      </mainItems>
+      <playerItems />
+   </shop>
+   <shop>
+      <!-- Shop 36 -->
       <mainStockId>727</mainStockId>
-      <name>null</name>
-      <shopType>GENERAL_STORE</shopType>
+      <name>Pub</name>
+      <shopType>SPECIALIST_STORE_NO_BUY</shopType>
       <currency>995</currency>
       <mainItems>
          <item>
-            <id>0</id>
-            <count>0</count>
+            <id>1917</id>
+            <count>1000</count>
          </item>
       </mainItems>
       <playerItems />

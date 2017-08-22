@@ -21,4 +21,15 @@
 		<direction>0</direction>
 		<loadedInLandscape>false</loadedInLandscape>
 	</gameObject>
+	<gameObject>
+		<location>
+			<x>3090</x>
+			<y>3492</y>
+			<z>0</z>
+		</location>
+		<id>172</id>
+		<type>10</type>
+		<direction>3</direction>
+		<loadedInLandscape>false</loadedInLandscape>
+	</gameObject>
 </list>

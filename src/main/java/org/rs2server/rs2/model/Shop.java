@@ -311,7 +311,7 @@ public class Shop {
 	 */
 	public static final int SHOP_PLAYER_STOCK = 24;//24
 
-	public static final int[] RFD_GLOVES = {7459, 7460, 7461, 7462};
+	public static final int[] RFD_GLOVES = {7453, 7454, 7455, 7456, 7457, 7458, 7459, 7460, 7461, 7462};
 	
 	public static final int[] NON_IRONMAN_STOCK = {1163, 4131, 1079, 1093, 1201, 3105, 1127, 1333, 892, 890, 861, 9185,
 			9143, 810, 867, 2489, 2495, 2501, 1065, 1099, 1135, 1727, 4675, 1725, 1731, 1213, 1373, 1377, 1434, 1355, 
@@ -345,14 +345,19 @@ public class Shop {
 		final PermissionService permissionService;
 		permissionService = Server.getInjector().getInstance(PermissionService.class);
 		
-		if (shopId == 13) {
-			int rfdState = player.getSettings().getBestRFDState();
-				for (int i = 0; i < rfdState; i++) {
-					if (shop.getMainStock().contains(RFD_GLOVES[i])) {
-						continue;
+		/*if (shopId == 13) {
+			int rfdState = player.getSettings().getRFDState();
+				for (int i = 0; i < rfdState; i++) 
+				{
+					if(i < 10)
+					{
+						if (shop.getMainStock().contains(RFD_GLOVES[i])) 
+						{
+							continue;
+						}
+						shop.getMainStock().add(new Item(RFD_GLOVES[i], 25));
 					}
-					shop.getMainStock().add(new Item(RFD_GLOVES[i], 25));
-				}
+				}*/
 			/*} else {
 				for (int i = 0; i < questFinished; i++) {
 					if (shop.getMainStock().contains(RFD_GLOVES[i])) {
@@ -361,7 +366,7 @@ public class Shop {
 					shop.getMainStock().add(new Item(RFD_GLOVES[i], 25));
 				}
 			}*/
-		}
+		//}
 		if (shopId == 32) {
 			for (int i = 0; i < Constants.QUEST_SHOP.length; i++) {
 				if (!Inventory.ownsItem(player, Constants.QUEST_SHOP[i])) {

@@ -1,10 +1,13 @@
-//northeast = north
-//northwest = southeast
+//NORTH = north-west
+//EAST = north-east
+//SOUTH = east
 //WEST = northwest
-//southeast = west
-//southwest = southwest
-//south = east
-//west = south
+//NORTH_WEST = southeast
+//NORTH_EAST = north
+//SOUTH_EAST = west
+//SOUTH_WEST = southwest
+
+
 
 
 //Lost City npcs
@@ -15,7 +18,14 @@
 3550 3351 2958 0 SOUTH true //thug
 3550 3359 2955 0 SOUTH true //thug
 
-5937 2620 3685 0 SOUTH true //Jarvald
+//RFD QUEST
+4626 3079 3491 0 NORTH_EAST false //RFD COOK
+4849 1863 5317 0 EAST false // culinaromancer
+5082 1866 5320 0 SOUTH_EAST false // culinaromancer
+
+1310 3223 3398 0 SOUTH_EAST true // bartender
+1310 2958 3370 0 SOUTH_EAST true // bartner
+
 
 //FISHING NPCs
 1516 2500 3512 0 WEST false //Leaping fish barbarian fishing - Babarian outpost
@@ -57,7 +67,6 @@
 3369 3096 3110 0 WEST false //juan
 3320 3097 3108 0 SOUTH_EAST false //skippy
 
-4626 3079 3492 0 SOUTH false //RFD COOK
 401 3086 3487 0 NORTH_EAST true //turael
 535 3081 3509 0 WEST false //Horvik
 536 3083 3509 0 WEST false //Lowe

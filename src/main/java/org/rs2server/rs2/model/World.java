@@ -1059,12 +1059,13 @@ public class World {
 						exp[i] = (int) player.getSkills().getExperience(i);
 					}
 					 String playerMode;
-						if (player.isUltimateIronMan()) {
-							playerMode = "Ironman Mode";
-						} else if (player.isHardcoreIronMan()) {
+						
+						if (service.is(player, PermissionService.PlayerPermissions.HARDCORE_IRON_MAN)) {
 							playerMode = "Hardcore Ironman Mode";
-						} else if (service.is(player, PermissionService.PlayerPermissions.IRON_MAN)) {
+						} else if (service.is(player, PermissionService.PlayerPermissions.ULTIMATE_IRON_MAN)) {
 							playerMode = "Ultimate Ironman Mode";
+						} else if (service.is(player, PermissionService.PlayerPermissions.IRON_MAN)) {
+							playerMode = "Ironman Mode";
 						} else {
 							playerMode = "Normal Mode";
 						}

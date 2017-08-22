@@ -410,10 +410,16 @@ public class Constants
 	public static final Location DORG = Location.create(2701, 5351, 1);
 	public static final Location SHILO_VILLAGE = Location.create(2852, 2958, 0);
 
+	/*
+	 * Wild locations
+	 */
 	public static final Location EAST_DRAGONS = Location.create(3351, 3659, 0);
 	public static final Location WEST_DRAGONS = Location.create(2979, 3597, 0);
 	public static final Location DARK_CASTLE = Location.create(2998, 3649, 0);
 	
+	/*
+	 * Dungeon locations
+	 */
 	public static final Location EDGEVILLE_DUNGEON = Location.create(3096, 9867, 0);
 	public static final Location TAVERLY_DUNGEON = Location.create(2884, 9798, 0);
 	public static final Location BRIMHAVEN_DUNGEON = Location.create(2745, 3152, 0);
@@ -430,6 +436,9 @@ public class Constants
 	public static final Location WATERBIRTH_DUNGEON = Location.create(2443, 10147, 0);
 	public static final Location TROLL_STRONGHOLD = Location.create(2859, 3663, 0);
 	
+	/*
+	 * training locations
+	 */
 	public static final Location CHICKENS = Location.create(3234, 3292, 0);
 	public static final Location SAND_CRABS = Location.create(1720, 3465, 0);
 	public static final Location ROCK_CRABS = Location.create(2678, 3718, 0);
@@ -438,6 +447,9 @@ public class Constants
 	public static final Location YAKS = Location.create(2325, 3803, 0);
 	public static final Location DAGANNOTHS = Location.create(2493, 10147, 0);
 	
+	/*
+	 * Boss locations
+	 */
 	public static final Location DAGANNOTH_KINGS = Location.create(1908, 4367, 0);
     public static final Location ZULRAH = Location.create(2200, 3058, 0);
 	public static final Location ARMADYL = Location.create(2841, 5286, 2);
@@ -446,12 +458,20 @@ public class Constants
 	public static final Location ZAMMY = Location.create(2925, 5340, 2);
 	public static final Location KBD_LAIR = Location.create(2271, 4680, 0);
 	
+	/*
+	 * Slayer master locations
+	 */
 	public static final Location MAZCHNA = Location.create(3514, 3512, 0);
 	public static final Location VANNAKA = Location.create(3142, 9915, 0);
 	public static final Location CHAELDAR = Location.create(2450, 4438, 0);
 	public static final Location NIEVE = Location.create(2436, 3429, 0);
 	public static final Location DURADEL = Location.create(2869, 2975, 1);
-
+	
+	/*
+	 * RFD locations
+	 */
+	public static final Location RFD_DINING_ROOM = Location.create(1861, 5317, 0);
+	
 	public static final Object[] PRICE_PARAMETERS = new Object[]{ "Add-X<col=ff9040>", "Add-All<col=ff9040>", "Add-10<col=ff9040>", "Add-5<col=ff9040>", "Add<col=ff9040>", -1, 0, 7, 4, 93, 15597568 };
 
 	public static final Object[] OFFER_OPTS = new Object[]{"Stake X", "Stake All", "Stake 10", "Stake 5", "Stake 1", -1, 0, 7, 4, 93, 7143424};

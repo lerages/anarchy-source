@@ -11,9 +11,10 @@ public class RFDWave {
 	private static final int[][] SPAWNS = {
 		{ },
 		{AGRITH}, 
-		{AGRITH, FLAMBEED},
-		{AGRITH, FLAMBEED, KARAMEL},
-		{AGRITH, FLAMBEED, KARAMEL, DESSOURT}
+		{FLAMBEED},
+		{KARAMEL},
+		{DESSOURT},
+		{ }
 	};
 	
 	private int stage;

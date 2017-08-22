@@ -27,6 +27,9 @@ public class TimedServerMessage extends Event {
 			
 			"Looking for the shops? You can find them in Edgeville's general store building!",
 			
+			"You can find monsters and resources in the exact same locations as you would in "
+			+ "Oldschool Runescape; the gnome glider will help you get around.",
+			
 			"Did you know? Being a donator also has additional bonuses, "
 			+ "speak to the donation guide at home for more information!"
 	};

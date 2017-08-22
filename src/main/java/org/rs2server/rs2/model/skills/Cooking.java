@@ -72,7 +72,9 @@ public class Cooking extends ProductionAction {
 				new Item(7188), false),
 
 		RAW_ADMIRAL_PIE(70, new Item[]{new Item(7196)}, new Item(2329), 210,
-				new Item(7198), false), RAW_WILD_PIE(85, new Item[]{new Item(
+				new Item(7198), false), 
+		
+		RAW_WILD_PIE(85, new Item[]{new Item(
 				7206)}, new Item(2329), 240, new Item(7208), false),
 
 		RAW_SUMMER_PIE(95, new Item[]{new Item(7216)}, new Item(2329), 266,
@@ -219,7 +221,7 @@ public class Cooking extends ProductionAction {
 	private static final String[] MESSAGES = new String[]{
 			"You have run out of ingredients!", "You successfully cook the ",
 			"You accidentally burn the ",
-			"You do not have the required level to cook this!"};
+			"You do not have the required cooking level to cook this"};
 
 	private CookingItem item;
 	private CookingMethod method;

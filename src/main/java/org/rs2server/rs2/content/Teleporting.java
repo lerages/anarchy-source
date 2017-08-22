@@ -207,6 +207,7 @@ public class Teleporting {
                     public void execute() {
 						player.setCanBeDamaged(true);
                         player.setTeleportTarget(Location.create(teleTabs[i][1], teleTabs[i][2], 0));
+                        if(player.getPet() != null)
                         player.getPet().tick();
                         player.playAnimation(Animation.create(-1));
                         player.removeAttribute("busy");

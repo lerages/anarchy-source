@@ -1374,6 +1374,8 @@ public class ItemOptionPacketHandler implements PacketHandler {
 						return;
 					}
 					
+					
+					
 					if ((usedItem.getId() == 13196 || withItem.getId() == 13196
 							&& player.getInventory().contains(13196)) || (usedItem.getId() == 13197 || withItem.getId() == 13197
 							&& player.getInventory().contains(13197))) {
@@ -1457,6 +1459,48 @@ public class ItemOptionPacketHandler implements PacketHandler {
 						return;
 					}
 
+					if ((usedItem.getId() == 1929 && withItem.getId() == 1933) || (usedItem.getId() == 1933 && withItem.getId() == 1929)) {
+						if(player.getInventory().containsItems(1933, 1929))
+						{
+							DialogueManager.openDialogue(player, 131310);
+						}
+					}
+					
+					if ((usedItem.getId() == 2315 && withItem.getId() == 329) || (usedItem.getId() == 329 && withItem.getId() == 2315)) {
+						if(player.getInventory().containsItems(2315, 329))
+						{
+							player.getInventory().remove(new Item(2315));
+							player.getInventory().add(new Item(7192));
+							player.getInventory().remove(new Item(329));
+						}
+					}
+					
+					if ((usedItem.getId() == 7192 && withItem.getId() == 361) || (usedItem.getId() == 361 && withItem.getId() == 7192)) {
+						if(player.getInventory().containsItems(7192, 361))
+						{
+							player.getInventory().remove(new Item(7192));
+							player.getInventory().add(new Item(7194));
+							player.getInventory().remove(new Item(361));
+						}
+					}
+					
+					if ((usedItem.getId() == 7194 && withItem.getId() == 1942) || (usedItem.getId() == 1942 && withItem.getId() == 7194)) {
+						if(player.getInventory().containsItems(7194, 1942))
+						{
+							player.getInventory().remove(new Item(7194));
+							player.getInventory().add(new Item(7196));
+							player.getInventory().remove(new Item(1942));
+						}
+					}
+					
+					if ((usedItem.getId() == 2313 && withItem.getId() == 1953) || (usedItem.getId() == 1953 && withItem.getId() == 2313)) {
+						if(player.getInventory().containsItems(2313, 1953))
+						{
+							player.getInventory().remove(new Item(2313));
+							player.getInventory().add(new Item(2315));
+							player.getInventory().remove(new Item(1953));
+						}
+					}
 					if ((usedItem.getId() == 13265 && withItem.getId() == 187) || (usedItem.getId() == 187 && withItem.getId() == 13265)) {
 						Item with;
 						Item crystal;

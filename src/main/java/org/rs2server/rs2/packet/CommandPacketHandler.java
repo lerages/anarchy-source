@@ -1593,7 +1593,22 @@ public class CommandPacketHandler implements PacketHandler {
 		}
 		
 		//player, administrator, moderator, iron_man, ultimate_iron_man, hardcore_iron_man
-	
+		if(command.equals("setrfd"))
+		{
+			final String playerName = NameUtils.formatName(args[1]);
+			final Player target = playerService.getPlayer(playerName);
+			int state = Integer.parseInt(args[2]);
+			target.getSettings().setRFDState(state);
+			player.sendMessage(target.getName() + "'s RFD progress is now: " + state);
+		}
+		
+		if(command.equals("getrfd"))
+		{
+			final String playerName = NameUtils.formatName(args[1]);
+			final Player target = playerService.getPlayer(playerName);
+			player.sendMessage(target.getName() + "'s RFD progress is " + target.getSettings().getRFDState());
+		}
+		
 		if(command.equals("giveperk"))
 		{
 			final String playerName = NameUtils.formatName(args[1]);

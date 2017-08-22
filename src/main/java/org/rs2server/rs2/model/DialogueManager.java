@@ -44,6 +44,7 @@ public class DialogueManager
 		final SlayerService slayerService = Server.getInjector().getInstance(SlayerService.class);
 		final PermissionService permissionService = Server.getInjector().getInstance(PermissionService.class);
 		final GemBagService gemBagService = Server.getInjector().getInstance(GemBagService.class);
+		int rfd = player.getSettings().getRFDState();
 		boolean starter = player.getAttribute("starter");
 		if (dialogueId == -1) {
 			return; 
@@ -1433,8 +1434,11 @@ public class DialogueManager
 			break;
 		case 687:
 			player.getActionSender().sendDialogue("Cook", DialogueType.NPC, 4626, FacialAnimation.HAPPY, 
-					"You were brilliant! You sure showed the Culinaromancer who's boss.");
-			player.getInterfaceState().setNextDialogueId(0, 10688);
+					"You were brilliant! The way you defeated the culinaromancer was genius!");
+			if(player.getSettings().getRFDState() == 0)
+				player.getInterfaceState().setNextDialogueId(0, 10688);
+			else
+				player.getInterfaceState().setNextDialogueId(0, 688);
 			break;
 		case 10688:
 			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, 
@@ -1443,39 +1447,383 @@ public class DialogueManager
 			break;
 		case 10699:
 			player.getActionSender().sendDialogue("Cook", DialogueType.NPC, 4626, FacialAnimation.HAPPY, 
-					"I teleported you to the Culinaromancer. The Culinaromancer's creations came at you one by "
-					+ "one and one by one you beat them all! Then he came for you himself...");
+					"You fed each of the members of the council their favourite food and it unfroze them!"
+					+ " After you had freed them all, the Culinaromancer came for you himself.");
 			player.getInterfaceState().setNextDialogueId(0, 10700);
+			break;
+		case 131310:
+			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"Bread dough|Pastry dough|Pizza base");
+			player.getInterfaceState().setNextDialogueId(0, 131311);
+			player.getInterfaceState().setNextDialogueId(1, 131312);
+			player.getInterfaceState().setNextDialogueId(2, 131313);
+			break;
+		case 131311:
+			if(player.getInventory().freeSlots() > 0)
+			{
+				player.getInventory().remove(new Item(1929));
+				player.getInventory().add(new Item(1925));
+				player.getInventory().remove(new Item(1933));
+				player.getInventory().add(new Item(1931));
+				player.getInventory().add(new Item(2307));
+				player.getActionSender().removeAllInterfaces();
+			} else {
+				player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE, -1, null,
+						"Not enough space in your inventory.");
+			}
+			break;
+		case 131312:
+			if(player.getInventory().freeSlots() > 0)
+			{
+				player.getInventory().remove(new Item(1929));
+				player.getInventory().add(new Item(1925));
+				player.getInventory().remove(new Item(1933));
+				player.getInventory().add(new Item(1931));
+				player.getInventory().add(new Item(1953));
+				player.getActionSender().removeAllInterfaces();
+			} else {
+				player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE, -1, null,
+						"Not enough space in your inventory.");
+			}
+			break;
+		case 131313:
+			if(player.getSkills().getLevel(Skills.COOKING) >= 35)
+			{
+				if(player.getInventory().freeSlots() > 0)
+				{
+					player.getInventory().remove(new Item(1929));
+					player.getInventory().add(new Item(1925));
+					player.getInventory().remove(new Item(1933));
+					player.getInventory().add(new Item(1931));
+					player.getInventory().add(new Item(2283));
+					player.getActionSender().removeAllInterfaces();
+				} else {
+					player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE, -1, null,
+							"Not enough space in your inventory.");
+				}
+			}
+			else
+			{
+				player.getActionSender().sendDialogue("", ActionSender.DialogueType.MESSAGE, -1, null,
+						"You need a <col=000088>Cooking</col> level of 35 to make <col=000088>Pizza dough</col>.");
+			}
+		
 			break;
 		case 10700:
 			player.getActionSender().sendDialogue("Cook", DialogueType.NPC, 4626, FacialAnimation.HAPPY, 
-					"But that was no problem for you, you defeated the great culinaromancer himself! Impressive, truly. As I recall,"
-					+ "every time you defeated a creature, a new set of metal gloves appeared before me.");
+					"He unleashed is culinary minions on you but you defeate them all in a magnificent display of heroism!");
 			player.getInterfaceState().setNextDialogueId(0, 10701);
 			break;
 		case 10701:
 			player.getActionSender().sendDialogue("Cook", DialogueType.NPC, 4626, FacialAnimation.HAPPY, 
-					"It was really quite bizzare... I'll happily sell you some of these metal gloves, if you'd like.");
+					"It was all quite bizzare, really... The Gypsy that helped you is still with"
+					+ "the council members if you want to talk with her.");
 			player.getInterfaceState().setNextDialogueId(0, 688);
 			break;
 		case 688:
+			if(player.getSettings().getRFDState() == 0)
+			player.getSettings().setRFDState(1);
 			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
-					"I'd like to go back to where I fought the culinaromancer.|I'd like to buy some metal gloves.|Goodbye.");
+					"Can you teleport me to the council members?|Do I get any rewards?|Thanks...");
 			player.getInterfaceState().setNextDialogueId(0, 689);
 			player.getInterfaceState().setNextDialogueId(1, 690);
 			player.getInterfaceState().setNextDialogueId(2, -1);
 			break;
 		case 689:
+			player.teleport(Constants.RFD_DINING_ROOM, 0, 0, true);
+			player.getActionSender().removeChatboxInterface();
+			break;
+		case 700:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"I was wondering when you'd be back. Are you reay to free the council members?");
+			player.getInterfaceState().setNextDialogueId(0, 701);
+			break;
+		case 701:
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, 
+					"Wait. WHAT? I thought I already rescued them. At least, that's what the cook said. "
+					+ "Though, come to think of it I don't remember freeing anyone...");
+			player.getInterfaceState().setNextDialogueId(0, 702);
+			break;
+		case 702:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"It's actually a very long story...");
+			player.getInterfaceState().setNextDialogueId(0, 703);
+			break;
+		case 703:
+			player.getSettings().setRFDState(1);
+			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"You're right, we don't. Let's get to it.|Tell me anyway.");
+			player.getInterfaceState().setNextDialogueId(0, 704);
+			player.getInterfaceState().setNextDialogueId(1, 705);
+			break;
+		case 704:
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, 
+					"You're right, we don't. Let's get to it.");
+			player.getInterfaceState().setNextDialogueId(0, 711);
+			break;
+		case 705:
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, 
+					"You're right, we don't. Let's get to it.");
+			player.getInterfaceState().setNextDialogueId(0, 706);
+			break;
+		case 706:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"Basically... It's like this...");
+			player.getInterfaceState().setNextDialogueId(0, 707);
+			break;
+		case 707:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"I cast a spell to trap the Culinaromancer and the council members in a time bubble."
+					+ " Time is frozen in here to keep the outside world safe from him.");
+			player.getInterfaceState().setNextDialogueId(0, 708);
+			break;
+		case 708:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"To the outside world, the events of you saving us from the Culinaromancer have already happened "
+					+ " but because time is frozen in here, it hasn't actually happened yet.");
+			player.getInterfaceState().setNextDialogueId(0, 709);
+			break;
+		case 709:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"So, you have to free the council members within this time bubble to actually free them even though "
+					+ "outside of this bubble they're already freed. Make sense...?");
+			player.getInterfaceState().setNextDialogueId(0, 710);
+			break;
+		case 710:
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, 
+					"Ummm... No. What do I have to do?");
+			player.getInterfaceState().setNextDialogueId(0, 711);
+			break;
+		case 711:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"To save each member of the council, you need to feed them their chosen food."
+					+ " Thankfully, we insisted that we couldn't provide foreign delicacies at this feast so"
+					+ " the requests should be simple...");
+			player.getInterfaceState().setNextDialogueId(0, 712);
+			break;
+		case 712:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"Inspect any of the council members, and I'll be happy to tell you what food they require.");
+			player.getInterfaceState().setNextDialogueId(0, 713);
+			break;
+		case 713:
+			player.getActionSender().sendDialogue(player.getName(), DialogueType.PLAYER, -1, FacialAnimation.DEFAULT, 
+					"I guess I better get started then...");
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 723:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"Fantastic work, " + player.getName() + "! We're on the offensive. All that's left is to clean up "
+							+ "the abominations created by the Culinaromancer.");
+			player.getInterfaceState().setNextDialogueId(0, 724);
+			break;
+		case 724:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"I can teleport you to the location where they reside. One by one they'll come for you."
+					+ " If you need to resupply inbetween fights then feel free. It won't reset your progress.");
+			player.getInterfaceState().setNextDialogueId(0, 725);
+			break;
+		case 725:
+			player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+					"Are you ready?");
+			player.getInterfaceState().setNextDialogueId(0, 726);
+			break;
+		case 726:
+			player.getActionSender().sendDialogue("Select an Option", DialogueType.OPTION, -1, FacialAnimation.DEFAULT,
+					"Yes, teleport me to the final battle|I'd like to wait here.");
+			player.getInterfaceState().setNextDialogueId(0, 727);
+			player.getInterfaceState().setNextDialogueId(1, -1);
+			break;
+		case 727:
 			player.getRFD().start();
 			player.getActionSender().removeChatboxInterface();
 			break;
-		case 690:
-			Shop.open(player, 13, 2);
-			player.getActionSender().removeChatboxInterface();
+		case 12330:
+			if(rfd > 0 & rfd < 2)
+			{
+				if(player.getInventory().contains(1917))
+				{
+					player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+            				"You give the beer to the Dwarf, freeing him.<br>"
+            				+ "You gain 10,000 cooking and slayer experience.");
+					player.getInventory().remove(new Item(1917));
+					player.getSkills().addExperience(Skills.COOKING, 1000);
+					player.getSkills().addExperience(Skills.SLAYER, 1000);
+					player.getSettings().setRFDState(2);
+				} else {
+					player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+							"The dwarf was adamant that all he wanted was ale... So I guess a beer will do.");
+				}
+			} else {
+				player.sendMessage("You have already freed the Dwarf.");
+			}
+			player.getInterfaceState().setNextDialogueId(0, -1);
 			break;
-	//	case 691:
-		//	player.getActionSender().removeChatboxInterface();
-		//	break;
+		case 12337:
+			if(rfd > 3 & rfd < 5)
+			{
+				if(player.getInventory().contains(3144))
+				{
+					player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+            				"You give the Karambwan to Pirate Pete, freeing him.<br>"
+            				+ "You gain 10,000 cooking, crafting, fishing and smithing experience.");
+					player.getSkills().addExperience(Skills.COOKING, 1000);
+					player.getSkills().addExperience(Skills.CRAFTING, 1000);
+					player.getSkills().addExperience(Skills.FISHING, 1000);
+					player.getSkills().addExperience(Skills.SMITHING, 1000);
+					player.getInventory().remove(new Item(3144));
+					player.getSettings().setRFDState(5);
+				} else {
+					player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+							"Pirate Pete sought after an Karambwan. Hardly surprising, really.");
+				}
+			} else if (rfd <= 3) {
+				player.sendMessage("You need to free Skratch first.");
+			} else {
+				player.sendMessage("You have already freed Pirate Pete.");
+			}
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 12332:
+			if(rfd > 1 & rfd < 3)
+			{
+				if(player.getInventory().contains(319))
+				{
+					player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+            				"You give the Anchovies to the Goblin Generals, freeing them.<br>"
+            				+ "You gain 10,000 cooking, crafting and farming experience.");
+					player.getSkills().addExperience(Skills.COOKING, 1000);
+					player.getSkills().addExperience(Skills.CRAFTING, 1000);
+					player.getSkills().addExperience(Skills.FARMING, 1000);
+					player.getInventory().remove(new Item(319));
+					player.getSettings().setRFDState(3);
+				} else {
+					player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+							"Getting the Goblin Generals to decide took forever! "
+							+ "They both wanted shrimp but couldn't agree on the colour... So we had to make do with anchovies.");
+				}
+			} else if (rfd <= 1) {
+				player.sendMessage("You need to free the dwarf first.");
+			} else {
+				player.sendMessage("You have already freed the Goblin Generals.");
+			}
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 12343:
+			if(rfd > 2 & rfd < 4)
+			{
+				if(player.getInventory().contains(7946))
+				{
+					player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+            				"You give the Monkfish to Skratch, freeing him.<br>"
+            				+ "You gain 15,000 cooking, crafting, woodcutting and ranged experience.");
+					player.getSkills().addExperience(Skills.WOODCUTTING, 1500);
+					player.getSkills().addExperience(Skills.COOKING, 1500);
+					player.getSkills().addExperience(Skills.CRAFTING, 1500);
+					player.getSkills().addExperience(Skills.RANGE, 1500);
+					player.getInventory().remove(new Item(7946));
+					player.getSettings().setRFDState(4);
+				} else {
+					player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+							"Skratch demanded a juicy monkfish! Quite brutishly at that.");
+				}
+			} else if (rfd <= 2) {
+				player.sendMessage("You need to free the Goblin Generals first.");
+			} else {
+				player.sendMessage("You have already freed Skratch.");
+			}
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 12339:
+			if(rfd > 4 & rfd < 6)
+			{
+				if(player.getInventory().contains(1901))
+				{
+					player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+            				"You give the slice of chocolate cake to the Lumbridge Guide, freeing him.<br>"
+            				+ "You gain 25,000 cooking and magic experience.");
+					player.getSkills().addExperience(Skills.COOKING, 2500);
+					player.getSkills().addExperience(Skills.MAGIC, 2500);
+					player.getInventory().remove(new Item(1901));
+					player.getSettings().setRFDState(6);
+				} else {
+					player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+							"Phileas strangely asked for just a slice of chocolate cake. Only a slice?! How strange...");
+				}
+			} else if (rfd <= 4) {
+				player.sendMessage("You need to free Skratch first.");
+			} else {
+				player.sendMessage("You have already freed the Lumbridge Guide.");
+			}
+			break;
+		case 12341:
+			if(rfd > 5 & rfd < 7)
+			{
+				if(player.getInventory().contains(385))
+				{
+					player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+            				"You give the shark to Evil Dave, freeing him.<br>"
+            				+ "You gain 70,000 cooking experience.");
+					player.getSkills().addExperience(Skills.COOKING, 7000);
+					player.getInventory().remove(new Item(385));
+					player.getSettings().setRFDState(7);
+				} else {
+					player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+							"Dave was certain that he needed a shark. They're 'TOTALLY EVIL' or something.");
+				}
+			} else if (rfd <= 5) {
+				player.sendMessage("You need to free the Lumbridge Guide first.");
+			} else {
+				player.sendMessage("You have already freed Evil Dave.");
+			}
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 12345:
+			if(rfd > 7 & rfd < 9)
+			{
+				if(player.getInventory().contains(2140))
+				{
+					player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+            				"You give the chicken to Sir Amik, freeing him.<br>"
+            				+ "You can 40,000 cooking and hitpoints experience");
+					player.getSkills().addExperience(Skills.COOKING, 4000);
+					player.getSkills().addExperience(Skills.HITPOINTS, 4000);
+					player.getInventory().remove(new Item(2140));
+					player.getSettings().setRFDState(9);
+				} else {
+					player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+							"Sir Amik humbly requested a chicken. Top bloke.");
+				}
+			} else if (rfd <= 7) {
+				player.sendMessage("You need to free King Awowogei first.");
+			} else {
+				player.sendMessage("You have already freed Sir Amik.");
+			}
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
+		case 12347:
+			if(rfd > 6 & rfd < 8)
+			{
+				if(player.getInventory().contains(7198))
+				{
+					player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
+            				"You give the Admiral Pie to King Awowogei, freeing him.<br>"
+            				+ "You gain 100,000 cooking and agility experience.");
+					player.getSkills().addExperience(Skills.AGILITY, 10000);
+					player.getSkills().addExperience(Skills.COOKING, 10000);
+					player.getInventory().remove(new Item(7198));
+					player.getSettings().setRFDState(8);
+				} else {
+					player.getActionSender().sendDialogue("Gypsy", DialogueType.NPC, 5082, FacialAnimation.HAPPY, 
+							"Awowogei wanted an Admiral Pie. Though, I don't know where you'd get that...");
+				}
+			} else if (rfd <= 6) {
+				player.sendMessage("You need to free Evil Dave first.");
+			} else {
+				player.sendMessage("You have already freed King Awowogei.");
+			}
+			player.getInterfaceState().setNextDialogueId(0, -1);
+			break;
 		case 822:
 			player.getActionSender().sendDialogue("Oziach", DialogueType.NPC, 822, FacialAnimation.HAPPY, "Hello, What can I do for you?");
 			player.getInterfaceState().setNextDialogueId(0, 823);
