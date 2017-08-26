@@ -94,8 +94,8 @@ public class DialogueManager
 			break;
 		case 3314:
 			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
-					"Additionally, each time you donate the total amount you have donated to us increases. Once this surpasses"
-					+ "$20 you receive the donator rank.");
+					"Additionally, each time you donate the total amount you have donated to us increases. Once this passes"
+					+ " $20, you receive the donator rank.");
 			player.getInterfaceState().setNextDialogueId(0, 3315);
 			break;
 		case 3315:
@@ -107,7 +107,7 @@ public class DialogueManager
 		case 3316:
 			player.getActionSender().sendDialogue("Donation Guide", DialogueType.NPC, 3308, FacialAnimation.DEFAULT,
 					"Currently, donating $20 or more gives you access to the ::yell command. Also, it removes the cost of using the"
-					+ "altar and decanter at home.");
+					+ " altar and decanter at home.");
 			player.getInterfaceState().setNextDialogueId(0, 3317);
 			break;
 		case 3317:

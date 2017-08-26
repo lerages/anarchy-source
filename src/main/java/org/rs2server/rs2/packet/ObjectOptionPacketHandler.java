@@ -13,6 +13,7 @@ import org.rs2server.rs2.content.api.GameObjectActionEvent;
 import org.rs2server.rs2.content.api.GameObjectSpellEvent;
 import org.rs2server.rs2.content.areas.CoordinateEvent;
 import org.rs2server.rs2.content.misc.Levers;
+import org.rs2server.rs2.content.misc.Picking;
 import org.rs2server.rs2.content.misc.SpiderWeb;
 import org.rs2server.rs2.content.misc.WaterSourceAction;
 import org.rs2server.rs2.domain.service.api.HookService;
@@ -1941,17 +1942,11 @@ public class ObjectOptionPacketHandler implements PacketHandler {
                             player.setTeleportTarget(Location.create(player.getX(), player.getY(), player.getZ() + 1));
                             break;
                         case 14896:
-                            if (System.currentTimeMillis() - player.getLastHarvest() > 600) {
-                                player.setLastHarvest(System.currentTimeMillis());
-                                if (player.getInventory().add(new Item(1779, 1))) {
-                                    player.playAnimation(Animation.create(827));
-                                    player.getActionSender().sendMessage("You manage to pick some Flax...");
-                                    player.getActionSender().playSound(Sound.PICK_FLAX);
-                                    if (Misc.random(4) == 0) {
-                                        World.getWorld().replaceObject(obj, null, 30);
-                                    }
-                                }
-                            }
+                        case 312:
+                        case 1161:
+                        case 3366:
+                        case 15507:
+                           Picking.Pick(player, obj);
                             break;
                         case 11748:
                         case 11744:

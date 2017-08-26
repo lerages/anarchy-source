@@ -71,6 +71,148 @@
         </CombatDefinition>
     </entry>
 	<entry>
+        <int>963</int>
+        <CombatDefinition>
+            <maxHit>31</maxHit>
+            <aggressive>false</aggressive>
+            <combatCooldownDelay>5</combatCooldownDelay>
+            <respawnTicks>60</respawnTicks>
+            <attack>
+                <id>6241</id>
+                <delay>0</delay>
+            </attack>
+            <defend>
+                <id>6232</id>
+                <delay>0</delay>
+            </defend>
+            <death>
+                <id>6242</id>
+                <delay>0</delay>
+            </death>
+            <attackType>CRUSH</attackType>
+            <combatStyle>ACCURATE</combatStyle>
+            <combatActionType>MELEE</combatActionType>
+            <skills>
+               <entry>
+                    <skill>STRENGTH</skill>
+                    <int>300</int>
+                </entry>
+                <entry>
+                    <skill>ATTACK</skill>
+                    <int>300</int>
+                </entry>
+                <entry>
+                    <skill>DEFENCE</skill>
+                    <int>300</int>
+                </entry>
+                <entry>
+                    <skill>HITPOINTS</skill>
+                    <int>255</int>
+                </entry>
+                <entry>
+                    <skill>MAGIC</skill>
+                    <int>150</int>
+                </entry>
+            </skills>
+            <bonuses>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>50</int>
+                <int>50</int>
+                <int>10</int>
+                <int>100</int>
+                <int>100</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+            </bonuses>
+            <constantDrops>
+                <npcdrop>
+                    <frequency>1.0</frequency>
+                    <item>
+                        <id>526</id>
+                        <count>1</count>
+                    </item>
+                </npcdrop>
+            </constantDrops>
+            <randomDrops/>
+        </CombatDefinition>
+    </entry>
+	<entry>
+        <int>965</int>
+        <CombatDefinition>
+            <maxHit>31</maxHit>
+            <aggressive>false</aggressive>
+            <combatCooldownDelay>5</combatCooldownDelay>
+            <respawnTicks>60</respawnTicks>
+            <attack>
+                <id>6235</id>
+                <delay>0</delay>
+            </attack>
+            <defend>
+                <id>6233</id>
+                <delay>0</delay>
+            </defend>
+            <death>
+                <id>6237</id>
+                <delay>0</delay>
+            </death>
+            <attackType>CRUSH</attackType>
+            <combatStyle>ACCURATE</combatStyle>
+            <combatActionType>MELEE</combatActionType>
+            <skills>
+               <entry>
+                    <skill>STRENGTH</skill>
+                    <int>300</int>
+                </entry>
+                <entry>
+                    <skill>ATTACK</skill>
+                    <int>300</int>
+                </entry>
+                <entry>
+                    <skill>DEFENCE</skill>
+                    <int>300</int>
+                </entry>
+                <entry>
+                    <skill>HITPOINTS</skill>
+                    <int>255</int>
+                </entry>
+                <entry>
+                    <skill>MAGIC</skill>
+                    <int>150</int>
+                </entry>
+            </skills>
+            <bonuses>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>100</int>
+                <int>100</int>
+                <int>100</int>
+                <int>10</int>
+                <int>10</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+            </bonuses>
+            <constantDrops>
+                <npcdrop>
+                    <frequency>1.0</frequency>
+                    <item>
+                        <id>526</id>
+                        <count>1</count>
+                    </item>
+                </npcdrop>
+            </constantDrops>
+            <randomDrops/>
+        </CombatDefinition>
+    </entry>
+	<entry>
         <int>6618</int>
         <CombatDefinition>
             <maxHit>15</maxHit>
@@ -91658,7 +91800,7 @@
     <entry>
         <int>4880</int>
         <CombatDefinition>
-            <maxHit>10</maxHit>
+            <maxHit>16</maxHit>
             <aggressive>true</aggressive>
             <combatCooldownDelay>5</combatCooldownDelay>
             <respawnTicks>9999999</respawnTicks>
@@ -91680,35 +91822,39 @@
             <skills>
                 <entry>
                     <skill>DEFENCE</skill>
-                    <int>300</int>
+                    <int>82</int>
                 </entry>
                 <entry>
                     <skill>HITPOINTS</skill>
-                    <int>150</int>
+                    <int>200</int>
                 </entry>
                 <entry>
                     <skill>ATTACK</skill>
-                    <int>225</int>
+                    <int>83</int>
                 </entry>
                 <entry>
                     <skill>MAGIC</skill>
-                    <int>99</int>
+                    <int>100</int>
+                </entry>
+				<entry>
+                    <skill>RANGE</skill>
+                    <int>100</int>
                 </entry>
             </skills>
             <bonuses>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>100</int>
+                <int>100</int>
+                <int>100</int>
+                <int>100</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>100</int>
             </bonuses>
             <constantDrops/>
             <randomDrops/>
@@ -91717,7 +91863,7 @@
     <entry>
         <int>4881</int>
         <CombatDefinition>
-            <maxHit>24</maxHit>
+            <maxHit>22</maxHit>
             <aggressive>true</aggressive>
             <combatCooldownDelay>5</combatCooldownDelay>
             <respawnTicks>9999999</respawnTicks>
@@ -91739,35 +91885,35 @@
             <skills>
                 <entry>
                     <skill>DEFENCE</skill>
-                    <int>300</int>
+                    <int>75</int>
                 </entry>
                 <entry>
                     <skill>HITPOINTS</skill>
-                    <int>150</int>
+                    <int>210</int>
                 </entry>
                 <entry>
                     <skill>ATTACK</skill>
-                    <int>225</int>
+                    <int>120</int>
                 </entry>
                 <entry>
                     <skill>MAGIC</skill>
-                    <int>99</int>
+                    <int>1</int>
                 </entry>
             </skills>
             <bonuses>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>50</int>
+                <int>50</int>
+                <int>5</int>
+                <int>5</int>
+                <int>50</int>
+                <int>0</int>
+                <int>0</int>
+                <int>100</int>
             </bonuses>
             <constantDrops/>
             <randomDrops/>
@@ -91776,7 +91922,7 @@
     <entry>
         <int>4882</int>
         <CombatDefinition>
-            <maxHit>15</maxHit>
+            <maxHit>20</maxHit>
             <aggressive>true</aggressive>
             <combatCooldownDelay>5</combatCooldownDelay>
             <respawnTicks>9999999</respawnTicks>
@@ -91798,35 +91944,35 @@
             <skills>
                 <entry>
                     <skill>DEFENCE</skill>
-                    <int>300</int>
+                    <int>100</int>
                 </entry>
                 <entry>
                     <skill>HITPOINTS</skill>
-                    <int>240</int>
+                    <int>250</int>
                 </entry>
                 <entry>
-                    <skill>ATTACK</skill>
-                    <int>225</int>
+                    <skill>RANGE</skill>
+                    <int>100</int>
                 </entry>
                 <entry>
                     <skill>MAGIC</skill>
-                    <int>99</int>
+                    <int>1</int>
                 </entry>
             </skills>
             <bonuses>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
+                <int>50</int>
+                <int>50</int>
+                <int>50</int>
+                <int>0</int>
+                <int>134</int>
+                <int>150</int>
+                <int>150</int>
+                <int>150</int>
+                <int>0</int>
+                <int>150</int>
+                <int>0</int>
+                <int>55</int>
+                <int>0</int>
             </bonuses>
             <constantDrops/>
             <randomDrops/>
@@ -91857,35 +92003,35 @@
             <skills>
                 <entry>
                     <skill>DEFENCE</skill>
-                    <int>300</int>
+                    <int>99</int>
                 </entry>
                 <entry>
                     <skill>HITPOINTS</skill>
-                    <int>240</int>
+                    <int>130</int>
                 </entry>
                 <entry>
                     <skill>ATTACK</skill>
-                    <int>225</int>
+                    <int>99</int>
                 </entry>
                 <entry>
-                    <skill>MAGIC</skill>
+                    <skill>STRENGTH</skill>
                     <int>99</int>
                 </entry>
             </skills>
             <bonuses>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
-                <int>75</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>10</int>
+                <int>150</int>
+                <int>150</int>
+                <int>0</int>
+                <int>0</int>
+                <int>50</int>
+                <int>0</int>
+                <int>50</int>
             </bonuses>
             <constantDrops/>
             <randomDrops/>

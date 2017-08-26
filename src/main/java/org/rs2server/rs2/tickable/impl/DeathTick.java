@@ -13,6 +13,7 @@ import org.rs2server.rs2.domain.service.api.content.PestControlService;
 import org.rs2server.rs2.domain.service.api.content.bounty.BountyHunterService;
 import org.rs2server.rs2.model.CombatNPCDefinition;
 import org.rs2server.rs2.model.Entity;
+import org.rs2server.rs2.model.Graphic;
 import org.rs2server.rs2.model.Item;
 import org.rs2server.rs2.model.Location;
 import org.rs2server.rs2.model.Mob;
@@ -213,8 +214,29 @@ public class DeathTick extends Tickable
 					player.setTeleportTarget(Entity.HOME);
 			} else if(mob.isNPC()) {
 				final NPC npc = (NPC) mob;
+				
 				if (killer.isPlayer()) {
 					final Player player = (Player) killer;
+					
+					if(npc.getId() == 963)
+					{
+						player.sendMessage("KQ KILLED");
+						player.playGraphics(Graphic.create(1055));
+						World.getWorld().submit(new Tickable(8) {
+							public void execute() {
+								player.sendMessage("Phase 2 spawned at " + player.getLocation().getX() + ", " + player.getLocation().getY());
+								NPC queen = new NPC(
+										965,
+										player.getLocation(), 
+										player.getLocation(),
+										player.getLocation(), 
+										6);
+								World.getWorld().register(queen);
+								this.stop();
+							}
+						});
+					}
+					
 					if (player.getSlayer().getSlayerTask() != null)
 					{
 						if(npc.getId() == 7404) //choke devil

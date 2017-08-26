@@ -97,8 +97,8 @@ public class RecipeForDisaster {
 				if (player.getInstancedNPCs().isEmpty()) {
 					if (wave.getStage() == 5) {
 						player.getActionSender().sendDialogue("", DialogueType.MESSAGE, -1, null, 
-	            				"<u>You have completed <col=ff0000>Recipe for Disaster</col>!</u> You now have<br>"
-	            				+ "Full access to the Culinaromancer's Chest<br>");
+	            				"You have completed <col=ff0000>Recipe for Disaster</col>! <br>You now have"
+	            				+ "Full access to the Culinaromancer's Chest.");
 						player.getInterfaceState().setNextDialogueId(0, -1);
 						player.setTeleportTarget(Entity.HOME);
 						player.getSettings().setRFDState(10);
